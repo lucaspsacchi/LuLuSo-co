@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <style>
+            :root {
+                --bg-color: rgb(255,255,255);
+            }
+
+            body {
+                width: 100%;
+                background-color: var(--bg-color);
+            }
+            .navbar {
+                width: 100%;
+            }
+            .video > img {
+                width: 800px;
+                height: 500px;
+                margin-bottom: 15px;
+            }
+            .question {
+                border: 1px solid black;
+                border-radius: 5px;
+                padding: 30px;
+                margin-bottom: 15px;
+            }
+            .alternativa {
+                padding: 5px;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                margin-right: 20px;
+            }
+            .btn-outline-secondary:hover {
+                background-color: #fff;
+                color: #6c757d;
+            }
+
+            .btn-custom-question:focus {
+                box-shadow: none !important;
+            }
+            .confirma {
+                margin-top: 15px;
+                width: 100%;
+            }
+            .espaco {
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+            /* @media (min-width: 800px) {
+
+            } */
+        </style>
+    </head>
+    <body>
+        <div class="">
+            <div class="col-12 col-sm-12 col-xs-12">
+                <div class="navbar d-flex justify-content-center">
+                    <h3>NAVBAR</h3>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-xs-12">
+                <div class="video d-flex justify-content-center">
+                    <img src="img/youtube.jpg" alt="Vídeo de exemplo">
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-xs-12">
+                <div class="question shadow">
+                    <div class="enum">
+                        <h3>Selecione a sequência correta de passos para realizar essa tarefa:</h3>
+                    </div>
+                    <div class="espaco">
+                        <button type="button" onclick="main('remove', 1)" class="alternativa btn btn-custom-question btn-outline-secondary" id="esp1"></button>
+                        <button type="button" onclick="main('remove', 2)" class="alternativa btn btn-custom-question btn-outline-secondary" id="esp2"></button>
+                        <button type="button" onclick="main('remove', 3)" class="alternativa btn btn-custom-question btn-outline-secondary" id="esp3"></button>
+                        <button type="button" onclick="main('remove', 4)" class="alternativa btn btn-custom-question btn-outline-secondary" id="esp4"></button>
+                        <button type="button" onclick="main('remove', 5)" class="alternativa btn btn-custom-question btn-outline-secondary" id="esp5"></button>
+                    </div>
+                    <hr>
+                    <form action="#" method="get">
+                        <div class="alternativas col-12 row">
+                            <button type="button" onclick="main('Home', 1)" class="alternativa btn btn-outline-primary btn-custom-question" id="alt1">Home</button>
+                            <button type="button" onclick="main('Conversa', 2)" class="alternativa btn btn-outline-primary btn-custom-question" id="alt2">Conversa</button>
+                            <button type="button" onclick="main('Anexo', 3)" class="alternativa btn btn-outline-primary btn-custom-question" id="alt3">Anexo</button>
+                            <button type="button" onclick="main('Selecionar imagem', 4)" class="alternativa btn btn-outline-primary btn-custom-question" id="alt4">Selecionar imagem</button>
+                            <button type="button" onclick="main('Botão verde', 5)" class="alternativa btn btn-outline-primary btn-custom-question" id="alt5">Botão verde</button>
+                        </div>
+                        <button type="submit" class="confirma btn btn-outline-success">Confirmar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+<script>
+
+var alternativas = []
+
+function main(data, num) {
+    if (data == 'remove') { // Já está na array
+        if (num < alternativas.length) { // Nao permite remover elementos anterior do último
+            console.log('Não pode!')
+        }
+        else {
+            remover(num)
+        }
+    }
+    else { // Não está
+        //Altera botão para cinza
+        str = 'alt'
+        var div = document.getElementById(str.concat(num))
+        if (div.className == "alternativa btn btn-custom-question btn-outline-secondary") { // Não deixa adicionar o mesmo elemento
+            return;
+        }
+        div.className = "alternativa btn btn-custom-question btn-outline-secondary" // Altera a cor do botão escolhido
+    
+        str = 'esp'
+        var div = document.getElementById(str.concat((alternativas.length + 1)))
+        var content = document.createTextNode(data)
+        adicionar(div, content) // Adiciona esse elemento para o espaço
+
+        element = [data, num] //Adiciona na array
+        alternativas.push(element)
+    }
+}
+
+function adicionar(div, content) {
+    div.className = "alternativa btn btn-custom-question btn-outline-primary" // Altera a cor do elemento criado para azul
+    div.appendChild(content)
+}
+
+function remover(div) {
+    str = 'esp'
+    str = str.concat(div)
+    var div = document.getElementById(str)
+    div.className = "alternativa btn btn-custom-question btn-outline-secondary"//Altera o botão dos espaços para secondary
+
+    div.innerHTML = ""
+
+    aux = alternativas[alternativas.length - 1]
+    str = 'alt'
+    str = str.concat(aux[1])
+    var div = document.getElementById(str)
+    div.className = "alternativa btn btn-custom-question btn-outline-primary"
+
+    alternativas.pop() // Remove o último elemento
+}
+
+function formatar() {
+    formatado = []
+    for(i = 0; i < alternativas.length; i++) {
+        formatado[i] = alternativas[i][0];
+    }
+}
+
+</script>
+<!-- Import das bibliotecas js do Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
