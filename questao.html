@@ -106,16 +106,15 @@ function main(data, num) {
         }
     }
     else { // Não está
-        //Altera botão para cinza
         str = 'alt'
         var div = document.getElementById(str.concat(num))
         if (div.className == "alternativa btn btn-custom-question btn-outline-secondary") { // Não deixa adicionar o mesmo elemento
             return;
         }
-        div.className = "alternativa btn btn-custom-question btn-outline-secondary" // Altera a cor do botão escolhido
+        div.className = "alternativa btn btn-custom-question btn-outline-secondary" // Altera a cor do botão escolhido para cinza
     
         str = 'esp'
-        var div = document.getElementById(str.concat((alternativas.length + 1)))
+        var div = document.getElementById(str.concat((alternativas.length + 1))) // Seleciona a primeira posição disponível
         var content = document.createTextNode(data)
         adicionar(div, content) // Adiciona esse elemento para o espaço
 
@@ -137,11 +136,11 @@ function remover(div) {
 
     div.innerHTML = ""
 
-    aux = alternativas[alternativas.length - 1]
+    aux = alternativas[alternativas.length - 1] // Pega o último elemento da array
     str = 'alt'
-    str = str.concat(aux[1])
+    str = str.concat(aux[1]) // Concatena o id da posição do elemento
     var div = document.getElementById(str)
-    div.className = "alternativa btn btn-custom-question btn-outline-primary"
+    div.className = "alternativa btn btn-custom-question btn-outline-primary" // Altera a cor para azul
 
     alternativas.pop() // Remove o último elemento
 }
