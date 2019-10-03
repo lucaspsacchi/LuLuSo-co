@@ -6,7 +6,9 @@ function main(data, num) {
 			console.log('Não pode!')
 		}
 		else {
-			remover(num)
+			if (num <= alternativas.length) {
+				remover(num)
+			}
 		}
 	}
 	else { // Não está
