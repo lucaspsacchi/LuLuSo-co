@@ -35,9 +35,12 @@
                 background-color: #fff;
                 color: #6c757d;
             }
-
             .btn-custom-question:focus {
                 box-shadow: none !important;
+                font-size: 18px;
+            }
+            .btn-custom {
+                font-size: 22px !important;
             }
             .confirma {
                 margin-top: 15px;
@@ -70,22 +73,22 @@
                         <h3>Selecione a sequência correta de passos para realizar essa tarefa:</h3>
                     </div>
                     <div class="espaco">
-                        <button type="button" onclick="main('remove', 1)" class="alternativa btn btn-custom-question btn-outline-secondary" id="esp1"></button>
-                        <button type="button" onclick="main('remove', 2)" class="alternativa btn btn-custom-question btn-outline-secondary" id="esp2"></button>
-                        <button type="button" onclick="main('remove', 3)" class="alternativa btn btn-custom-question btn-outline-secondary" id="esp3"></button>
-                        <button type="button" onclick="main('remove', 4)" class="alternativa btn btn-custom-question btn-outline-secondary" id="esp4"></button>
-                        <button type="button" onclick="main('remove', 5)" class="alternativa btn btn-custom-question btn-outline-secondary" id="esp5"></button>
+                        <button type="button" onclick="main('remove', 1)" class="alternativa btn btn-custom btn-custom-question btn-outline-secondary" id="esp1"></button>
+                        <button type="button" onclick="main('remove', 2)" class="alternativa btn btn-custom btn-custom-question btn-outline-secondary" id="esp2"></button>
+                        <button type="button" onclick="main('remove', 3)" class="alternativa btn btn-custom btn-custom-question btn-outline-secondary" id="esp3"></button>
+                        <button type="button" onclick="main('remove', 4)" class="alternativa btn btn-custom btn-custom-question btn-outline-secondary" id="esp4"></button>
+                        <button type="button" onclick="main('remove', 5)" class="alternativa btn btn-custom btn-custom-question btn-outline-secondary" id="esp5"></button>
                     </div>
                     <hr>
                     <form action="#" method="get">
                         <div class="alternativas col-12 row">
-                            <button type="button" onclick="main('Home', 1)" class="alternativa btn btn-outline-primary btn-custom-question" id="alt1">Home</button>
-                            <button type="button" onclick="main('Conversa', 2)" class="alternativa btn btn-outline-primary btn-custom-question" id="alt2">Conversa</button>
-                            <button type="button" onclick="main('Anexo', 3)" class="alternativa btn btn-outline-primary btn-custom-question" id="alt3">Anexo</button>
-                            <button type="button" onclick="main('Selecionar imagem', 4)" class="alternativa btn btn-outline-primary btn-custom-question" id="alt4">Selecionar imagem</button>
-                            <button type="button" onclick="main('Botão verde', 5)" class="alternativa btn btn-outline-primary btn-custom-question" id="alt5">Botão verde</button>
+                            <button type="button" onclick="main('Home', 1)" class="alternativa btn btn-outline-primary btn-custom btn-custom-question" id="alt1">Home</button>
+                            <button type="button" onclick="main('Conversa', 2)" class="alternativa btn btn-outline-primary btn-custom btn-custom-question" id="alt2">Conversa</button>
+                            <button type="button" onclick="main('Anexo', 3)" class="alternativa btn btn-outline-primary btn-custom btn-custom-question" id="alt3">Anexo</button>
+                            <button type="button" onclick="main('Selecionar imagem', 4)" class="alternativa btn btn-outline-primary btn-custom btn-custom-question" id="alt4">Selecionar imagem</button>
+                            <button type="button" onclick="main('Botão verde', 5)" class="alternativa btn btn-outline-primary btn-custom btn-custom-question" id="alt5">Botão verde</button>
                         </div>
-                        <button type="submit" class="confirma btn btn-outline-success">Confirmar</button>
+                        <button type="submit" class="confirma btn btn-custom btn-outline-success">Confirmar</button>
                     </form>
                 </div>
             </div>
@@ -108,16 +111,16 @@ function main(data, num) {
     else { // Não está
         str = 'alt'
         var div = document.getElementById(str.concat(num))
-        if (div.className == "alternativa btn btn-custom-question btn-outline-secondary") { // Não deixa adicionar o mesmo elemento
+        if (div.className == "alternativa btn btn-custom btn-custom-question btn-outline-secondary") { // Não deixa adicionar o mesmo elemento
             return;
         }
-        div.className = "alternativa btn btn-custom-question btn-outline-secondary" // Altera a cor do botão escolhido para cinza
+        div.className = "alternativa btn btn-custom btn-custom-question btn-outline-secondary" // Altera a cor do botão escolhido para cinza
     
         str = 'esp'
         //Altera a cor do último botão para cinza
         if (alternativas.length != 0) {
             var div = document.getElementById(str.concat((alternativas.length))) // Seleciona a última posição do vetor
-            div.className = "alternativa btn btn-custom-question btn-outline-secondary"
+            div.className = "alternativa btn btn-custom btn-custom-question btn-outline-secondary"
         }
 
         //Adiciona novo botão
@@ -131,7 +134,7 @@ function main(data, num) {
 }
 
 function adicionar(div, content) {
-    div.className = "alternativa btn btn-custom-question btn-outline-primary" // Altera a cor do elemento criado para azul
+    div.className = "alternativa btn btn-custom btn-custom-question btn-outline-primary" // Altera a cor do elemento criado para azul
     div.appendChild(content)
 }
 
@@ -139,7 +142,7 @@ function remover(div) {
     str = 'esp'
     str = str.concat(div)
     var div = document.getElementById(str)
-    div.className = "alternativa btn btn-custom-question btn-outline-secondary" // Altera o botão dos espaços para secondary
+    div.className = "alternativa btn btn-custom btn-custom-question btn-outline-secondary" // Altera o botão dos espaços para secondary
 
     div.innerHTML = ""
 
@@ -147,14 +150,14 @@ function remover(div) {
     str = 'alt'
     str = str.concat(aux[1]) // Concatena o id da posição do elemento
     var div = document.getElementById(str)
-    div.className = "alternativa btn btn-custom-question btn-outline-primary" // Altera a cor para azul
+    div.className = "alternativa btn btn-custom btn-custom-question btn-outline-primary" // Altera a cor para azul
 
     alternativas.pop() // Remove o último elemento
 
     if (alternativas.length != 0) {
         str = 'esp'
         var div = document.getElementById(str.concat(alternativas.length)) // Seleciona a última posição do vetor
-        div.className = "alternativa btn btn-custom-question btn-outline-primary"
+        div.className = "alternativa btn btn-custom btn-custom-question btn-outline-primary"
     }
 }
 
