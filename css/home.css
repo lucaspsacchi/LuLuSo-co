@@ -1,0 +1,21 @@
+:root {
+    --bg-color: rgb(255,255,255);
+}
+
+body {
+    width: 100%;
+    -color: var(--bg-color);
+}
+.navbar {
+    width: 100%;
+}
+.row {
+    width: 100% !important;
+}
+/* Home */
+.card-custom {
+    width: 100%;
+    margin-right: 15px;
+    margin-left: 15px;
+    margin-bottom: 15px;
+}
