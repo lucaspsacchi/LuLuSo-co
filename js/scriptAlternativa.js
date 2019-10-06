@@ -9,4 +9,15 @@ function main(alt) {
     alternativa = alt;
     var div = document.getElementById(alternativa);
     div.className = "button btn btn-outline-primary btn-custom-alternativa btn-custom-selecionado";
+
+    activeButton();
+}
+
+activeButton = () => {
+    let button = document.getElementById('confirmar');
+
+    button.disabled = false; 
+    button.classList.remove('btn-outline-secondary');
+    button.classList.add('btn-success');
+
 }

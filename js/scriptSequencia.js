@@ -1,17 +1,16 @@
 var alternativas = []
+var nAlternativas = 5;
 
 function main(data, num) {
 	if (data == 'remove') { // Já está na array
 		if (num < alternativas.length) { // Nao permite remover elementos anterior do último
 			console.log('Não pode!')
-		}
-		else {
+		} else {
 			if (num <= alternativas.length) {
 				remover(num)
 			}
 		}
-	}
-	else { // Não está
+	} else { // Não está
 		str = 'alt'
 		var div = document.getElementById(str.concat(num))
 		if (div.className == "alternativa btn btn-custom btn-custom-question btn-outline-secondary") { // Não deixa adicionar o mesmo elemento
@@ -34,6 +33,8 @@ function main(data, num) {
 		element = [data, num] //Adiciona na array
 		alternativas.push(element)
 	}
+
+	activeButton();
 }
 
 function adicionar(div, content) {
@@ -66,7 +67,18 @@ function remover(div) {
 
 function formatar() {
 	formatado = []
-	for(i = 0; i < alternativas.length; i++) {
+	for (i = 0; i < alternativas.length; i++) {
 		formatado[i] = alternativas[i][0];
+	}
+}
+
+
+activeButton = () => {
+	if (alternativas.length === nAlternativas) {
+		let button = document.getElementById('confirmar');
+
+		button.disabled = false;
+		button.classList.remove('btn-outline-secondary');
+		button.classList.add('btn-success');
 	}
 }

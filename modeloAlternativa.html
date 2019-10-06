@@ -1,66 +1,87 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="./css/modelos.css">
-    </head>
-    <body>
-        <div class="">
-            <div class="col-12 col-sm-12 col-xs-12">
-                <div class="navbar d-flex justify-content-center">
-                    <h3>NAVBAR</h3>
-                </div>
-            </div>
-            <div class="col-12 col-sm-12 col-xs-12">
-                <div class="video d-flex justify-content-center">
-                  <iframe width="1200" height="630" class="video-custom" src="https://www.youtube.com/embed/K1xfGs7pGho" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-            </div>
-            <div class="col-12 col-sm-12 col-xs-12">
-                <div class="question shadow">
-                    <div class="enum">
-                        <h3>Selecione a imagem que representa o Facebook:</h3>
-                    </div>
-                    <div class="row">
-                      <div class="col-6 col-md-3 col-sm-6">
-                        <button type="button" id="alt1" onclick="main('alt1')" class="button btn btn-outline-secondary btn-custom-alternativa">
-                          <div class="imagem d-flex justify-content-center">
-                            <img src="./img/camera.png" alt="Alternativa 1">
-                          </div>
-                        </button>
-                      </div>
-                      <div class="col-6 col-md-3 col-sm-6">
-                        <button type="button" id="alt2" onclick="main('alt2')" class="button btn btn-outline-secondary btn-custom-alternativa">
-                          <div class="imagem d-flex justify-content-center">
-                            <img src="./img/facebook.png" alt="Alternativa 2">
-                          </div>
-                        </button>
-                      </div>
-                      <div class="col-6 col-md-3 col-sm-6">
-                        <button type="button" id="alt3" onclick="main('alt3')" class="button btn btn-outline-secondary btn-custom-alternativa">
-                          <div class="imagem d-flex justify-content-center">
-                            <img src="./img/playstore.png" alt="Alternativa 3">
-                          </div>
-                        </button>
-                      </div>
-                      <div class="col-6 col-md-3 col-sm-6">
-                        <button type="button" id="alt4" onclick="main('alt4')" class="button btn btn-outline-secondary btn-custom-alternativa">
-                          <div class="imagem d-flex justify-content-center">
-                            <img src="./img/whatsapp.png" alt="Alternativa 4">
-                          </div>
-                        </button>
-                      </div>
-                    </div>
-                    <form action="#" method="get">
-                        <button type="submit" class="confirma btn btn-outline-success">Confirmar</button>
-                    </form>
-                </div>
-            </div>
+
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="./css/modelos.css">
+</head>
+
+<body>
+  <div class="">
+    <div class="col-12 col-sm-12 col-xs-12">
+      <div class="navbar d-flex justify-content-center">
+        <h3>NAVBAR</h3>
+      </div>
+    </div>
+    <div class="col-12 col-sm-12 col-xs-12">
+      <div class="video d-flex justify-content-center">
+        <iframe width="1200" height="630" class="video-custom" src="https://www.youtube.com/embed/K1xfGs7pGho"
+          frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
+    </div>
+    <div class="col-12 col-sm-12 col-xs-12">
+      <div class="question shadow d-flex flex-column justify-content-center align-items-center p-5">
+        <div class="enum">
+          <h3>Selecione a imagem que representa o Facebook:</h3>
         </div>
-    </body>
+
+
+        <div class="alternativas">
+          <div class="col-12 col-md-6">
+            <button type="button" id="alt1" onclick="main('alt1')"
+              class="button btn btn-outline-secondary btn-custom-alternativa">
+              <div class="d-flex justify-content-center">
+                <img src="./img/cameraRedimensionado.png" alt="Alternativa 1">
+              </div>
+            </button>
+          </div>
+          <div class="col-12 col-md-6">
+            <button type="button" id="alt2" onclick="main('alt2')"
+              class="button btn btn-outline-secondary btn-custom-alternativa">
+              <div class="d-flex justify-content-center">
+                <img src="./img/facebookRedimensionado.png" alt="Alternativa 2">
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <div class="alternativas">
+          <div class="col-12 col-md-6">
+            <button type="button" id="alt3" onclick="main('alt3')"
+              class="button btn btn-outline-secondary btn-custom-alternativa">
+              <div class="d-flex justify-content-center">
+                <img src="./img/playstoreRedimensionado.png" alt="Alternativa 3">
+              </div>
+            </button>
+          </div>
+          <div class="col-12 col-md-6">
+            <button type="button" id="alt4" onclick="main('alt4')"
+              class="button btn btn-outline-secondary btn-custom-alternativa">
+              <div class="d-flex justify-content-center">
+                <img src="./img/whatsappRedimensionado.png" alt="Alternativa 4">
+              </div>
+            </button>
+          </div>
+
+        </div>
+
+        <form action="#" method="get" class="confirma">
+          <button id="confirmar" type="submit" class="confirma btn btn-outline-secondary btn-custom"
+            disabled>Confirmar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
 </html>
 <script type="text/javascript" src="js/scriptAlternativa.js"></script>
 <!-- Import das bibliotecas js do Bootstrap -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

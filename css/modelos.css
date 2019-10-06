@@ -35,7 +35,7 @@ body {
     font-size: 18px;
 }
 .btn-custom {
-    font-size: 22px !important;
+    font-size: 50px !important;
 }
 .confirma {
     margin-top: 15px;
@@ -46,8 +46,6 @@ body {
     margin-bottom: 20px;
 }
 .imagem {
-    width: 200px;
-    height: 200px;
     margin: 10px;
 }
 .btn-custom-alternativa {
@@ -96,4 +94,17 @@ body {
 
 .wrong {
     border: 4px solid #ff0000;
+}
+
+.alternativas {
+    display: flex;
+}
+
+.alternativas>div {
+    margin: 30px auto;
+}
+
+
+.enum h3 {
+    font-size: 50px;
 }
