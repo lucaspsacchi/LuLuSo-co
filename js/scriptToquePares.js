@@ -28,8 +28,8 @@ var player;
 
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
-        height: '320',
-        width: '640',
+        height: '100%',
+        width: '100%',
         videoId: 'K1xfGs7pGho',
         events: {
             onReady: onReady,
@@ -59,9 +59,7 @@ function mountQuiz() {
     var quiz = document.getElementById('quiz');
 
     quiz.removeChild(document.getElementById('conteudo')); //remove o conteudo da div
-    quiz.classList.add('d-block');
-    quiz.classList.add('justify-content-center');
-    quiz.classList.add('align-items-center');
+    quiz.classList.add('flex-column');
 
     //Monta a questão
 
@@ -90,9 +88,14 @@ function mountQuiz() {
     var button = document.createElement('button');
     node = document.createTextNode('Confirmar');
 
+    button.id = 'confirmar'
+    button.disabled = true;
+
     button.classList.add('confirma');
     button.classList.add('btn');
-    button.classList.add('btn-outline-success');
+    button.classList.add('btn-outline-secondary');
+    button.classList.add('btn-custom');
+    button.classList.add('mt-5');
 
     button.appendChild(node);
 
@@ -110,17 +113,12 @@ function mountAlternativas() {
         alternativas.push({
             id: i,
             texto: x.texto,
-            selected: false,
-            answered: false
         }),
         i++,
         alternativas.push({
             id: i,
             texto: x.resposta,
-            selected: false,
-            answered: false,
             fk: i - 1,
-            isAnswer: true
         }),
         i++
     ))
@@ -168,21 +166,23 @@ shuffle = (array) => {
     return array;
 }
 
+respondidos = [];
+selecionados = [];
 
 setSelect = (id) => {
+
     const i = alternativas.map(x => x.id).indexOf(id);
 
-    let newState = [...alternativas];
+    if (selecionados.length < 2)
+        selecionados.push(alternativas[i]);
+    else
+        return;
 
-    if (!newState[i].answered)
-        newState[i].selected = !newState[i].selected;
+    changeState();
 
-
-    alternativas = [...newState];
-
-    checkAnswer();
-
-    changeState(id);
+    if (selecionados.length === 2) {
+        checkAnswer();
+    }
 }
 
 
@@ -198,39 +198,70 @@ setAnswered = (id) => {
     changeState(id);
 }
 
-checkAnswer = () => {
-    //checa as alternativas selecionadas se são  pares
-    const selected = [];
+checkAnswer = async () => {
+    if (selecionados.length === 2) {
+        if (selecionados[0].id === selecionados[1].fk || selecionados[1].id === selecionados[0].fk) {
+            respondidos.push(selecionados[0]);
+            respondidos.push(selecionados[1]);
+            selecionados = [];
 
-    alternativas.map(x => {
-        if (x.selected && !x.answered)
-            selected.push(x);
-    })
+            setTimeout(function () {
+                changeState()
+            }, 500);
 
-    if (selected.length === 2) {
-        if (selected[0].id === selected[1].fk || selected[1].id === selected[0].fk) {
-            setAnswered(selected[0].id);
-            setAnswered(selected[1].id);
         } else {
-            setSelect(selected[0].id);
-            setSelect(selected[1].id);
+            setTimeout(async function () {
+                setWrong();
+                selecionados = await [];
+            }, 500);
         }
     }
+
+
 }
 
-changeState = (id) => {
-    let div = document.getElementById(id);
-    const i = alternativas.map(x => x.id).indexOf(id);
+changeState = () => {
+    let div;
+    selecionados.map(x => {
+        div = document.getElementById(x.id);
+        div.classList.add('selected');
+    })
 
-    if (alternativas[i].answered) {
+    respondidos.map(x => {
+        div = document.getElementById(x.id);
         div.classList.remove('selected');
         div.classList.add('answered');
-        div.removeEventListener('click', function () {});
-    } else if (alternativas[i].selected)
-        div.classList.add('selected');
-    else {
-        div.classList.remove('selected');
-        div.classList.remove('answered');
+    })
+
+    activeButton();
+}
+
+setWrong = () => {
+    let div1 = document.getElementById(selecionados[0].id);
+    let div2 = document.getElementById(selecionados[1].id);
+
+    div1.classList.add('wrong');
+    div2.classList.add('wrong');
+
+    div1.classList.remove('selected');
+    div2.classList.remove('selected');
+    
+    setTimeout(function(){
+        div1.classList.remove('wrong');
+        div2.classList.remove('wrong');
+    }, 500)
+
+}
+
+
+
+activeButton =  () => {
+    if (respondidos.length === alternativas.length) {
+        let button = document.getElementById('confirmar');
+
+        button.disabled = false;
+        button.classList.remove('btn-outline-secondary');
+        button.classList.add('btn-success');
     }
 
 }

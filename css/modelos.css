@@ -15,7 +15,7 @@ body {
     margin-bottom: 15px;
 }
 .question {
-    border: 1px solid black;
+    border: 1px solid #000;
     border-radius: 5px;
     padding: 30px;
     margin-bottom: 15px;
@@ -75,24 +75,25 @@ body {
   }
 }
 
-<<<<<<< HEAD
 .alternativa-container{
-    border: 2px solid #da552f;
+    border: 4px solid #ddd;
     border-radius: 5px;
     background: #fff;
     width: 40%;
-    display: inline-flex;
+    display: flex;
     justify-content: center;
-    align-items: flex-start;
     margin: 20px 15px 0;
+    font-size: 40px;
 }
 
 .selected {
-    border: 2px solid #00ff00;
+    border: 4px solid #0077ff;
 }
 
 .answered {
-    border: 2px solid #0077ff;
+    border: 4px solid #00ff00;
 }
-=======
->>>>>>> 82993bfd9c257201df182ed4282ead04fd7019dd
+
+.wrong {
+    border: 4px solid #ff0000;
+}
