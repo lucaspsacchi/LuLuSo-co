@@ -75,7 +75,7 @@ function formatar() {
 }
 
 
-activeButton = () => { //Falta colocar o disable qnd não tiver 5(remover um botão)
+activeButton = () => {
 	if (alternativas.length === nAlternativas) {
 		let button = document.getElementById('confirmar');
 
