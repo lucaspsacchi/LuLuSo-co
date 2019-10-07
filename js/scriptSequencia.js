@@ -47,16 +47,12 @@ function main(data, num) {
 		str = 'alt'
 		var div = document.getElementById(str.concat(num))
 		esconderBotao(div)
-		if (div.className == "alternativa btn btn-custom btn-custom-question btn-outline-secondary") { // Não deixa adicionar o mesmo elemento
-			return;
-		}
-		div.className = "alternativa btn btn-custom btn-custom-question btn-outline-secondary" // Altera a cor do botão escolhido para cinza
 
 		str = 'esp'
 		//Altera a cor do último botão para cinza
 		if (alternativas.length != 0) {
 			var div = document.getElementById(str.concat((alternativas.length))) // Seleciona a última posição do vetor
-			div.className = "alternativa btn btn-custom btn-custom-question btn-outline-secondary"
+			secondaryBtn(div)
 		}
 
 		//Adiciona novo botão
@@ -72,7 +68,7 @@ function main(data, num) {
 }
 
 function adicionar(div, content) {
-	div.className = "alternativa btn btn-custom btn-custom-question btn-outline-primary" // Altera a cor do elemento criado para azul
+	primaryBtn(div) // Altera a cor do elemento criado para azul
 	div.appendChild(content)
 }
 
@@ -80,7 +76,7 @@ function remover(div) {
 	str = 'esp'
 	str = str.concat(div)
 	var div = document.getElementById(str)
-	div.className = "alternativa btn btn-custom btn-custom-question btn-outline-secondary" // Altera o botão dos espaços para secondary
+	secondaryBtn(div) // Altera o botão dos espaços para secondary
 	div.innerHTML = ""
 
 	aux = alternativas[alternativas.length - 1] // Pega o último elemento da array
@@ -88,14 +84,13 @@ function remover(div) {
 	str = str.concat(aux[1]) // Concatena o id da posição do elemento
 	var div = document.getElementById(str)
 	aparecerBotao(div)
-	div.className = "alternativa btn btn-custom btn-custom-question btn-outline-primary" // Altera a cor para azul
 
 	alternativas.pop() // Remove o último elemento
 
 	if (alternativas.length != 0) {
 		str = 'esp'
 		var div = document.getElementById(str.concat(alternativas.length)) // Seleciona a última posição do vetor
-		div.className = "alternativa btn btn-custom btn-custom-question btn-outline-primary"
+		primaryBtn(div)
 	}
 
 	disableButton()
@@ -107,6 +102,16 @@ function esconderBotao(div) {
 
 function aparecerBotao(div) {
 	div.style.display = ""
+}
+
+function secondaryBtn(div) {
+	div.classList.remove('btn-outline-primary');
+	div.classList.add('btn-outline-secondary');
+}
+
+function primaryBtn(div) {
+	div.classList.remove('btn-outline-secondary');
+	div.classList.add('btn-outline-primary');
 }
 
 function formatar() {

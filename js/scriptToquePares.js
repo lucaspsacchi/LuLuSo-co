@@ -16,7 +16,6 @@ const dados = [{
     },
 ]
 
-
 var tag = document.createElement('script');
 
 tag.src = "https://www.youtube.com/iframe_api";
@@ -33,7 +32,8 @@ function onYouTubeIframeAPIReady() {
         videoId: 'K1xfGs7pGho',
         events: {
             onReady: onReady,
-            onStateChange: onPlayerStateChange
+            onStateChange: onPlayerStateChange,
+            onStart: fullScreen
         }
     });
 }
@@ -44,9 +44,29 @@ async function onReady(event) {
 
 
 function onPlayerStateChange(event) {
+    console.log(event.data);
     if (event.data === 0) {
         showMensagem();
     }
+    else if(event.data === 2 || event.data === 0){
+        var player = document.getElementById('player');
+        player.style.height = '200px'
+    }
+
+}
+
+function fullScreen() {
+    var e = document.getElementById("player");
+    if (e.requestFullscreen) {
+        e.requestFullscreen();
+    } else if (e.webkitRequestFullscreen) {
+        e.webkitRequestFullscreen();
+    } else if (e.mozRequestFullScreen) {
+        e.mozRequestFullScreen();
+    } else if (e.msRequestFullscreen) {
+        e.msRequestFullscreen();
+    }
+
 }
 
 
