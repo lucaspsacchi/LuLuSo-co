@@ -28,7 +28,7 @@ var player;
 
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
-        height: '640',
+        height: '360',
         width: '100%',
         videoId: 'K1xfGs7pGho',
         events: {
@@ -38,9 +38,10 @@ function onYouTubeIframeAPIReady() {
     });
 }
 
-function onReady(event) {
+async function onReady(event) {
     event.target.playVideo();
 }
+
 
 function onPlayerStateChange(event) {
     if (event.data === 0) {
@@ -81,6 +82,7 @@ function mountQuiz() {
     divAlternativas.classList.add('d-flex');
     divAlternativas.classList.add('justify-content-center');
     divAlternativas.classList.add('row');
+    divAlternativas.classList.add('mb-2');
 
     quiz.appendChild(divAlternativas);
 
@@ -95,7 +97,6 @@ function mountQuiz() {
     button.classList.add('btn');
     button.classList.add('btn-outline-secondary');
     button.classList.add('btn-custom');
-    button.classList.add('mt-5');
 
     button.appendChild(node);
 
@@ -245,8 +246,8 @@ setWrong = () => {
 
     div1.classList.remove('selected');
     div2.classList.remove('selected');
-    
-    setTimeout(function(){
+
+    setTimeout(function () {
         div1.classList.remove('wrong');
         div2.classList.remove('wrong');
     }, 500)
@@ -255,7 +256,7 @@ setWrong = () => {
 
 
 
-activeButton =  () => {
+activeButton = () => {
     if (respondidos.length === alternativas.length) {
         let button = document.getElementById('confirmar');
 
