@@ -63,6 +63,8 @@ function remover(div) {
 		var div = document.getElementById(str.concat(alternativas.length)) // Seleciona a última posição do vetor
 		div.className = "alternativa btn btn-custom btn-custom-question btn-outline-primary"
 	}
+
+	disableButton()
 }
 
 function formatar() {
@@ -73,12 +75,22 @@ function formatar() {
 }
 
 
-activeButton = () => {
+activeButton = () => { //Falta colocar o disable qnd não tiver 5(remover um botão)
 	if (alternativas.length === nAlternativas) {
 		let button = document.getElementById('confirmar');
 
 		button.disabled = false;
 		button.classList.remove('btn-outline-secondary');
 		button.classList.add('btn-success');
+	}
+}
+
+disableButton = () => {
+	if (alternativas.length === (nAlternativas - 1)) {
+		let button = document.getElementById('confirmar');
+
+		button.disabled = false;
+		button.classList.remove('btn-success');
+		button.classList.add('btn-outline-secondary');
 	}
 }
