@@ -5,14 +5,17 @@ function main(data, num) {
 	if (data == 'remove') { // Já está na array
 		if (num < alternativas.length) { // Nao permite remover elementos anterior do último
 			console.log('Não pode!')
-		} else {
+		}
+		else {
 			if (num <= alternativas.length) {
 				remover(num)
 			}
 		}
-	} else { // Não está
+	}
+	else { // Não está
 		str = 'alt'
 		var div = document.getElementById(str.concat(num))
+		esconderBotao(div)
 		if (div.className == "alternativa btn btn-custom btn-custom-question btn-outline-secondary") { // Não deixa adicionar o mesmo elemento
 			return;
 		}
@@ -54,6 +57,7 @@ function remover(div) {
 	str = 'alt'
 	str = str.concat(aux[1]) // Concatena o id da posição do elemento
 	var div = document.getElementById(str)
+	aparecerBotao(div)
 	div.className = "alternativa btn btn-custom btn-custom-question btn-outline-primary" // Altera a cor para azul
 
 	alternativas.pop() // Remove o último elemento
@@ -65,6 +69,14 @@ function remover(div) {
 	}
 
 	disableButton()
+}
+
+function esconderBotao(div) {
+	div.style.display = "none"
+}
+
+function aparecerBotao(div) {
+	div.style.display = ""
 }
 
 function formatar() {
