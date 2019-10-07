@@ -50,7 +50,6 @@ function remover(div) {
 	str = str.concat(div)
 	var div = document.getElementById(str)
 	div.className = "alternativa btn btn-custom btn-custom-question btn-outline-secondary" // Altera o botão dos espaços para secondary
-
 	div.innerHTML = ""
 
 	aux = alternativas[alternativas.length - 1] // Pega o último elemento da array
@@ -101,7 +100,7 @@ disableButton = () => {
 	if (alternativas.length === (nAlternativas - 1)) {
 		let button = document.getElementById('confirmar');
 
-		button.disabled = false;
+		button.disabled = true;
 		button.classList.remove('btn-success');
 		button.classList.add('btn-outline-secondary');
 	}
