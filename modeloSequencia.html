@@ -16,29 +16,13 @@
                     <iframe width="1200" height="630" src="https://www.youtube.com/embed/K1xfGs7pGho" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
-            <div class="col-12 col-sm-12">
-                <div class="question shadow">
-                    <div class="enum">
-                        <h3>Selecione a sequência correta de passos para realizar essa tarefa:</h3>
+
+            <div class="col-12 col-sm-12 mt-3">
+                <div id='quiz' class="question shadow h-100  justify-content-center align-items-center p-5">
+                    <div id='conteudo' class="block justify-content-center">
+                        <h2>Vamos praticar o que você apredeu?</h2>
+                        <button id="botao" class="btn btn-outline-success mt-4 font-weight-bold" onclick="mountQuiz()">Vamos!</button>
                     </div>
-                    <div class="espaco">
-                        <button type="button" onclick="main('remove', 1)" class="alternativa btn btn-custom btn-custom-question btn-outline-secondary" id="esp1"></button>
-                        <button type="button" onclick="main('remove', 2)" class="alternativa btn btn-custom btn-custom-question btn-outline-secondary" id="esp2"></button>
-                        <button type="button" onclick="main('remove', 3)" class="alternativa btn btn-custom btn-custom-question btn-outline-secondary" id="esp3"></button>
-                        <button type="button" onclick="main('remove', 4)" class="alternativa btn btn-custom btn-custom-question btn-outline-secondary" id="esp4"></button>
-                        <button type="button" onclick="main('remove', 5)" class="alternativa btn btn-custom btn-custom-question btn-outline-secondary" id="esp5"></button>
-                    </div>
-                    <hr>
-                    <form action="#" method="get">
-                        <div class="alternativas col-12 row">
-                            <button type="button" onclick="main('Home', 1)" class="alternativa btn btn-outline-primary btn-custom btn-custom-question" id="alt1">Home</button>
-                            <button type="button" onclick="main('Conversa', 2)" class="alternativa btn btn-outline-primary btn-custom btn-custom-question" id="alt2">Conversa</button>
-                            <button type="button" onclick="main('Anexo', 3)" class="alternativa btn btn-outline-primary btn-custom btn-custom-question" id="alt3">Anexo</button>
-                            <button type="button" onclick="main('Selecionar imagem', 4)" class="alternativa btn btn-outline-primary btn-custom btn-custom-question" id="alt4">Selecionar imagem</button>
-                            <button type="button" onclick="main('Botão verde', 5)" class="alternativa btn btn-outline-primary btn-custom btn-custom-question" id="alt5">Botão verde</button>
-                        </div>
-                        <button id='confirmar' type="submit" class="confirma btn btn-custom btn-outline-secondary" disabled>Confirmar</button>
-                    </form>
                 </div>
             </div>
         </div>
