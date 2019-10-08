@@ -64,6 +64,5 @@ a {
     height: 200px;
     width: 100%;
     background-size: cover;
-    background-image: linear-gradient(to bottom, rgb(255, 255, 255), rgba(180, 180, 180, 0)), url(../img/youtube.jpg);
     position: relative;
 }
