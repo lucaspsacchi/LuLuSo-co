@@ -21,9 +21,16 @@ body {
 }
 
 .imagem > img {
-    width: 100%;
-    padding: 15px;
+    height: 110px;
+    padding: 10px;
 }
+
+@media screen and (max-width: 767px) {
+    .imagem > img {
+        height: 90px;
+        padding: 10px;
+    }
+  }
 
 .imagem {
     margin-right: 0px;
@@ -54,10 +61,6 @@ a {
 .barra-progressao-feita > p {
     margin: 0px;
     visibility: hidden;
-}
-
-#grad {
-    background-image: linear-gradient(red, yellow, green);
 }
 
 .imagem-categoria {
