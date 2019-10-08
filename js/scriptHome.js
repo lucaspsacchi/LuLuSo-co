@@ -17,6 +17,9 @@ const dados = [{
   img: 'playstore.png'
 }]
 
+// Página categoria
+const pageCat = 'categoria.html'
+
 // Formata os dados
 let categorias = []
 
@@ -43,7 +46,8 @@ function mountCategorias(dado) {
 
   // Ancora para cada categoria
   var ancora = document.createElement('a')
-  ancora.href = 'categoria.html'
+  aux = pageCat.concat('?cat=')
+  ancora.href = aux.concat(dado.categoria)
 
   divCategorias.appendChild(ancora)
 
