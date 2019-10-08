@@ -43,9 +43,17 @@ a {
 }
 
 .barra-progressao {
-    width: 50%;
+    width: 100%;
     background-color: red;
     padding: 0px;
+}
+.barra-progressao-feita {
+    width: 0%;
+    background-color: aqua;
+}
+.barra-progressao-feita > p {
+    margin: 0px;
+    visibility: hidden;
 }
 
 #grad {

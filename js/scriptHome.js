@@ -1,12 +1,20 @@
 const dados = [{
   categoria: 'Whatsapp',
+  total: 10,
   completado: 10,
   img: 'whatsapp.png'
 },
 {
   categoria: 'Facebook',
+  total: 10,
   completado: 5,
   img: 'facebook.png'
+},
+{
+  categoria: 'Play Store',
+  total: 10,
+  completado: 0,
+  img: 'playstore.png'
 }]
 
 // Formata os dados
@@ -14,21 +22,24 @@ let categorias = []
 
 // Espera carregar o dom
 window.addEventListener('load', (event) => {
-  formatCategorias()
-  mountCategorias()
+  const categorias = formatCategorias()
+
+  var divs = categorias.map(x => 
+    mountCategorias(x)
+  )
 });
 
-function mountCategorias() {
-  var cats = document.getElementById("categoria")
-  
+//  var cats = document.getElementById("categoria")
+// cats.appendChild(divCategorias)
+
+function mountCategorias(dado) {
   // Div para categoria
   var divCategorias = document.createElement('div')
   divCategorias.classList.add('col-lg-4')
   divCategorias.classList.add('col-md-6')
   divCategorias.classList.add('col-sm-12')
   divCategorias.classList.add('col-12')
-
-  cats.appendChild(divCategorias)
+  divCategorias.id = dado.id
 
   // Ancora para cada categoria
   var ancora = document.createElement('a')
@@ -81,7 +92,7 @@ function mountCategorias() {
   divRow2.appendChild(h2)
 
   // Conteúdo do h2
-  var node = document.createTextNode('Whatsapp')
+  var node = document.createTextNode(dado.categoria)
   h2.appendChild(node)
 
   // Div para row para completado
@@ -92,7 +103,11 @@ function mountCategorias() {
   divNome.appendChild(divRow3)
 
   // Texto do completado
-  var node = document.createTextNode('10 / 10 Completado') // Alterar a lógica para pegar os numeros de dados
+  str = dado.completado.toString()
+  str = str.concat(' / ')
+  str = str.concat(dado.total.toString())
+  str = str.concat(' Completado')
+  var node = document.createTextNode(str) // Alterar a lógica para pegar os numeros de dados
   divRow3.appendChild(node)
 
   // div para imagem
@@ -108,32 +123,31 @@ function mountCategorias() {
 
   // Imagem
   var img = document.createElement('img')
-  img.src = 'img/'.concat('whatsapp.png') // Imagem do dados
+  img.src = dado.img // Imagem do dados
 
   divImg.appendChild(img)
 
   // Div para barra de progresso
-  var divRow4 = document.createElement('div')
-  divRow4.classList.add('col-12')
-  divRow4.classList.add('barra-progressao')
-  divRow4.style.width = '70%' // If 0% => cor igual do background ?
-  divCard.appendChild(divRow4)
+  var divProg = document.createElement('div')
+  divProg.classList.add('col-12')
+  divProg.classList.add('barra-progressao')
+  divCard.appendChild(divProg)
+
+  divProgFeito = document.createElement('div')
+  divProgFeito.classList.add('barra-progressao-feita')
+
+  divProgFeito.style.width = porcDado(dado.total, dado.completado)
+  divProg.appendChild(divProgFeito)
 
   // Texto do completado
-  var node = document.createTextNode('AAA') // Alterar a lógica para pegar os numeros de dados
-  divRow4.appendChild(node)
+  var elemP = document.createElement('p')
+  divProgFeito.appendChild(elemP)
+  var node = document.createTextNode('a')
+  elemP.appendChild(node)
 
-  // node = document.createTextNode('Teste')
-  // divCategorias.appendChild(node)
-
-  // categorias.map(x => {
-  //   divCategorias.appendChild(x)
-  // })
-
-  // var node = document.createTextNode('Testeeeee')
-  // ancora.appendChild(node)
-
-  // divCategorias.appendChild(ancora)
+  //
+  var cats = document.getElementById("categoria")
+  cats.appendChild(divCategorias)
 }
 
 function formatCategorias() {
@@ -143,10 +157,17 @@ function formatCategorias() {
       categorias.push({
           id: i,
           categoria: x.categoria,
+          total: x.total,
           completado: x.completado,
           img: 'img/'.concat(x.img)
       }),
       i++
   ))
+  return categorias
 }
-  
+
+function porcDado(total, completado) {
+
+  var aux = ((completado/total)*100).toString()
+  return aux.concat('%')
+}
