@@ -52,12 +52,16 @@ a {
 
 .barra-progressao {
     width: 100%;
-    background-color: red;
+    background-color: rgb(214, 214, 214);
     padding: 0px;
+    border: 1px solid rgb(214, 214, 214);
+    border-radius: 2px;
 }
 .barra-progressao-feita {
     width: 0%;
-    background-color: aqua;
+    background-color: #87c56d;
+    border: 1px solid #87c56d;
+    border-radius: 2px;
 }
 .barra-progressao-feita > p {
     margin: 0px;
