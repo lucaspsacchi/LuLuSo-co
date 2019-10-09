@@ -32,8 +32,6 @@ window.addEventListener('load', (event) => {
   )
 })
 
-//  var cats = document.getElementById("categoria")
-// cats.appendChild(divCategorias)
 
 function mountCategorias(dado) {
   // Div para categoria

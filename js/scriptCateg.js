@@ -1,50 +1,41 @@
 const dados = [{
-    id_video: '0',
+    id_video: 'IAZYoNs7kU4',
     nome: 'Curtir uma Página',
-    img: 'faceCurtirPagina.png',
     categ: 'Facebook'
 },
 {
-    id_video: '1',
+    id_video: 'K1xfGs7pGho',
     nome: 'Compartilhar uma Publicação',
-    img: 'faceCompartilharPublicacao.png',
     categ: 'Facebook'
 },
 {
-    id_video: '2',
+    id_video: 'cbhTDynLA74',
     nome: 'Trocar Foto de Perfil',
-    img: 'faceTrocarFotoPerfil.png',
     categ: 'Facebook'
 },
 {
-    id_video: '3',
+    id_video: 'rukpFI0pLZ4',
     nome: 'Chamada de Voz no WhatsApp',
-    img: 'zapChamadaVoz.png',
-    categ: 'WhatsApp'
-    
-},
-{
-    id_video: '4',
-    nome: 'Compartilhar uma Publicação',
-    img: 'zapDeletarMensagem.png',
     categ: 'WhatsApp'
 },
 {
-    id_video: '5',
-    nome: 'Compartilhar uma Publicação',
-    img: 'zapDeletarMensagem.png',
+    id_video: 'RlJk9Mjpcv0',
+    nome: 'Responder Mensagem Específica',
     categ: 'WhatsApp'
 },
 {
-    id_video: '6',
+    id_video: 'L10CJs6pKI4',
+    nome: 'Deletar Mensagem em Conversa',
+    categ: 'WhatsApp'
+},
+{
+    id_video: '7UsZo4wzVZU',
     nome: 'Curtir uma Publicação',
-    img: 'instaCurtirPublicacao.png',
     categ: 'Instagram'
 },
 {
-    id_video: '7',
-    nome: 'Seguir uma Página',
-    img: 'instaSeguirPagina.png',
+    id_video: 'mUGJkqYFbYA',
+    nome: 'Seguir uma Conta',
     categ: 'Instagram'
 }]
 
@@ -117,7 +108,7 @@ function formatVideos() {
             id: i,
             id_video: x.id_video,
             nome: x.nome, 
-            img: 'img/'.concat(x.img),
+            img: ('http://img.youtube.com/vi/'.concat(x.id_video)).concat('/maxresdefault.jpg'),
             categ: x.categ
         }),
         i++
