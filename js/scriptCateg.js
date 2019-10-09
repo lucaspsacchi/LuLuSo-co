@@ -1,42 +1,41 @@
 const dados = [{
+    id_video: 'IAZYoNs7kU4',
     nome: 'Curtir uma Página',
-    img: 'faceCurtirPagina.png',
     categ: 'Facebook'
 },
 {
+    id_video: 'K1xfGs7pGho',
     nome: 'Compartilhar uma Publicação',
-    img: 'faceCompartilharPublicacao.png',
     categ: 'Facebook'
 },
 {
+    id_video: 'cbhTDynLA74',
     nome: 'Trocar Foto de Perfil',
-    img: 'faceTrocarFotoPerfil.png',
     categ: 'Facebook'
 },
 {
+    id_video: 'rukpFI0pLZ4',
     nome: 'Chamada de Voz no WhatsApp',
-    img: 'zapChamadaVoz.png',
-    categ: 'WhatsApp'
-    
-},
-{
-    nome: 'Compartilhar uma Publicação',
-    img: 'zapDeletarMensagem.png',
     categ: 'WhatsApp'
 },
 {
-    nome: 'Compartilhar uma Publicação',
-    img: 'zapDeletarMensagem.png',
+    id_video: 'RlJk9Mjpcv0',
+    nome: 'Responder Mensagem Específica',
     categ: 'WhatsApp'
 },
 {
+    id_video: 'L10CJs6pKI4',
+    nome: 'Deletar Mensagem em Conversa',
+    categ: 'WhatsApp'
+},
+{
+    id_video: '7UsZo4wzVZU',
     nome: 'Curtir uma Publicação',
-    img: 'instaCurtirPublicacao.png',
     categ: 'Instagram'
 },
 {
-    nome: 'Seguir uma Página',
-    img: 'instaSeguirPagina.png',
+    id_video: 'mUGJkqYFbYA',
+    nome: 'Seguir uma Conta',
     categ: 'Instagram'
 }]
 
@@ -50,35 +49,28 @@ window.addEventListener('load', (event) => {
 })
 
 function mountVideos (video, dataCateg) {
-/*<div class="col-lg-4 col-md-6 col-sm-12 col-12">
-    <a href="#">
-        <div class="card card-custom shadow-sm">
-            <div class="imagem-categoria d-flex align-content-end flex-wrap">
-                <div class="titulo">Como usar WhatsApp</div>
-            </div>
-        </div>
-    </a>
-</div>*/
     if(dataCateg.cat === video.categ) {
         var divCol = document.createElement('div')
-        divCol.className = 'col-lg-4 col-md-6 col-sm-12 col-12'
+        divCol.className = 'col-lg-4 col-md-6 col-sm-12 col-12 d-flex justify-content-center div-cat'
     
-        var ancora = document.createElement('a')
-        ancora.href = '#'
-        divCol.appendChild(ancora)
-
         var divCard = document.createElement('div')
-        divCard.className = 'card card-custom shadow-sm'
-        ancora.appendChild(divCard)
+        divCard.className = 'card card-custom card-cat shadow-sm'
+        divCol.appendChild(divCard)
+
+        var ancora = document.createElement('a')
+        var str = 'modeloPergunta.html?id='
+        str = str.concat(video.id_video)
+        ancora.href = str
+        divCard.appendChild(ancora)
 
         var divImg = document.createElement('div')
         divImg.className = 'imagem-categoria d-flex align-content-end flex-wrap'
-        var str = 'linear-gradient(to bottom, rgb(255, 255, 255), rgb(180, 180, 180)), url('
+        var str = 'linear-gradient(transparent, transparent, rgb(0, 0, 0)), url('
         str = str.concat(video.img)
         str = str.concat(')')
         divImg.style.backgroundImage = str
         divImg.style.backgroundSize = 'cover'
-        divCard.appendChild(divImg)
+        ancora.appendChild(divImg)
 
         var divTitulo = document.createElement('div')
         divTitulo.className = 'titulo'
@@ -114,8 +106,9 @@ function formatVideos() {
     dados.map(x => (
         videos.push({
             id: i,
+            id_video: x.id_video,
             nome: x.nome, 
-            img: 'img/'.concat(x.img),
+            img: ('http://img.youtube.com/vi/'.concat(x.id_video)).concat('/maxresdefault.jpg'),
             categ: x.categ
         }),
         i++

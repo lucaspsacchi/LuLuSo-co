@@ -1,5 +1,5 @@
 const dados = [{
-  categoria: 'Whatsapp',
+  categoria: 'WhatsApp',
   total: 10,
   completado: 10,
   img: 'whatsapp.png'
@@ -11,10 +11,10 @@ const dados = [{
   img: 'facebook.png'
 },
 {
-  categoria: 'Play Store',
-  total: 10,
-  completado: 0,
-  img: 'playstore.png'
+  categoria: 'Instagram',
+  total: 8,
+  completado: 3,
+  img: 'instagram.jpeg'
 }]
 
 // Página categoria
@@ -30,10 +30,8 @@ window.addEventListener('load', (event) => {
   var divs = categorias.map(x => 
     mountCategorias(x)
   )
-});
+})
 
-//  var cats = document.getElementById("categoria")
-// cats.appendChild(divCategorias)
 
 function mountCategorias(dado) {
   // Div para categoria
