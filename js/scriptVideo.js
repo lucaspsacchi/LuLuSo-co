@@ -4,18 +4,14 @@ tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-var player;
-"https://www.youtube.com/embed/K1xfGs7pGho"
-
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
         height: '360',
         width: '100%',
-        videoId: 'K1xfGs7pGho',
+        videoId: data.id,
         events: {
             onReady: onReady,
-            onStateChange: onPlayerStateChange,
-            onStart: fullScreen
+            onStateChange: onPlayerStateChange
         }
     });
 }
@@ -26,27 +22,18 @@ async function onReady(event) {
 
 
 function onPlayerStateChange(event) {
+    var player = document.getElementById('player');
+
     console.log(event.data);
     if (event.data === 0) {
         showMensagem();
     }
     else if(event.data === 2 || event.data === 0){
-        var player = document.getElementById('player');
-        player.style.height = '200px'
-    }
-
-}
-
-function fullScreen() {
-    var e = document.getElementById("player");
-    if (e.requestFullscreen) {
-        e.requestFullscreen();
-    } else if (e.webkitRequestFullscreen) {
-        e.webkitRequestFullscreen();
-    } else if (e.mozRequestFullScreen) {
-        e.mozRequestFullScreen();
-    } else if (e.msRequestFullscreen) {
-        e.msRequestFullscreen();
+        player.style.height = '200px';
+        showMensagem();
+    }else if(event.data === 1){
+        player.style.height = '360px';
+        hideMensagem();
     }
 
 }
@@ -55,4 +42,10 @@ function fullScreen() {
 function showMensagem() {
     var quiz = document.getElementById('quiz');
     quiz.classList.remove('d-none');
+}
+
+
+function hideMensagem() {
+    var quiz = document.getElementById('quiz');
+    quiz.classList.add('d-none');
 }
