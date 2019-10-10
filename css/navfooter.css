@@ -3,7 +3,7 @@ nav {
     color: white;
 }
 
-a {
+a.nav-link {
     color: white !important;
 }
 
@@ -24,9 +24,13 @@ a {
     width: 60px;
 }
 
+.logo, .navbar-brand {
+    width: 70px;
+}
+
 .navbar-custom {
     padding-top: 0px;
     padding-bottom: 0px;
     background-color: #3e9b8a;
+    margin-bottom: 30px;
 }
-
