@@ -37,4 +37,9 @@ const dados = [{
   id_video: 'mUGJkqYFbYA',
   nome: 'Seguir uma Conta',
   categ: 'Instagram'
+},
+{
+  id_video: '63jDpRxhGsI',
+  nome: 'Alterar Configurações de Privacidade',
+  categ: 'Whatsapp'
 }]

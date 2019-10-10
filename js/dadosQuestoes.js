@@ -255,6 +255,14 @@ const dados = [{
       }
     ]    
   }]
+},
+{
+  id_video: '63jDpRxhGsI',
+  questoes: [{
+    modelo: 'pares',
+    alternativas
+
+  }]
 }
 ]
 
@@ -266,7 +274,6 @@ const dados = [{
 {
   id_video: '',
   questoes: [{
-    modelo: '',
     // Modelo da pergunta
 
   }
@@ -275,58 +282,57 @@ const dados = [{
 
 /*
 ***********************ALTERNATIVA***********************
-const dados = {
-    pergunta: '',
-    alternativas: [
-        {
-          imagem: '',
-          resposta: 'False'
-        },
-        {
-          imagem: '',
-          resposta: 'False'
-        },
-        {
-          imagem: '',
-          resposta: 'False'
-        },
-        {
-          imagem: '',
-          resposta: 'False'
-        }
-    ]
-}
+
+modelo: 'alternativa',
+pergunta: '',
+alternativas: [
+    {
+      imagem: '',
+      resposta: 'False'
+    },
+    {
+      imagem: '',
+      resposta: 'False'
+    },
+    {
+      imagem: '',
+      resposta: 'False'
+    },
+    {
+      imagem: '',
+      resposta: 'False'
+    }
+]
 */
 
 /*
 ***********************SEQUENCIA***********************
-const dados = {
-	pergunta: '',
-	alternativas: [
-		{
-			texto: '',
-			posicao: 1
-		},
-		{
-			texto: '',
-			posicao: 2
-    }
-    // ...
-	]
-	
-}
+modelo: 'sequencia',
+pergunta: '',
+alternativas: [
+  {
+    texto: '',
+    posicao: 1
+  },
+  {
+    texto: '',
+    posicao: 2
+  }
+  // ...
+]
 */
 
 /*
 ***********************TOQUE NOS PARES***********************
-const dados = [{
+  modelo: 'pares',
+  alternativas: [{
         texto: '',
         resposta: ''
     },
     {
         texto: '',
         resposta: ''
-    }
+    },
     // ...
-]
+    ]
 */
