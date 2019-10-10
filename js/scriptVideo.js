@@ -4,14 +4,11 @@ tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-var player;
-"https://www.youtube.com/embed/K1xfGs7pGho"
-
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
         height: '360',
         width: '100%',
-        videoId: 'K1xfGs7pGho',
+        videoId: data.id,
         events: {
             onReady: onReady,
             onStateChange: onPlayerStateChange,

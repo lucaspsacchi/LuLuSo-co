@@ -1,7 +1,5 @@
-window.addEventListener('load', (event) => {
-  data = catchDadosUrl()
-  atual = 0;
-})
+data = catchDadosUrl()
+atual = 0;
 
 // Pega as chaves e valores da url
 function catchDadosUrl() {
@@ -104,13 +102,21 @@ function alertResposta(flag) {
   if (aux_alert) {
     if (flag) {
       Swal.fire({
-        title: 'TMJ BRO',
-        confirmButtonColor: '#3085d6',
-        confirmButtonText: 'Confirmar'
+        imageUrl: 'img/vovoCorreto.png',
+        imageWidth: 300,
+        imageHeight: 300,
+        imageAlt: 'Correto',
+        animation: false,
+        confirmButtonColor: '#3e9b8a',
+        confirmButtonText: 'Continuar'
       }).then((result) => {
         Swal.fire({
-          title: 'Parabéns!',
-          confirmButtonColor: '#3085d6',
+          imageUrl: 'img/vovoConcluido.png',
+          imageWidth: 300,
+          imageHeight: 300,
+          imageAlt: 'Incorreto',
+          animation: false,
+          confirmButtonColor: '#3e9b8a',
           confirmButtonText: 'Voltar'
         }).then((result) => {
           if (result.value) {
@@ -121,13 +127,21 @@ function alertResposta(flag) {
     }
     else {
       Swal.fire({
-        title: 'Try again bro :(',
-        confirmButtonColor: '#3085d6',
-        confirmButtonText: 'Confirmar'
+        imageUrl: 'img/vovoIncorreto.png',
+        imageWidth: 300,
+        imageHeight: 300,
+        imageAlt: 'Incorreto',
+        animation: false,
+        confirmButtonColor: '#3e9b8a',
+        confirmButtonText: 'Continuar'
       }).then((result) => {
         Swal.fire({
-          title: 'Parabéns!',
-          confirmButtonColor: '#3085d6',
+          imageUrl: 'img/vovoConcluido.png',
+          imageWidth: 300,
+          imageHeight: 300,
+          imageAlt: 'Incorreto',
+          animation: false,
+          confirmButtonColor: '#3e9b8a',
           confirmButtonText: 'Voltar'
         }).then((result) => {
           if (result.value) {
@@ -139,15 +153,23 @@ function alertResposta(flag) {
   }
   else if (flag == true) {
     Swal.fire({
-      title: 'TMJ BRO',
-      confirmButtonColor: '#3085d6',
+      imageUrl: 'img/vovoCorreto.png',
+      imageWidth: 300,
+      imageHeight: 300,
+      imageAlt: 'Correto',
+      animation: false,
+      confirmButtonColor: '#3e9b8a',
       confirmButtonText: 'Continuar'
     })
   }
   else {
     Swal.fire({
-      title: 'Try again bro :(',
-      confirmButtonColor: '#3085d6',
+      imageUrl: 'img/vovoIncorreto.png',
+      imageWidth: 300,
+      imageHeight: 300,
+      imageAlt: 'Incorreto',
+      animation: false,
+      confirmButtonColor: '#3e9b8a',
       confirmButtonText: 'Continuar'
     })
   }
