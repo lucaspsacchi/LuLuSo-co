@@ -185,9 +185,7 @@ setWrong = () => {
 
 
 activeButtonToquePares = () => {
-    console.log(respondidos.length)
-    console.log(nAlternativas)
-    if (respondidos.length === nAlternativas) {
+    if (respondidos.length === nPares * 2) {
         let button = document.getElementById('confirmar');
 
         button.disabled = false;
@@ -195,4 +193,10 @@ activeButtonToquePares = () => {
         button.classList.add('btn-success');
     }
 
+}
+
+
+resetToquePares = () => {
+    respondidos = [];
+    selecionados = [];
 }
