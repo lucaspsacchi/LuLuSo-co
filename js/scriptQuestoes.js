@@ -61,13 +61,14 @@ mountQuiz = () => {
 }
 
 checarRespostaToquePares = ()  => {
-  if(respondidos.length === nPares * 2){
+  if(respondidos.length === nPares * 2)
       //Carregar modal de acerto
       alertResposta(true);
-  }
-  else{
+  
+  else
       //Carregar modal de erro
       alertResposta(false);
+}
 
 function checarRespostaSequencia(sequencia) {
   formatar()
