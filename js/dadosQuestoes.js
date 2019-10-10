@@ -297,6 +297,60 @@ const dados = [{
       }
     ]
   }]
+},
+{
+  id_video: '7UsZo4wzVZU',
+  questoes: [{
+    modelo: 'sequencia',
+    pergunta: 'Selecione a sequência de passos para curtir uma publicação:',
+    alternativas: [
+      {
+        texto: 'Página inicial',
+        posicao: 1
+      },
+      {
+        texto: 'Encontrar publicação',
+        posicao: 2
+      },
+      {
+        texto: 'Clicar duas vezes na foto',
+        posicao: 3
+      },
+      {
+        texto: 'Verificar coração vermelho',
+        posicao: 4
+      }
+    ]
+  }]
+},
+{
+  id_video: 'mUGJkqYFbYA',
+  questoes: [{
+    modelo: 'sequencia',
+    pergunta: 'Selecione a sequência de passos para seguir uma página',
+    alternativas: [
+      {
+        texto: 'Clicar na lupa',
+        posicao: 1
+      },
+      {
+        texto: 'Clicar na barra de busca',
+        posicao: 2
+      },
+      {
+        texto: 'Digitar nome da página',
+        posicao: 3
+      },
+      {
+        texto: 'Selecionar uma página',
+        posicao: 4
+      },
+      {
+        texto: 'Seguir',
+        posicao: 5
+      }
+    ]    
+  }]
 }
 ]
 
@@ -310,7 +364,7 @@ const dados = [{
   questoes: [{
     // Modelo da pergunta
 
-  }
+  }]
 */
 
 
