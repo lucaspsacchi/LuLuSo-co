@@ -76,12 +76,28 @@ function checarRespostaSequencia(sequencia) {
   alertResposta(flag)
 }
 
+function checarRespostaAlternativa(alternativa) {
+  let flag = true
+
+  let str = alternativa.substr(4, 1)
+
+  flag = alternativa.alternativas[Number(str) - 1].toLowerCase()
+
+  alertResposta(flag)
+}
+
+function checarRespostaToquePares(pares) {
+  let flag = true
+
+  alertResposta(flag)
+}
+
 // Alerta de resposta certa
 function alertResposta(flag) {
   if (flag == true) {
-
+    console.log('Acertou!!!!!!!!')
   }
   else {
-    
+    console.log('Errou!!!!!!!!')
   }
 }

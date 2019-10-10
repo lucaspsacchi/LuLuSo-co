@@ -59,3 +59,40 @@ mountQuiz = () => {
   });
 
 }
+
+function checarRespostaSequencia(sequencia) {
+  formatar()
+
+  let flag = true
+
+  alternativas = sequencia.alternativas
+
+  for (i = 0; i < nAlternativas; i++) {
+    if ((formatado.indexOf(formatado[i]) + 1) != alternativas.find(x => x.texto == formatado[i]).posicao) {
+      flag = false
+    }
+  }
+  
+  alertResposta(flag)
+}
+
+function checarRespostaAlternativa(alternativa) {
+  let flag = true
+
+  let str = alternativa.substr(4, 1)
+
+  flag = alternativa.alternativas[Number(str) - 1].toLowerCase()
+
+  alertResposta(flag)
+}
+
+
+// Alerta de resposta certa
+function alertResposta(flag) {
+  if (flag == true) {
+    console.log('Acertou!!!!!!!!')
+  }
+  else {
+    console.log('Errou!!!!!!!!')
+  }
+}
