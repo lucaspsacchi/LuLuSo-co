@@ -1,66 +1,9 @@
-var tag = document.createElement('script');
-
-tag.src = "https://www.youtube.com/iframe_api";
-var firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-var player;
-"https://www.youtube.com/embed/K1xfGs7pGho"
-
-function onYouTubeIframeAPIReady() {
-    player = new YT.Player('player', {
-        height: '360',
-        width: '100%',
-        videoId: 'K1xfGs7pGho',
-        events: {
-            onReady: onReady,
-            onStateChange: onPlayerStateChange,
-            onStart: fullScreen
-        }
-    });
-}
-
-async function onReady(event) {
-    event.target.playVideo();
-}
-
-
-function onPlayerStateChange(event) {
-    console.log(event.data);
-    if (event.data === 0) {
-        showMensagem();
-    }
-    else if(event.data === 2 || event.data === 0){
-        var player = document.getElementById('player');
-        player.style.height = '200px'
-    }
-
-}
-
-function fullScreen() {
-    var e = document.getElementById("player");
-    if (e.requestFullscreen) {
-        e.requestFullscreen();
-    } else if (e.webkitRequestFullscreen) {
-        e.webkitRequestFullscreen();
-    } else if (e.mozRequestFullScreen) {
-        e.mozRequestFullScreen();
-    } else if (e.msRequestFullscreen) {
-        e.msRequestFullscreen();
-    }
-
-}
-
-
-function showMensagem() {
-    var quiz = document.getElementById('quiz');
-    quiz.classList.remove('d-none');
-}
-
-function mountToquePares(dados) {
+var nAlternativas;
+mountToquePares = (dados) => {
     var quiz = document.getElementById('quiz');
 
-    quiz.removeChild(document.getElementById('conteudo')); //remove o conteudo da div
+    nAlternativas = dados.alternativas.length    * 2;
+
     quiz.classList.add('flex-column');
 
     //Monta a questão
@@ -105,13 +48,13 @@ function mountToquePares(dados) {
 
 }
 
-let alternativas = [];
 
 function mountAlternativas(dados) {
+    let alternativas = [];
     let i = 0;
     var divsAlt = [];
 
-    dados.map(x => (
+    dados.alternativas.map(x => (
         alternativas.push({
             id: i,
             texto: x.texto,
@@ -172,11 +115,8 @@ respondidos = [];
 selecionados = [];
 
 setSelect = (id) => {
-
-    const i = alternativas.map(x => x.id).indexOf(id);
-
     if (selecionados.length < 2)
-        selecionados.push(alternativas[i]);
+        selecionados.push(id);
     else
         return;
 
@@ -187,22 +127,9 @@ setSelect = (id) => {
     }
 }
 
-
-setAnswered = (id) => {
-    const i = alternativas.map(x => x.id).indexOf(id);
-
-    let newState = [...alternativas]
-    newState[i].answered = !newState[i].answered;
-
-    alternativas = [...newState];
-
-
-    changeState(id);
-}
-
 checkAnswer = async () => {
     if (selecionados.length === 2) {
-        if (selecionados[0].id === selecionados[1].fk || selecionados[1].id === selecionados[0].fk) {
+        if (selecionados[0] === selecionados[1] + 1 || selecionados[1] === selecionados[0] + 1) {
             respondidos.push(selecionados[0]);
             respondidos.push(selecionados[1]);
             selecionados = [];
@@ -225,12 +152,12 @@ checkAnswer = async () => {
 changeState = () => {
     let div;
     selecionados.map(x => {
-        div = document.getElementById(x.id);
+        div = document.getElementById(x);
         div.classList.add('selected');
     })
 
     respondidos.map(x => {
-        div = document.getElementById(x.id);
+        div = document.getElementById(x);
         div.classList.remove('selected');
         div.classList.add('answered');
     })
@@ -239,8 +166,8 @@ changeState = () => {
 }
 
 setWrong = () => {
-    let div1 = document.getElementById(selecionados[0].id);
-    let div2 = document.getElementById(selecionados[1].id);
+    let div1 = document.getElementById(selecionados[0]);
+    let div2 = document.getElementById(selecionados[1]);
 
     div1.classList.add('wrong');
     div2.classList.add('wrong');
@@ -258,7 +185,9 @@ setWrong = () => {
 
 
 activeButton = () => {
-    if (respondidos.length === alternativas.length) {
+    console.log(respondidos.length)
+    console.log(nAlternativas)
+    if (respondidos.length === nAlternativas) {
         let button = document.getElementById('confirmar');
 
         button.disabled = false;
@@ -266,4 +195,15 @@ activeButton = () => {
         button.classList.add('btn-success');
     }
 
+}
+
+
+checarRespostaToquePares = ()  => {
+    if(respondidos.length === nAlternativas){
+        //Carregar modal de acerto
+    }
+    else{
+        //Carregar modal de erro
+        
+    }
 }

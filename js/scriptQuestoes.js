@@ -54,7 +54,7 @@ mountQuiz = () => {
 
     atual = atual + 1;
 
-    if(atual >= dados[index].questoes.length)
+    if(atual < dados[index].questoes.length)
       mountQuiz();
   });
 
