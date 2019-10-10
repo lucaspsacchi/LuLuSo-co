@@ -6,7 +6,7 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
-        height: '360',
+        height: '640px',
         width: '100%',
         videoId: data.id,
         events: {
@@ -32,7 +32,7 @@ function onPlayerStateChange(event) {
         player.style.height = '200px';
         showMensagem();
     }else if(event.data === 1){
-        player.style.height = '360px';
+        player.style.height = '640px';
         hideMensagem();
     }
 
