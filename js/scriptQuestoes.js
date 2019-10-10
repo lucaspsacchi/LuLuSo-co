@@ -99,10 +99,21 @@ function checarRespostaAlternativa(alt) {
 
 // Alerta de resposta certa
 function alertResposta(flag) {
-  if (flag == true) {
-    console.log('Acertou!!!!!!!!')
+  if (flag == 'fim') {
+    Swal.fire({
+      title: 'Parabéns!',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.value) {
+        window.location.href = 'home.html'
+      }
+    })
+  }
+  else if (flag == true) {
+    Swal.fire('Aleluia irmão!!!')
   }
   else {
-    console.log('Errou!!!!!!!!')
+    Swal.fire('Try again bro :(')
   }
 }
