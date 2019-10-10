@@ -32,19 +32,19 @@ const dados = [{
     alternativas: [
       {
           imagem: './img/facebook3pts.jpg',
-          resposta: 'False'
+          resposta: false
       },
       {
           imagem: './img/facebookBuscar.png',
-          resposta: 'False'
+          resposta: false
       },
       {
           imagem: './img/facebookCompartilhar.jpg',
-          resposta: 'False'
+          resposta: false
       },
       {
           imagem: './img/facebookCurtir.jpg',
-          resposta: 'True'
+          resposta: true
       }
     ]
   }]
@@ -79,19 +79,19 @@ const dados = [{
     alternativas: [
         {
             imagem: './img/facebookCompartilhar.jpg',
-            resposta: 'True'
+            resposta: true
         },
         {
             imagem: './img/facebookComentar.jpg',
-            resposta: 'False'
+            resposta: false
         },
         {
             imagem: './img/facebookCurtir.jpg',
-            resposta: 'False'
+            resposta: false
         },
         {
             imagem: './img/facebook3pts.jpg',
-            resposta: 'False'
+            resposta: false
         }
     ]
   }]
@@ -104,19 +104,19 @@ const dados = [{
     alternativas: [
       {
         imagem: './img/instagram.jpeg',
-        resposta: 'False'
+        resposta: false
       },
       {
         imagem: './img/facebookRedimensionado.png',
-        resposta: 'True'
+        resposta: true
       },
       {
           imagem: './img/playstoreRedimensionado.png',
-          resposta: 'False'
+          resposta: false
       },
       {
           imagem: './img/whatsappRedimensionado.png',
-          resposta: 'False'
+          resposta: false
       }
     ]
   },
@@ -192,19 +192,19 @@ const dados = [{
     alternativas: [
         {
           imagem: './img/facebookRedimensionado.png',
-          resposta: 'False'
+          resposta: false
         },
         {
           imagem: './img/instagram.jpeg',
-          resposta: 'False'
+          resposta: false
         },
         {
           imagem: './img/whatsappRedimensionado.png',
-          resposta: 'True'
+          resposta: true
         },
         {
           imagem: './img/playstoreRedimensionado.png',
-          resposta: 'False'
+          resposta: false
         }
     ]
   },
@@ -214,19 +214,19 @@ const dados = [{
     alternativas: [
       {
         imagem: './img/setaCimaBaixo.png',
-        resposta: 'False'
+        resposta: false
       },
       {
         imagem: './img/setaDirEsq.png',
-        resposta: 'False'
+        resposta: false
       },
       {
         imagem: './img/setaEsqDir.png',
-        resposta: 'True'
+        resposta: true
       },
       {
         imagem: './img/setaBaixoCima.png',
-        resposta: 'False'
+        resposta: false
       }
     ]
   }]
@@ -322,19 +322,19 @@ pergunta: '',
 alternativas: [
     {
       imagem: '',
-      resposta: 'False'
+      resposta: false
     },
     {
       imagem: '',
-      resposta: 'False'
+      resposta: false
     },
     {
       imagem: '',
-      resposta: 'False'
+      resposta: false
     },
     {
       imagem: '',
-      resposta: 'False'
+      resposta: false
     }
 ]
 */
