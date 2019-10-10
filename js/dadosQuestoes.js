@@ -260,8 +260,53 @@ const dados = [{
   id_video: '63jDpRxhGsI',
   questoes: [{
     modelo: 'pares',
-    alternativas
-
+    pergunta: 'Toque nos pares de configurações e seus significados:',
+    alternativas: [{
+          texto: 'Visto por último',
+          resposta: 'Hora em que entrou pela última vez'
+      },
+      {
+          texto: 'Foto de perfil',
+          resposta: 'Foto do WhatsApp'
+      },
+      {
+          texto: 'Recado',
+          resposta: 'Descrição abaixo do nome no perfil'
+      },
+      {
+          texto: 'Status',
+          resposta: 'Foto/vídeo disponível por 24h'
+      },
+      {
+          texto: 'Confirmação de leitura',
+          resposta: 'Ícone que mostra se já leu a conversa'
+      },
+      {
+          texto: 'Localização em tempo real',
+          resposta: 'Posição durante um período de tempo'
+      },
+      {
+          texto: 'Contatos bloqueados',
+          resposta: 'Pessoas que não podem mandar mensagem/ligar'
+      }
+    ]
+  },
+  {
+    modelo: 'pares',
+    pergunta: 'Toque nos pares de tipos de privacidade e seus significados',
+    alternativas: [{
+          texto: 'Todos',
+          resposta: 'Qualquer pessoa, mesmo quem não está nos seus contatos'
+      },
+      {
+          texto: 'Meus Contatos',
+          resposta: 'Apenas pessoas que você o número salvo'
+      },
+      {
+          texto: 'Ninguém',
+          resposta: 'Nenhuma pessoa, mesmo quem está nos seus contantos'
+      }
+    ]
   }]
 }
 ]
@@ -325,6 +370,7 @@ alternativas: [
 /*
 ***********************TOQUE NOS PARES***********************
   modelo: 'pares',
+  pergunta: '',
   alternativas: [{
         texto: '',
         resposta: ''

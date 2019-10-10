@@ -8,7 +8,7 @@ window.addEventListener('load', (event) => {
 })
 
 function mountVideos (video, dataCateg) {
-    if(dataCateg.cat === video.categ) {
+    if(dataCateg.cat.toLowerCase() === video.categ.toLowerCase()) {
         var divCol = document.createElement('div')
         divCol.className = 'col-lg-4 col-md-6 col-sm-12 col-12 d-flex justify-content-center div-cat'
     

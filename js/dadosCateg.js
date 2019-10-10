@@ -41,5 +41,5 @@ const dados = [{
 {
   id_video: '63jDpRxhGsI',
   nome: 'Alterar Configurações de Privacidade',
-  categ: 'Whatsapp'
+  categ: 'WhatsApp'
 }]
