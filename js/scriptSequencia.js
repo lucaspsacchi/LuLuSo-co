@@ -1,38 +1,7 @@
-const dados = {
-	pergunta: 'Selecione a sequência correta de passos para realizar essa tarefa:',
-	alternativas: [
-		{
-			texto: 'Home',
-			posicao: 1,
-		},
-		{
-			texto: 'Conversa',
-			posicao: 2,
-		},
-		{
-			texto: 'Anexo',
-			posicao: 3,
-		},
-		{
-			texto: 'Selecionar imagem',
-			posicao: 4,
-		},
-		{
-			texto: 'Botão verde',
-			posicao: 5,
-		}
-	]
-	
-}
-
-
-
-
-
 var alternativas = []
 var nAlternativas = 5;
 
-function main(data, num) {
+function mainSequencia(data, num) {
 	if (data == 'remove') { // Já está na array
 		if (num < alternativas.length) { // Nao permite remover elementos anterior do último
 			console.log('Não pode!')
@@ -142,10 +111,8 @@ disableButton = () => {
 	}
 }
 
-function mountQuiz() {
+function mountSequencia(dados) {
     var quiz = document.getElementById('quiz');
-
-    quiz.removeChild(document.getElementById('conteudo')); //remove o conteudo da div
 
     //Monta a questão
 
@@ -170,7 +137,7 @@ function mountQuiz() {
 
 		button.type = 'button';
 		button.addEventListener('click', function (){
-			main('remove', index + 1);
+			mainSequencia('remove', index + 1);
 		})
 		button.className = 'alternativa btn btn-custom btn-custom-question btn-outline-secondary';
 		button.id = `esp${index + 1}`;
@@ -192,7 +159,7 @@ function mountQuiz() {
 
 		button.type = 'button';
 		button.addEventListener('click', function (){
-			main(x.texto, index + 1);
+			mainSequencia(x.texto, index + 1);
 		})
 		button.className = 'alternativa btn btn-outline-primary btn-custom btn-custom-question';
 		button.id = `alt${index + 1}`;

@@ -1,27 +1,6 @@
-const dados = {
-    pergunta: 'Selecione a imagem que representa o Facebook:',
-    posicao: '2',
-    alternativas: [
-        {
-            imagem: './img/cameraRedimensionado.png'
-        },
-        {
-            imagem: './img/facebookRedimensionado.png'
-        },
-        {
-            imagem: './img/playstoreRedimensionado.png'
-        },
-        {
-            imagem: './img/whatsappRedimensionado.png'
-        },
-    ]
-}
-
-
-
 var alternativa = 0;
 
-function main(alt) {
+function mainAlternativa(alt) {
     if(alternativa != 0) {
         var div = document.getElementById(alternativa);
         div.className = "button btn btn-outline-secondary btn-custom-alternativa";
@@ -44,10 +23,9 @@ activeButton = () => {
 }
 
 
-function mountQuiz() {
+function mountAlternativa(dados) {
     var quiz = document.getElementById('quiz');
 
-    quiz.removeChild(document.getElementById('conteudo'));
     quiz.className = 'question shadow d-flex flex-column align-items-center';
 
     var div = document.createElement('div');
@@ -74,7 +52,7 @@ function mountQuiz() {
         button.type = 'button';
         button.id = `alt${index + 1}`;
         button.addEventListener('click', function(){
-            main(button.id);
+            mainAlternativa(button.id);
         });
         button.className = 'button btn btn-outline-secondary btn-custom-alternativa'
         
