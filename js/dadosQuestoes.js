@@ -261,18 +261,7 @@ const dados = [{
   questoes: [{
     modelo: 'pares',
     pergunta: 'Toque nos pares de configurações e seus significados:',
-    alternativas: [{
-          texto: 'Visto por último',
-          resposta: 'Hora em que entrou pela última vez'
-      },
-      {
-          texto: 'Foto de perfil',
-          resposta: 'Foto do WhatsApp'
-      },
-      {
-          texto: 'Recado',
-          resposta: 'Descrição abaixo do nome no perfil'
-      },
+    alternativas: [
       {
           texto: 'Status',
           resposta: 'Foto/vídeo disponível por 24h'
