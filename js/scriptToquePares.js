@@ -1,21 +1,3 @@
-const dados = [{
-        texto: 'item1',
-        resposta: 'parItem1'
-    },
-    {
-        texto: 'item2',
-        resposta: 'parItem2'
-    },
-    {
-        texto: 'item3',
-        resposta: 'parItem3'
-    },
-    {
-        texto: 'item4',
-        resposta: 'parItem4'
-    },
-]
-
 var tag = document.createElement('script');
 
 tag.src = "https://www.youtube.com/iframe_api";
@@ -75,8 +57,7 @@ function showMensagem() {
     quiz.classList.remove('d-none');
 }
 
-
-function mountQuiz() {
+function mountToquePares(dados) {
     var quiz = document.getElementById('quiz');
 
     quiz.removeChild(document.getElementById('conteudo')); //remove o conteudo da div
@@ -85,12 +66,12 @@ function mountQuiz() {
     //Monta a questão
 
     //adiciona titulo
-    var title = document.createElement('h1');
-    var node = document.createTextNode('Toque nos pares...');
+    var title = document.createElement('h3');
+    var node = document.createTextNode(dados.pergunta);
     title.appendChild(node);
 
     //adiciona alternativas
-    var alts = mountAlternativas();
+    var alts = mountAlternativas(dados);
 
     quiz.appendChild(title);
 
@@ -126,7 +107,7 @@ function mountQuiz() {
 
 let alternativas = [];
 
-function mountAlternativas() {
+function mountAlternativas(dados) {
     let i = 0;
     var divsAlt = [];
 
