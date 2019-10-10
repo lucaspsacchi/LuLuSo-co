@@ -1,5 +1,5 @@
 window.addEventListener('load', (event) => {
-  let data = catchDadosUrl()
+  data = catchDadosUrl()
   atual = 0;
 })
 
@@ -29,7 +29,7 @@ mountQuiz = () => {
     quiz.removeChild(quiz.firstChild);
   } //remove o conteudo da div
 
-  const index = dados.map(x => x.id_video).indexOf('63jDpRxhGsI');
+  const index = dados.map(x => x.id_video).indexOf(data.id);
 
   let q = dados[index].questoes[atual];
 
@@ -54,7 +54,7 @@ mountQuiz = () => {
 
     atual = atual + 1;
 
-    if(atual >= dados[index].questoes.length)
+    if(atual < dados[index].questoes.length)
       mountQuiz();
   });
 
