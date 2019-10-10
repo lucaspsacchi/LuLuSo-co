@@ -1,5 +1,6 @@
 const dados = {
     pergunta: 'Selecione a imagem que representa o Facebook:',
+    posicao: '2',
     alternativas: [
         {
             imagem: './img/cameraRedimensionado.png'
