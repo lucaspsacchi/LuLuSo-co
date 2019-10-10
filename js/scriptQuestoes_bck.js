@@ -59,3 +59,29 @@ mountQuiz = () => {
   });
 
 }
+
+function checarRespostaSequencia(sequencia) {
+  formatar()
+
+  let flag = true
+
+  alternativas = sequencia.alternativas
+
+  for (i = 0; i < nAlternativas; i++) {
+    if ((formatado.indexOf(formatado[i]) + 1) != alternativas.find(x => x.texto == formatado[i]).posicao) {
+      flag = false
+    }
+  }
+  
+  alertResposta(flag)
+}
+
+// Alerta de resposta certa
+function alertResposta(flag) {
+  if (flag == true) {
+
+  }
+  else {
+    
+  }
+}
