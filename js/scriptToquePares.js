@@ -1,8 +1,8 @@
-var nAlternativas;
+var nPares;
 mountToquePares = (dados) => {
     var quiz = document.getElementById('quiz');
 
-    nAlternativas = dados.alternativas.length    * 2;
+    nPares = dados.alternativas.length;
 
     quiz.classList.add('flex-column');
 
@@ -162,7 +162,7 @@ changeState = () => {
         div.classList.add('answered');
     })
 
-    activeButton();
+    activeButtonToquePares();
 }
 
 setWrong = () => {
@@ -184,10 +184,8 @@ setWrong = () => {
 
 
 
-activeButton = () => {
-    console.log(respondidos.length)
-    console.log(nAlternativas)
-    if (respondidos.length === nAlternativas) {
+activeButtonToquePares = () => {
+    if (respondidos.length === nPares * 2) {
         let button = document.getElementById('confirmar');
 
         button.disabled = false;
@@ -198,12 +196,7 @@ activeButton = () => {
 }
 
 
-checarRespostaToquePares = ()  => {
-    if(respondidos.length === nAlternativas){
-        //Carregar modal de acerto
-    }
-    else{
-        //Carregar modal de erro
-        
-    }
+resetToquePares = () => {
+    respondidos = [];
+    selecionados = [];
 }

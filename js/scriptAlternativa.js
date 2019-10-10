@@ -10,10 +10,10 @@ function mainAlternativa(alt) {
     var div = document.getElementById(alternativa);
     div.className = "button btn btn-outline-primary btn-custom-alternativa btn-custom-selecionado";
 
-    activeButton();
+    activeButtonAlternativa();
 }
 
-activeButton = () => {
+activeButtonAlternativa = () => {
     let button = document.getElementById('confirmar');
 
     button.disabled = false; 

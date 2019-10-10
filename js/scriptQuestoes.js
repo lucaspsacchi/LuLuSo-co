@@ -45,6 +45,9 @@ mountQuiz = () => {
 
   confirmar.addEventListener('click', () => {
 
+    atual = atual + 1;
+    aux_alert = (atual == dados[index].questoes.length)
+
     if (q.modelo === 'sequencia')
       checarRespostaSequencia(q);
     else if (q.modelo === 'alternativa')
@@ -52,10 +55,100 @@ mountQuiz = () => {
     else
       checarRespostaToquePares(q);
 
-    atual = atual + 1;
-
     if(atual < dados[index].questoes.length)
       mountQuiz();
   });
 
+}
+
+checarRespostaToquePares = ()  => {
+  if(respondidos.length === nPares * 2) //se todas as alternativas foram marcadas como respondidas
+      //Carregar modal de acerto
+      alertResposta(true);
+  else
+      //Carregar modal de erro
+      alertResposta(false);
+
+  resetToquePares();
+}
+
+function checarRespostaSequencia(sequencia) {
+  formatar()
+
+  let flag = true
+
+  alternativas = sequencia.alternativas
+
+  for (i = 0; i < nAlternativas; i++) {
+    if ((formatado.indexOf(formatado[i]) + 1) != alternativas.find(x => x.texto == formatado[i]).posicao) {
+      flag = false
+    }
+  }
+  
+  alertResposta(flag)
+}
+
+function checarRespostaAlternativa(alt) {
+  let flag = true
+
+  let num = parseInt(alternativa.substr(3, 1))
+
+  flag = alt.alternativas[num - 1].resposta
+
+  alertResposta(flag)
+}
+
+
+// Alerta de resposta certa
+function alertResposta(flag) {
+  if (aux_alert) {
+    if (flag) {
+      Swal.fire({
+        title: 'TMJ BRO',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Confirmar'
+      }).then((result) => {
+        Swal.fire({
+          title: 'Parabéns!',
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'Voltar'
+        }).then((result) => {
+          if (result.value) {
+            window.location.href = 'home.html'
+          }
+        })
+      })
+    }
+    else {
+      Swal.fire({
+        title: 'Try again bro :(',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Confirmar'
+      }).then((result) => {
+        Swal.fire({
+          title: 'Parabéns!',
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'Voltar'
+        }).then((result) => {
+          if (result.value) {
+            window.location.href = 'home.html'
+          }
+        })
+      })      
+    }
+  }
+  else if (flag == true) {
+    Swal.fire({
+      title: 'TMJ BRO',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Continuar'
+    })
+  }
+  else {
+    Swal.fire({
+      title: 'Try again bro :(',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Continuar'
+    })
+  }
 }

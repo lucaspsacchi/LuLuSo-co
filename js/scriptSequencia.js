@@ -33,7 +33,7 @@ function mainSequencia(data, num) {
 		alternativas.push(element)
 	}
 
-	activeButton();
+	activeButtonSequencia();
 }
 
 function adicionar(div, content) {
@@ -91,7 +91,7 @@ function formatar() {
 }
 
 
-activeButton = () => {
+activeButtonSequencia = () => {
 	if (alternativas.length === nAlternativas) {
 		let button = document.getElementById('confirmar');
 
