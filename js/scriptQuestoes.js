@@ -93,12 +93,12 @@ function checarRespostaSequencia(sequencia) {
   alertResposta(flag)
 }
 
-function checarRespostaAlternativa(alternativa) {
+function checarRespostaAlternativa(alt) {
   let flag = true
 
-  let str = alternativa.substr(4, 1)
+  let num = parseInt(alternativa.substr(3, 1))
 
-  flag = alternativa.alternativas[Number(str) - 1].toLowerCase()
+  flag = alt.alternativas[num - 1].resposta
 
   alertResposta(flag)
 }
