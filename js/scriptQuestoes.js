@@ -59,3 +59,15 @@ mountQuiz = () => {
   });
 
 }
+
+checarRespostaToquePares = ()  => {
+  if(respondidos.length === nPares * 2){
+      //Carregar modal de acerto
+      alertResposta(true);
+  }
+  else{
+      //Carregar modal de erro
+      alertResposta(false);
+
+  }
+}
