@@ -45,6 +45,9 @@ mountQuiz = () => {
 
   confirmar.addEventListener('click', () => {
 
+    atual = atual + 1;
+    aux_alert = (atual == dados[index].questoes.length)
+
     if (q.modelo === 'sequencia')
       checarRespostaSequencia(q);
     else if (q.modelo === 'alternativa')
@@ -52,16 +55,8 @@ mountQuiz = () => {
     else
       checarRespostaToquePares(q);
 
-    console.log('antes ' + atual)
-    atual = atual + 1;
-    console.log('depois ' + atual)
-
-    console.log(dados[index].questoes.length);
     if(atual < dados[index].questoes.length)
       mountQuiz();
-    else{
-      alertResposta('fim');
-    }
   });
 
 }
@@ -106,21 +101,54 @@ function checarRespostaAlternativa(alt) {
 
 // Alerta de resposta certa
 function alertResposta(flag) {
-  if (flag == 'fim') {
-    Swal.fire({
-      title: 'Parabéns!',
-      confirmButtonColor: '#3085d6',
-      confirmButtonText: 'Yes, delete it!'
-    }).then((result) => {
-      if (result.value) {
-        window.location.href = 'home.html'
-      }
-    })
+  if (aux_alert) {
+    if (flag) {
+      Swal.fire({
+        title: 'TMJ BRO',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Confirmar'
+      }).then((result) => {
+        Swal.fire({
+          title: 'Parabéns!',
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'Voltar'
+        }).then((result) => {
+          if (result.value) {
+            window.location.href = 'home.html'
+          }
+        })
+      })
+    }
+    else {
+      Swal.fire({
+        title: 'Try again bro :(',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Confirmar'
+      }).then((result) => {
+        Swal.fire({
+          title: 'Parabéns!',
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'Voltar'
+        }).then((result) => {
+          if (result.value) {
+            window.location.href = 'home.html'
+          }
+        })
+      })      
+    }
   }
   else if (flag == true) {
-    Swal.fire('Aleluia irmão!!!')
+    Swal.fire({
+      title: 'TMJ BRO',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Continuar'
+    })
   }
   else {
-    Swal.fire('Try again bro :(')
+    Swal.fire({
+      title: 'Try again bro :(',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Continuar'
+    })
   }
 }
