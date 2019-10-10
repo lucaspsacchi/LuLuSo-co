@@ -110,3 +110,13 @@ body {
     border: 4px solid #ff0000;
 }
 
+.logo > img {
+    height: 60px;
+    width: 60px;
+}
+
+.navbar-custom {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    background-color: #3e9b8a;
+}

@@ -1,5 +1,5 @@
 var alternativas = []
-var nAlternativas = 5;
+var nAlternativas
 
 function mainSequencia(data, num) {
 	if (data == 'remove') { // Já está na array
@@ -113,7 +113,7 @@ disableButton = () => {
 
 function mountSequencia(dados) {
     var quiz = document.getElementById('quiz');
-
+		nAlternativas = dados.alternativas.length
     //Monta a questão
 
 	//adiciona titulo
