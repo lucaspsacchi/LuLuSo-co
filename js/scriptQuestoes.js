@@ -52,22 +52,29 @@ mountQuiz = () => {
     else
       checarRespostaToquePares(q);
 
+    console.log('antes ' + atual)
     atual = atual + 1;
+    console.log('depois ' + atual)
 
+    console.log(dados[index].questoes.length);
     if(atual < dados[index].questoes.length)
       mountQuiz();
+    else{
+      alertResposta('fim');
+    }
   });
 
 }
 
 checarRespostaToquePares = ()  => {
-  if(respondidos.length === nPares * 2)
+  if(respondidos.length === nPares * 2) //se todas as alternativas foram marcadas como respondidas
       //Carregar modal de acerto
       alertResposta(true);
-  
   else
       //Carregar modal de erro
       alertResposta(false);
+
+  resetToquePares();
 }
 
 function checarRespostaSequencia(sequencia) {
