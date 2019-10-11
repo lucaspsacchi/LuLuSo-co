@@ -289,7 +289,7 @@ const dados = [{
       },
       {
           texto: 'Meus Contatos',
-          resposta: 'Apenas pessoas que você o número salvo'
+          resposta: 'Apenas pessoas que você tem o número salvo'
       },
       {
           texto: 'Ninguém',
