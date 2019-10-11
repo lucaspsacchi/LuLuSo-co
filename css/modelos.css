@@ -34,8 +34,11 @@ body {
     box-shadow: none !important;
     font-size: 18px;
 }
-.btn-custom {
-    font-size: 18px !important;
+.btn-custom, .alternativa-container > span {
+    font-size: 20px !important;
+}
+.alternativa-container > span {
+    padding: 5px;
 }
 .confirma {
     margin-top: 15px;

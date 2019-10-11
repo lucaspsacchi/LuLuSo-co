@@ -3,7 +3,7 @@ nav {
     color: white;
 }
 
-a.nav-link {
+a.nav-link, a.dropdown-item {
     color: white !important;
 }
 
