@@ -112,14 +112,17 @@ disableButton = () => {
 }
 
 function mountSequencia(dados) {
-    var quiz = document.getElementById('quiz');
-		nAlternativas = dados.alternativas.length
-    //Monta a questão
+
+	// Embaralha as alternativas
+	dados.alternativas = shuffle(dados.alternativas)
+
+	var quiz = document.getElementById('quiz');
+	nAlternativas = dados.alternativas.length
 
 	//adiciona titulo
 	var div = document.createElement('div');
-    var title = document.createElement('h3');
-    var node = document.createTextNode(dados.pergunta);
+	var title = document.createElement('h3');
+	var node = document.createTextNode(dados.pergunta);
 	title.appendChild(node);
 	
 	div.className = 'enum';

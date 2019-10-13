@@ -44,6 +44,9 @@ function mountAlternativa(dados) {
     var alternativas = document.createElement('div');
     alternativas.className = 'row';
 
+	// Embaralha as alternativas
+	dados.alternativas = shuffle(dados.alternativas)
+
     dados.alternativas.map((x, index) => {
         var alter = document.createElement('div');
         alter.className = 'col-6 col-md-3 d-flex justify-content-center';
