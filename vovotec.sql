@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 21-Out-2019 às 00:38
+-- Generation Time: 21-Out-2019 às 05:16
 -- Versão do servidor: 5.6.37
 -- PHP Version: 5.6.31
 
@@ -152,6 +152,7 @@ INSERT INTO `modelo_sequencia` (`id`, `id_pergunta`, `texto`, `posicao`) VALUES
 CREATE TABLE IF NOT EXISTS `pergunta` (
   `id` int(11) NOT NULL,
   `id_video` varchar(11) NOT NULL,
+  `id_cat` int(11) NOT NULL,
   `modelo` varchar(255) NOT NULL,
   `pergunta` varchar(255) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
@@ -160,21 +161,21 @@ CREATE TABLE IF NOT EXISTS `pergunta` (
 -- Extraindo dados da tabela `pergunta`
 --
 
-INSERT INTO `pergunta` (`id`, `id_video`, `modelo`, `pergunta`) VALUES
-(2, 'IAZYoNs7kU4', 'sequencia', 'Selecione a sequência de passos para curtir uma página:'),
-(3, 'IAZYoNs7kU4', 'alternativa', 'Selecione o ícone que representa a ação de curtir uma página:'),
-(4, 'K1xfGs7pGho', 'sequencia', 'Selecione a sequência de passos para compartilhar uma publicação'),
-(5, 'K1xfGs7pGho', 'alternativa', 'Selecione o ícone que representa "Compartilhar":'),
-(6, 'cbhTDynLA74', 'alternativa', 'Selecione o ícone do Facebook:'),
-(7, 'cbhTDynLA74', 'sequencia', 'Selecione a sequência de passos para alterar a foto de perfil'),
-(8, 'rukpFI0pLZ4', 'sequencia', 'Selecione a sequência de passos para realizar uma chamada de voz'),
-(9, 'RlJk9Mjpcv0', 'alternativa', 'Selecione o ícone do WhatsApp:'),
-(10, 'RlJk9Mjpcv0', 'alternativa', 'Selecione o movimento que deve ser realizado para responder uma mensagem específica:'),
-(11, 'L10CJs6pKI4', 'sequencia', 'Selecione a sequência de passos para chegar nas configurações de privacidade:'),
-(12, '63jDpRxhGsI', 'pares', 'Toque nos pares de configurações e seus significados:'),
-(13, '63jDpRxhGsI', 'pares', 'Toque nos pares de tipos de privacidade e seus significados'),
-(14, '7UsZo4wzVZU', 'sequencia', 'Selecione a sequência de passos para curtir uma publicação:'),
-(15, 'mUGJkqYFbYA', 'sequencia', 'Selecione a sequência de passos para seguir uma página');
+INSERT INTO `pergunta` (`id`, `id_video`, `id_cat`, `modelo`, `pergunta`) VALUES
+(2, 'IAZYoNs7kU4', 2, 'sequencia', 'Selecione a sequência de passos para curtir uma página:'),
+(3, 'IAZYoNs7kU4', 2, 'alternativa', 'Selecione o ícone que representa a ação de curtir uma página:'),
+(4, 'K1xfGs7pGho', 2, 'sequencia', 'Selecione a sequência de passos para compartilhar uma publicação'),
+(5, 'K1xfGs7pGho', 2, 'alternativa', 'Selecione o ícone que representa "Compartilhar":'),
+(6, 'cbhTDynLA74', 2, 'alternativa', 'Selecione o ícone do Facebook:'),
+(7, 'cbhTDynLA74', 2, 'sequencia', 'Selecione a sequência de passos para alterar a foto de perfil'),
+(8, 'rukpFI0pLZ4', 3, 'sequencia', 'Selecione a sequência de passos para realizar uma chamada de voz'),
+(9, 'RlJk9Mjpcv0', 3, 'alternativa', 'Selecione o ícone do WhatsApp:'),
+(10, 'RlJk9Mjpcv0', 3, 'alternativa', 'Selecione o movimento que deve ser realizado para responder uma mensagem específica:'),
+(11, 'L10CJs6pKI4', 3, 'sequencia', 'Selecione a sequência de passos para chegar nas configurações de privacidade:'),
+(12, '63jDpRxhGsI', 4, 'pares', 'Toque nos pares de configurações e seus significados:'),
+(13, '63jDpRxhGsI', 4, 'pares', 'Toque nos pares de tipos de privacidade e seus significados'),
+(14, '7UsZo4wzVZU', 4, 'sequencia', 'Selecione a sequência de passos para curtir uma publicação:'),
+(15, 'mUGJkqYFbYA', 4, 'sequencia', 'Selecione a sequência de passos para seguir uma página');
 
 -- --------------------------------------------------------
 
@@ -183,12 +184,24 @@ INSERT INTO `pergunta` (`id`, `id_video`, `modelo`, `pergunta`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `pergunta_pessoa` (
+  `id` int(11) NOT NULL,
   `id_pergunta` int(11) NOT NULL,
   `id_pessoa` int(11) NOT NULL,
   `id_video` varchar(11) NOT NULL,
   `id_cat` int(11) NOT NULL,
   `flag` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `pergunta_pessoa`
+--
+
+INSERT INTO `pergunta_pessoa` (`id`, `id_pergunta`, `id_pessoa`, `id_video`, `id_cat`, `flag`) VALUES
+(2, 2, 1, 'IAZYoNs7kU4', 2, 1),
+(3, 5, 1, 'K1xfGs7pGho', 2, 1),
+(4, 2, 1, 'IAZYoNs7kU4', 2, 0),
+(5, 3, 1, 'IAZYoNs7kU4', 2, 1),
+(6, 8, 1, 'rukpFI0pLZ4', 3, 0);
 
 -- --------------------------------------------------------
 
@@ -274,16 +287,18 @@ ALTER TABLE `modelo_sequencia`
 --
 ALTER TABLE `pergunta`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_va_to_pergunta` (`id_video`);
+  ADD KEY `fk_va_to_pergunta` (`id_video`),
+  ADD KEY `fk_id_to_categoria` (`id_cat`);
 
 --
 -- Indexes for table `pergunta_pessoa`
 --
 ALTER TABLE `pergunta_pessoa`
-  ADD PRIMARY KEY (`id_pergunta`),
+  ADD PRIMARY KEY (`id`) USING BTREE,
   ADD KEY `fk_id_to_pessoa` (`id_pessoa`),
   ADD KEY `fk_id_to_va` (`id_video`) USING BTREE,
-  ADD KEY `fk_id_to_cat` (`id_cat`);
+  ADD KEY `fk_id_to_cat` (`id_cat`),
+  ADD KEY `fk_id_to_pergunta` (`id_pergunta`);
 
 --
 -- Indexes for table `pessoa`
@@ -332,7 +347,7 @@ ALTER TABLE `pergunta`
 -- AUTO_INCREMENT for table `pergunta_pessoa`
 --
 ALTER TABLE `pergunta_pessoa`
-  MODIFY `id_pessoa` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `pessoa`
 --
@@ -364,15 +379,17 @@ ALTER TABLE `modelo_sequencia`
 -- Limitadores para a tabela `pergunta`
 --
 ALTER TABLE `pergunta`
-  ADD CONSTRAINT `pergunta_ibfk_3` FOREIGN KEY (`id_video`) REFERENCES `video_aula` (`id_video`);
+  ADD CONSTRAINT `pergunta_ibfk_3` FOREIGN KEY (`id_video`) REFERENCES `video_aula` (`id_video`),
+  ADD CONSTRAINT `pergunta_ibfk_4` FOREIGN KEY (`id_cat`) REFERENCES `categoria` (`id`);
 
 --
 -- Limitadores para a tabela `pergunta_pessoa`
 --
 ALTER TABLE `pergunta_pessoa`
-  ADD CONSTRAINT `pergunta_pessoa_ibfk_1` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa` (`id`),
   ADD CONSTRAINT `pergunta_pessoa_ibfk_3` FOREIGN KEY (`id_cat`) REFERENCES `categoria` (`id`),
-  ADD CONSTRAINT `pergunta_pessoa_ibfk_4` FOREIGN KEY (`id_video`) REFERENCES `video_aula` (`id_video`);
+  ADD CONSTRAINT `pergunta_pessoa_ibfk_4` FOREIGN KEY (`id_video`) REFERENCES `video_aula` (`id_video`),
+  ADD CONSTRAINT `pergunta_pessoa_ibfk_5` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa` (`id`),
+  ADD CONSTRAINT `pergunta_pessoa_ibfk_6` FOREIGN KEY (`id_pergunta`) REFERENCES `pergunta` (`id`);
 
 --
 -- Limitadores para a tabela `video_aula`

@@ -120,7 +120,7 @@ function alertResposta(flag) {
           confirmButtonText: 'Voltar'
         }).then((result) => {
           if (result.value) {
-            window.location.href = 'home.html'
+            window.location.href = 'home.php'
           }
         })
       })
@@ -145,7 +145,7 @@ function alertResposta(flag) {
           confirmButtonText: 'Voltar'
         }).then((result) => {
           if (result.value) {
-            window.location.href = 'home.html'
+            window.location.href = 'home.php'
           }
         })
       })      

@@ -17,7 +17,7 @@ function mountVideos (video, dataCateg) {
         divCol.appendChild(divCard)
 
         var ancora = document.createElement('a')
-        var str = 'modeloPergunta.html?id='
+        var str = 'modeloPergunta.php?id='
         str = str.concat(video.id_video)
         ancora.href = str
         divCard.appendChild(ancora)

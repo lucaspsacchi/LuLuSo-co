@@ -1,5 +1,5 @@
 // Página categoria
-const pageCat = 'categoria.html'
+const pageCat = 'categoria.php'
 
 // Formata os dados
 let categorias = []
