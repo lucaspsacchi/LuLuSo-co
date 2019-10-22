@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 21-Out-2019 às 05:16
+-- Generation Time: 22-Out-2019 às 17:43
 -- Versão do servidor: 5.6.37
 -- PHP Version: 5.6.31
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `categoria` (
   `id` int(11) NOT NULL,
-  `categoria` varchar(255) NOT NULL,
+  `nome` varchar(255) NOT NULL,
   `alias` varchar(255) NOT NULL,
   `img` varchar(255) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `categoria` (
 -- Extraindo dados da tabela `categoria`
 --
 
-INSERT INTO `categoria` (`id`, `categoria`, `alias`, `img`) VALUES
+INSERT INTO `categoria` (`id`, `nome`, `alias`, `img`) VALUES
 (2, 'Facebook', 'fb,face', 'facebook.png'),
 (3, 'WhatsApp', 'wpp,zapzap', 'whatsapp.png'),
 (4, 'Instagram', 'insta', 'instagram.jpeg');
@@ -197,7 +197,6 @@ CREATE TABLE IF NOT EXISTS `pergunta_pessoa` (
 --
 
 INSERT INTO `pergunta_pessoa` (`id`, `id_pergunta`, `id_pessoa`, `id_video`, `id_cat`, `flag`) VALUES
-(2, 2, 1, 'IAZYoNs7kU4', 2, 1),
 (3, 5, 1, 'K1xfGs7pGho', 2, 1),
 (4, 2, 1, 'IAZYoNs7kU4', 2, 0),
 (5, 3, 1, 'IAZYoNs7kU4', 2, 1),
@@ -211,17 +210,20 @@ INSERT INTO `pergunta_pessoa` (`id`, `id_pergunta`, `id_pessoa`, `id_video`, `id
 
 CREATE TABLE IF NOT EXISTS `pessoa` (
   `id` int(11) NOT NULL,
+  `usuario` varchar(50) NOT NULL,
+  `senha` varchar(255) NOT NULL,
   `nome` varchar(255) NOT NULL,
   `conhecimento` varchar(255) NOT NULL,
   `flag` tinyint(1) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `pessoa`
 --
 
-INSERT INTO `pessoa` (`id`, `nome`, `conhecimento`, `flag`) VALUES
-(1, 'Lucas', 'Leigo', 1);
+INSERT INTO `pessoa` (`id`, `usuario`, `senha`, `nome`, `conhecimento`, `flag`) VALUES
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Lucas', 'Leigo', 1),
+(2, 'lucas', 'dc53fc4f621c80bdc2fa0329a6123708', 'lucas', 'leigo', 0);
 
 -- --------------------------------------------------------
 
@@ -352,7 +354,7 @@ ALTER TABLE `pergunta_pessoa`
 -- AUTO_INCREMENT for table `pessoa`
 --
 ALTER TABLE `pessoa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- Constraints for dumped tables
 --
