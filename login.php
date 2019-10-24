@@ -37,8 +37,8 @@
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<link rel="stylesheet" href="css/login.css">
     <!-- Import pelo Google -->
-    <meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
+    <!-- <meta name="google-signin-scope" content="lucaspsacchi12345@gmail.com"> -->
+    <meta name="google-signin-client_id" content="486981728748-8rr6973meeigpi0eebphodlg0l5539hf.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 	</head>
 	<body>
@@ -65,6 +65,7 @@
               <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-login">Entrar</button>
               </div>
+              <hr>
               <div class="form-group form-custom">
                 <!-- <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="false"></div> -->
                 <fb:login-button 
@@ -98,6 +99,8 @@
     // The ID token you need to pass to your backend:
     var id_token = googleUser.getAuthResponse().id_token;
     console.log("ID Token: " + id_token);
+
+    window.location = "home.php"
   }
 </script>
 
