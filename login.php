@@ -38,6 +38,10 @@
 		<link rel="stylesheet" href="css/login.css">
 	</head>
 	<body>
+  <!-- SDK do Facebook -->
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v4.0&appId=637910133282454&autoLogAppEvents=1"></script>
+
 		<div class="col-12 col-md-12 col-sm-12">
 			<div id="login" class="row row-custom d-flex justify-content-center align-content-center">
         <div class="card shadow">
@@ -58,6 +62,11 @@
               <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-login">Entrar</button>
               </div>
+              <!-- <fb:login-button 
+                scope="public_profile,email"
+                onlogin="checkLoginState();">
+              </fb:login-button>     -->
+              <div class="fb-login-button" data-width="" data-size="medium" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="false"></div>
             </form>
           </div>
         </div>
@@ -65,6 +74,18 @@
 		</div>		
 	</body>
 </html>
+
+<!-- SDK Facebook-->
+<script>
+FB.login(function(response) {
+  if (response.status === 'connected') {
+    <?php header('Location: home.php'); ?>
+  } else {
+    // The person is not logged into your webpage or we are unable to tell. 
+  }
+});
+</script>
+
 
 <!-- Import das bibliotecas js do Bootstrap -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
