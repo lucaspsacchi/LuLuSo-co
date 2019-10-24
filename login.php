@@ -36,11 +36,14 @@
 		<link rel="shortcut icon" type="image/png" href="img/vovotecAba.png">		
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<link rel="stylesheet" href="css/login.css">
+    <!-- Import pelo Google -->
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 	</head>
 	<body>
   <!-- SDK do Facebook -->
-  <div id="fb-root"></div>
-  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v4.0&appId=637910133282454&autoLogAppEvents=1"></script>
+  <script src="js/sdk-face.js"></script>
 
 		<div class="col-12 col-md-12 col-sm-12">
 			<div id="login" class="row row-custom d-flex justify-content-center align-content-center">
@@ -62,11 +65,16 @@
               <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-login">Entrar</button>
               </div>
-              <!-- <fb:login-button 
-                scope="public_profile,email"
-                onlogin="checkLoginState();">
-              </fb:login-button>     -->
-              <div class="fb-login-button" data-width="" data-size="medium" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="false"></div>
+              <div class="form-group form-custom">
+                <!-- <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="false"></div> -->
+                <fb:login-button 
+                  scope="public_profile,email"
+                  onlogin="checkLoginState();">
+                </fb:login-button>                        
+              </div>
+              <div class="form-group form-custom">
+                <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+              </div>
             </form>
           </div>
         </div>
@@ -75,15 +83,22 @@
 	</body>
 </html>
 
-<!-- SDK Facebook-->
+<!-- SDK Google -->
 <script>
-FB.login(function(response) {
-  if (response.status === 'connected') {
-    <?php header('Location: home.php'); ?>
-  } else {
-    // The person is not logged into your webpage or we are unable to tell. 
+  function onSignIn(googleUser) {
+    // Useful data for your client-side scripts:
+    var profile = googleUser.getBasicProfile();
+    console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+    console.log('Full Name: ' + profile.getName());
+    console.log('Given Name: ' + profile.getGivenName());
+    console.log('Family Name: ' + profile.getFamilyName());
+    console.log("Image URL: " + profile.getImageUrl());
+    console.log("Email: " + profile.getEmail());
+
+    // The ID token you need to pass to your backend:
+    var id_token = googleUser.getAuthResponse().id_token;
+    console.log("ID Token: " + id_token);
   }
-});
 </script>
 
 
