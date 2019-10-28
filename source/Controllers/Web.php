@@ -1,7 +1,6 @@
 <?php
 
 namespace Source\Controllers;
-use Example\Models\User;
 use League\Plates\Engine;
 use Source\Models\Categoria;
 
@@ -14,14 +13,6 @@ class Web
     {
         $this->view = Engine::create(__DIR__."/../../Views", "php");
     }
-
-    public function login($data)
-    {
-        echo "<h1>Login</h1>";
-        var_dump($data);
-        require __DIR__ ."/../../Views/login.php";
-    }
-
 
     public function home($data)
     {

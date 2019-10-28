@@ -10,11 +10,11 @@ $router = new Router(URL_BASE);
 $router->namespace("Source\Controllers");
 
 /*
- * WEB
+ * Gerenciamento
  * login
  */
 $router->group(null);
-$router->get("/", "Web:login");
+$router->get("/", "Gerenciamento:login");
 
 /*
  * WEB
@@ -30,6 +30,14 @@ $router->get("/", "Web:home");
  */
 $router->group("categoria");
 $router->get("/{catName}", "Web:categoria");
+
+/*
+ * Gerenciamento
+ * cadastro
+ */
+$router->group("cadastrar");
+$router->get("/", "Gerenciamento:registerGET");
+$router->post("/", "Gerenciamento:registerPOST");
 
 /*
  * ERROS
