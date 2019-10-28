@@ -6,13 +6,8 @@ let categorias = []
 
 // Espera carregar o dom
 window.addEventListener('load', (event) => {
-  const categorias = formatCategorias()
 
-  var divs = categorias.map(x => 
-    mountCategorias(x)
-  )
 })
-
 
 function mountCategorias(dado) {
   // Div para categoria
@@ -142,7 +137,7 @@ function formatCategorias() {
           categoria: x.categoria,
           total: x.total,
           completado: x.completado,
-          img: 'img/'.concat(x.img)
+          img: './Views/img/'.concat(x.img)
       }),
       i++
   ))
