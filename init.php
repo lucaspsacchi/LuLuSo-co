@@ -7,6 +7,7 @@ define('MYSQL_HOST', 'localhost');
 define('MYSQL_USER', 'root');
 define('MYSQL_PASS', 'mysql');
 define('MYSQL_DBNAME', 'vovotec');
+define("URL_BASE", "http://localhost/ws/LuLuSo-co");
  
 // configurações do PHP
 ini_set('display_errors', true);

@@ -11,6 +11,10 @@ class ComposerStaticInit4110d6303da49fffb035b9e4e0386b3b
     );
 
     public static $prefixLengthsPsr4 = array (
+        'C' => 
+        array (
+            'CoffeeCode\\Router\\' => 18,
+        ),
         'A' => 
         array (
             'App\\' => 4,
@@ -18,19 +22,13 @@ class ComposerStaticInit4110d6303da49fffb035b9e4e0386b3b
     );
 
     public static $prefixDirsPsr4 = array (
+        'CoffeeCode\\Router\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/coffeecode/router/src',
+        ),
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/App',
-        ),
-    );
-
-    public static $prefixesPsr0 = array (
-        'S' => 
-        array (
-            'Slim' => 
-            array (
-                0 => __DIR__ . '/..' . '/slim/slim',
-            ),
         ),
     );
 
@@ -39,7 +37,6 @@ class ComposerStaticInit4110d6303da49fffb035b9e4e0386b3b
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit4110d6303da49fffb035b9e4e0386b3b::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit4110d6303da49fffb035b9e4e0386b3b::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit4110d6303da49fffb035b9e4e0386b3b::$prefixesPsr0;
 
         }, null, ClassLoader::class);
     }
