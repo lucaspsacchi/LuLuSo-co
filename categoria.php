@@ -1,4 +1,6 @@
 <?php
+	session_start();
+	$_SESSION['ultima_cat'] = $_GET['cat'];
   include('connection/conn.php');
   include('model/scriptCategoria.php');
 ?>

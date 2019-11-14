@@ -8,7 +8,7 @@
     WHERE p.id_cat = ?
     GROUP BY p.id_video) AS t1
   ON (va.id_video = t1.id_video)
-  ORDER BY porc DESC
+  ORDER BY porc DESC, va.nome ASC
   ";
 
   $stmt = $conn->prepare($sql);

@@ -1,6 +1,7 @@
 <?php
-  include('connection/conn.php');
-  include('model/scriptQuestoes.php');
+    session_start();
+    include('connection/conn.php');
+    include('model/scriptQuestoes.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -32,7 +33,10 @@
 	</body>
 </html>
 <!-- Converte os dados recebidos do bd para json em js -->
-<script> var const dados = <?= json_encode($dados) ?> </script>
+<script>
+    dados = <?= json_encode($dados) ?> 
+    url_redirecionamento = 'categoria?cat='.concat(<?= $_SESSION['ultima_cat'] ?>)
+</script>
 
 <!-- Import dos scripts js para as alternativas -->
 <script type="text/javascript" src="js/scriptAlternativa.js"></script>
@@ -40,7 +44,7 @@
 <script type="text/javascript" src="js/scriptToquePares.js"></script>
 <script type="text/javascript" src="js/scriptQuestoes.js"></script>
 <script type="text/javascript" src="js/scriptVideo.js"></script>
-<script type="text/javascript" src="js/dadosQuestoes.js"></script>
+<!-- <script type="text/javascript" src="js/dadosQuestoes.js"></script> -->
 
 <!-- Import do sweet alert -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>

@@ -27,6 +27,8 @@ mountQuiz = () => {
     quiz.removeChild(quiz.firstChild);
   } //remove o conteudo da div
 
+  console.log(dados)
+
   const index = dados.map(x => x.id_video).indexOf(data.id);
 
   let q = dados[index].questoes[atual];
@@ -120,7 +122,7 @@ function alertResposta(flag) {
           confirmButtonText: 'Voltar'
         }).then((result) => {
           if (result.value) {
-            window.location.href = 'home.php'
+            window.location.href = url_redirecionamento
           }
         })
       })
@@ -145,7 +147,7 @@ function alertResposta(flag) {
           confirmButtonText: 'Voltar'
         }).then((result) => {
           if (result.value) {
-            window.location.href = 'home.php'
+            window.location.href = url_redirecionamento
           }
         })
       })      

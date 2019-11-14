@@ -1,4 +1,5 @@
 <?php 
+  session_start();
   include('connection/conn.php');
   if(isset($_POST['inputusuario'])) {
     // Envia as credenciais para validar
@@ -11,10 +12,10 @@
     if ($result->num_rows > 0) {
       $row = $result->fetch_object();
       if ($row->flag == 1) {
-        $_SESSION['id_usuario'] = $row->id;
         header('Location: adm/gerenciador.php');
       }
       else {
+        $_SESSION['id_usuario'] = $row->id;
         header('Location: home.php');
       }
     }
