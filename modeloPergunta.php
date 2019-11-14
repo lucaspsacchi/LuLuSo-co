@@ -1,71 +1,28 @@
+<?php
+  include('connection/conn.php');
+  include('model/scriptQuestoes.php');
+?>
 <!DOCTYPE html>
 <html>
-	<head>
-    <meta charset="UTF-8">
-    <title>VovoTec</title>
-    <meta name="author" content="">
-    <meta name="description" content="">
-    <link rel="shortcut icon" type="image/png" href="img/vovotecAba.png">		
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="css/modelos.css">
-    <link rel="stylesheet" type="text/css" href="css/navfooter.css">
-	</head>
-	<body>
-      <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
-          <a class="navbar-brand" href="home.html">
-            <div class="logo">
-                <img class="img-responsive" src="img/vovoTecLogo.png">
-            </div>
-          </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                <a class="nav-link na" href="home.html">INÍCIO<span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item active">
-                  <a class="nav-link" href="#">COMO USAR ESTE APP?<span class="sr-only">(current)</span></a>
-                </li>
-              
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  APRENDA SOBRE...
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="categoria.html?cat=Facebook">Facebook</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="categoria.html?cat=WhatsApp">WhatsApp</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="categoria.html?cat=Instagram">Instagram</a>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <!--<form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-            <button class="btn btn-outline-light my-2 my-sm-0 nav-btn" type="submit">Buscar</button>
-          </form>
-          <ul class="navbar-nav mr-auto">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  PERFIL
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">Minha Conta</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Sair</a>
-                </div>
-              </li>
-          </ul>-->
-        </nav>
+    <head>
+        <meta charset="UTF-8">
+        <title>VovoTec</title>
+        <meta name="author" content="">
+        <meta name="description" content="">
+        <link rel="shortcut icon" type="image/png" href="img/vovotecAba.png">		
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="css/modelos.css">
+        <link rel="stylesheet" type="text/css" href="css/navfooter.css">
+    </head>
+    <body>
+    <!-- Navbar -->
+    <?php include('navbar.php'); ?>
+
       <div class="col-12 col-sm-12">
           <div id="player" class="video d-flex justify-content-center"></div>
       </div>
       <div class="col-12 col-sm-12">
-          <div id='quiz' class="question shadow h-100  justify-content-center align-items-center p-5 d-none">
+          <div id='quiz' class="question shadow h-100 justify-content-center align-items-center p-5 d-none">
               <div id='conteudo' class="block justify-content-center">
                   <h2>Vamos praticar o que você aprendeu?</h2>
                   <button id="botao" class="btn btn-outline-success mt-4 font-weight-bold" onclick="mountQuiz()">Vamos!</button>
@@ -74,14 +31,20 @@
       </div>
 	</body>
 </html>
+<!-- Converte os dados recebidos do bd para json em js -->
+<script> var const dados = <?= json_encode($dados) ?> </script>
+
+<!-- Import dos scripts js para as alternativas -->
 <script type="text/javascript" src="js/scriptAlternativa.js"></script>
 <script type="text/javascript" src="js/scriptSequencia.js"></script>
 <script type="text/javascript" src="js/scriptToquePares.js"></script>
 <script type="text/javascript" src="js/scriptQuestoes.js"></script>
 <script type="text/javascript" src="js/scriptVideo.js"></script>
 <script type="text/javascript" src="js/dadosQuestoes.js"></script>
+
 <!-- Import do sweet alert -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
 <!-- Import das bibliotecas js do Bootstrap -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

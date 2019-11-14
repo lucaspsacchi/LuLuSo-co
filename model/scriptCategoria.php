@@ -15,15 +15,4 @@
   $stmt->bind_param('i', $cat);
   $stmt->execute();
   $result = $stmt->get_result();
-
-  $dados = [];
-  while ($cat = $result->fetch_assoc()) {
-    $aux = array(
-      'id_video' => $cat['id_video'],
-      'nome' => $cat['nome'],
-      'categ' => $cat['nome']
-    );
-    array_push($dados, $aux);
-  }
-  // print_r($dados);
 ?>

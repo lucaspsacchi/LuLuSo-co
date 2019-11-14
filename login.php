@@ -3,8 +3,7 @@
   if(isset($_POST['inputusuario'])) {
     // Envia as credenciais para validar
     $usuario = addslashes($_POST['inputusuario']);
-    $senha = addslashes($_POST['inputsenha']);
-    $senhaMD5 = MD5($senha);
+    $senhaMD5 = MD5(addslashes($_POST['inputsenha']));
     $script = "SELECT * 
               FROM pessoa 
               WHERE usuario = '".$usuario."' AND senha = '".$senhaMD5."';";
@@ -12,6 +11,7 @@
     if ($result->num_rows > 0) {
       $row = $result->fetch_object();
       if ($row->flag == 1) {
+        $_SESSION['id_usuario'] = $row->id;
         header('Location: adm/gerenciador.php');
       }
       else {
