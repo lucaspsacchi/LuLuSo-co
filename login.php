@@ -11,11 +11,11 @@
     $result = $conn->query($script);
     if ($result->num_rows > 0) {
       $row = $result->fetch_object();
+      $_SESSION['id_usuario'] = $row->id;
       if ($row->flag == 1) {
-        header('Location: adm/gerenciador.php');
+        header('Location: adm/home.php');
       }
       else {
-        $_SESSION['id_usuario'] = $row->id;
         header('Location: home.php');
       }
     }

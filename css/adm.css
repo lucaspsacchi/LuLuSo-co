@@ -1,0 +1,24 @@
+#card-home {
+  width: 10rem;
+  margin: 1.5rem;
+}
+
+#card-a-home {
+  width: 100%;
+}
+
+#card-aulas {
+  width: 14rem;
+  margin: 1.5rem;
+}
+
+#card-perguntas {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.card-footer {
+  padding-top: 0px;
+  background-color: white;
+  border-top: hidden;
+}
