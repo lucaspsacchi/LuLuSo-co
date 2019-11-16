@@ -77,7 +77,6 @@
 								<input type="text" class="form-control" id="pergunta">
 							</div>
 						</div>
-						<!-- Pergunta -->
 						<!-- Alternativas -->
 					</div>
 
