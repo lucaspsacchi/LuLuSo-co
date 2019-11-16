@@ -4,5 +4,5 @@
 
   $stmt = $conn->prepare($sql);
   $stmt->execute();
-  $result = $stmt->get_result();
+  $resultCat = $stmt->get_result();
 ?>

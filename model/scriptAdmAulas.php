@@ -6,5 +6,5 @@
   $stmt = $conn->prepare($sql);
   $stmt->bind_param('i', $_GET['id']);
   $stmt->execute();
-  $result = $stmt->get_result();
+  $resultAulas = $stmt->get_result();
 ?>

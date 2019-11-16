@@ -63,13 +63,7 @@
 		<link rel="stylesheet" href="../css/navfooter.css">
 	</head>
 	<body>
-		<nav class="navbar navbar-expand-lg navbar-light navbar-custom">
-			<a class="navbar-brand" href="home.php">
-				<div class="logo">
-					<img class="img-responsive" src="../img/vovoTecLogo.png">
-				</div>
-			</a>
-		</nav>
+		<?php include('navbar.php'); ?>
 
 		<div class="container">
 			<div class="col-12 col-md-12 col-sm-12">

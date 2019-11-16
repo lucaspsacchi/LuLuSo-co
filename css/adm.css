@@ -8,7 +8,7 @@
 }
 
 #card-aulas {
-  width: 14rem;
+  width: 13rem;
   margin: 1.5rem;
 }
 
@@ -21,4 +21,8 @@
   padding-top: 0px;
   background-color: white;
   border-top: hidden;
+}
+
+.selectAulas {
+  display: none;
 }

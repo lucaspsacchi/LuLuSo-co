@@ -40,8 +40,8 @@
 
 				<div class="d-flex justify-content-start flex-wrap">
 				<?php
-				if ($result) {
-					while ($row = $result->fetch_assoc()) { ?>
+				if ($resultCat) {
+					while ($row = $resultCat->fetch_assoc()) { ?>
 						<div class="card" id="card-home">
 							<img src="../img/<?= $row['img'] ?>" class="card-img-top" alt="...">
 							<div class="card-body">

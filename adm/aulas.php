@@ -40,8 +40,8 @@
 
 				<div class="d-flex justify-content-start flex-wrap">
 				<?php
-				if ($result) {
-					while ($row = $result->fetch_assoc()) { 
+				if ($resultAulas) {
+					while ($row = $resultAulas->fetch_assoc()) { 
             // Formatando a imagem
             $img = 'http://img.youtube.com/vi/' . $row['id_video'] . '/maxresdefault.jpg';
             ?>
