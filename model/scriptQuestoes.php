@@ -24,6 +24,7 @@
       // Corpo de cada questão
       $aux['modelo'] = 'sequencia';
       $aux['pergunta'] = $row['pergunta'];
+      $aux['id_pergunta'] = $row['id'];
       
       // Procura as alternativas da questão
       $sql = "SELECT texto, posicao
@@ -47,6 +48,7 @@
       // Corpo de cada questão
       $aux['modelo'] = 'alternativa';
       $aux['pergunta'] = $row['pergunta'];
+      $aux['id_pergunta'] = $row['id'];
 
       // Procura as alternativas da questão
       $sql = "SELECT img1, resposta1, img2, resposta2, img3, resposta3, img4, resposta4
@@ -83,6 +85,7 @@
      // Corpo de cada questão
      $aux['modelo'] = 'pares';
      $aux['pergunta'] = $row['pergunta'];
+     $aux['id_pergunta'] = $row['id'];
 
       // Procura as alternativas da questão
       $sql = "SELECT texto, resposta

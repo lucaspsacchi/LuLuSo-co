@@ -1,6 +1,11 @@
 data = catchDadosUrl()
 atual = 0;
 
+// Auxiliares para o post
+dados_flag = []
+dados_i = 0
+
+
 // Pega as chaves e valores da url
 function catchDadosUrl() {
   var query = location.search.slice(1)
@@ -48,12 +53,19 @@ mountQuiz = () => {
     atual = atual + 1;
     aux_alert = (atual == dados[index].questoes.length)
 
-    if (q.modelo === 'sequencia')
+    // Armazena o id no post
+    str_aux = 'id'.concat(dados_i)
+    dados_flag.push({key: str_aux, value: q.id_pergunta})
+    console.log(dados_flag)
+    if (q.modelo === 'sequencia') {
       checarRespostaSequencia(q);
-    else if (q.modelo === 'alternativa')
+    }
+    else if (q.modelo === 'alternativa') {
       checarRespostaAlternativa(q);
-    else
+    }
+    else {
       checarRespostaToquePares(q);
+    }
 
     if(atual < dados[index].questoes.length)
       mountQuiz();
@@ -62,12 +74,27 @@ mountQuiz = () => {
 }
 
 checarRespostaToquePares = ()  => {
-  if(respondidos.length === nPares * 2) //se todas as alternativas foram marcadas como respondidas
-      //Carregar modal de acerto
-      alertResposta(true);
-  else
-      //Carregar modal de erro
-      alertResposta(false);
+  if(respondidos.length === nPares * 2) {//se todas as alternativas foram marcadas como respondidas
+    //Carregar modal de acerto
+
+    // Adiciona a flag no post
+    str_aux = 'flag'.concat(dados_i)
+    dados_flag.push({key: str_aux, value: 1})
+    console.log(dados_flag)
+    dados_i = dados_i + 1
+
+    alertResposta(true);
+  }
+  else {
+    //Carregar modal de erro
+
+    str_aux = 'flag'.concat(dados_i)
+    dados_flag.push({key: str_aux, value: 0})
+    console.log(dados_flag)
+    dados_i = dados_i + 1
+
+    alertResposta(false);
+  }
 
   resetToquePares();
 }
@@ -85,6 +112,12 @@ function checarRespostaSequencia(sequencia) {
     }
   }
   
+  // Adiciona a flag no post
+  str_aux = 'flag'.concat(dados_i)
+  dados_flag.push({key: str_aux, value: (flag ? 1 : 0)})
+  console.log(dados_flag)
+  dados_i = dados_i + 1
+
   alertResposta(flag)
 }
 
@@ -95,6 +128,12 @@ function checarRespostaAlternativa(alt) {
 
   flag = alt.alternativas[num - 1].resposta
 
+  // Adiciona a flag no post
+  str_aux = 'flag'.concat(dados_i)
+  dados_flag.push({key: str_aux, value: (flag ? 1 : 0)})
+  console.log(dados_flag)
+  dados_i = dados_i + 1
+
   alertResposta(flag)
 }
 
@@ -102,6 +141,11 @@ function checarRespostaAlternativa(alt) {
 // Alerta de resposta certa
 function alertResposta(flag) {
   if (aux_alert) {
+    for (i = 0; i < dados_flag.length; i++) {
+      url_redirecionamento = url_redirecionamento + '&id' + i + '=' + dados_flag[i]['value']
+      url_redirecionamento = url_redirecionamento + '&flag' + i + '=' + dados_flag[++i]['value']
+    }
+    console.log(url_redirecionamento)
     if (flag) {
       Swal.fire({
         imageUrl: 'img/vovoCorreto.png',

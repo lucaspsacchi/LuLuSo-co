@@ -83,13 +83,13 @@ function primaryBtn(div) {
 	div.classList.add('btn-outline-primary');
 }
 
+// Formatar resultado
 function formatar() {
 	formatado = []
 	for (i = 0; i < alternativas.length; i++) {
 		formatado[i] = alternativas[i][0];
 	}
 }
-
 
 activeButtonSequencia = () => {
 	if (alternativas.length === nAlternativas) {
@@ -118,6 +118,13 @@ function mountSequencia(dados) {
 
 	var quiz = document.getElementById('quiz');
 	nAlternativas = dados.alternativas.length
+	
+	var form = document.createElement('form')
+	form.action = '#'
+	form.method = 'POST'
+	form.enctype = 'multipart/form-data'
+
+	quiz.appendChild(form)
 
 	//adiciona titulo
 	var div = document.createElement('div');
@@ -166,6 +173,7 @@ function mountSequencia(dados) {
 		})
 		button.className = 'alternativa btn btn-outline-primary btn-custom btn-custom-question';
 		button.id = `alt${index + 1}`;
+		button.name = 'alt'.concat(index+1)
 
 		button.appendChild(buttonText);
 		div.appendChild(button);
@@ -176,8 +184,10 @@ function mountSequencia(dados) {
 	var botaoTexto = document.createTextNode('Confirmar');
 
 	botao.id = 'confirmar';
-	botao.type = 'submit';
+	// botao.type = 'submit';
 	botao.className = 'confirma btn btn-custom btn-outline-secondary';
+	botao.name = 'salvar_dados'
+	botao.setAttribute("onclick","submitPergunta()");
 	botao.disabled = true;
 
 	botao.appendChild(botaoTexto);
