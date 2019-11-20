@@ -2,6 +2,7 @@
     session_start();
     include('connection/conn.php');
     include('model/scriptQuestoes.php');
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -36,8 +37,8 @@
 <!-- Converte os dados recebidos do bd para json em js -->
 <script>
     dados = <?= json_encode($dados) ?> 
-    url_redirecionamento = 'categoria?cat='.concat(<?= $_SESSION['ultima_cat'] ?>)
-
+    url_redirecionamento = 'categoria?cat=' + <?= $_SESSION['ultima_cat'] ?> + '&id_video='
+    
     function submitPergunta() {
         return false;
     }

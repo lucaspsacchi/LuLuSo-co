@@ -2,6 +2,7 @@
   session_start();
   include('connection/conn.php');
   include('model/scriptHome.php');
+  include('model/scriptNiveisConhecimento.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -58,6 +59,14 @@
 </html>
 <script src="jquery-3.4.1.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<!-- Alerts -->
+<?php
+if (isset($alertDesceuNivel) && $alertDesceuNivel == 1) {
+  swal();
+}
+?>
 
 
 <!-- Import das bibliotecas js do Bootstrap -->

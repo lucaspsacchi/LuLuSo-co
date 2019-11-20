@@ -139,7 +139,8 @@ function checarRespostaAlternativa(alt) {
 // Alerta de resposta certa
 function alertResposta(flag) {
   if (aux_alert) {
-    url_redirecionamento = url_redirecionamento + '&id_video=' + data['id']
+    console.log(data)
+    url_redirecionamento = url_redirecionamento + data.id
     for (i = 0; i < dados_flag.length; i++) {
       url_redirecionamento = url_redirecionamento + '&id' + i + '=' + dados_flag[i]['value'] // Id pergunta
       url_redirecionamento = url_redirecionamento + '&flag' + i + '=' + dados_flag[++i]['value'] // Valor da flag

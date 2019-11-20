@@ -1,14 +1,37 @@
 <?php
 	session_start();
 	$_SESSION['ultima_cat'] = $_GET['cat'];
-  include('connection/conn.php');
-	include('model/scriptCategoria.php');
+	include('connection/conn.php');
+	include('model/scriptNiveisConhecimento.php');
 
 	// Cadastrar as respostas
-	if(isset($_GET['id0'])) {
-		
+	if(isset($_GET['id_video'])) {
+		$flag = 1;
+		$i = 0;
+		while ($flag) {
+			$id_pergunta = $_GET['id' . $i];
 
+			$flag = $_GET['flag' . $i];
+
+			// Apaga a resposta anterior
+			$script = "DELETE FROM `pergunta_pessoa`
+			WHERE `id_pergunta` = '".$id_pergunta."' AND `id_pessoa` = '".$_SESSION['id_usuario']."' AND `id_video` = '".$_GET['id_video']."' AND `id_cat` = '".$_GET['cat']."'";
+			mysqli_query($conn, $script);
+
+			// Insere nova resposta
+			$script = "INSERT INTO `pergunta_pessoa` (`id_pergunta`, `id_pessoa`, `id_video`, `id_cat`, `flag`)
+			VALUES ('".$id_pergunta."','".$_SESSION['id_usuario']."','".$_GET['id_video']."','".$_GET['cat']."','".$flag."')";
+			mysqli_query($conn, $script);
+
+			$i = $i + 1;
+			$str = 'id' . $i;
+			if (isset($_GET[$str])) {
+				$flag = 0;
+			}
+		}
 	}
+
+	include('model/scriptCategoria.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -56,6 +79,14 @@
 </html>
 
 <script type="text/javascript" src="js/scriptCateg.js"></script>
+
+
+<!-- Alerts -->
+<?php
+if (isset($alertDesceuNivel) && $alertSubiuNivel == 1) {
+  swal();
+}
+?>
 
 <!-- Import das bibliotecas js do Bootstrap -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

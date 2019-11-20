@@ -44,8 +44,8 @@
   <!-- SDK do Facebook -->
   <script src="js/sdk-face.js"></script>
 
-		<div class="col-12 col-md-12 col-sm-12">
-			<div id="login" class="row row-custom d-flex justify-content-center align-content-center">
+		<div class="col-12 col-md-12 col-sm-12" style="height: 100%;">
+			<div id="login" class="row row-custom d-flex justify-content-center"style="lign-self: center;">
         <div class="card shadow">
           <div class="card-body">
             <form action="#" method="post">
@@ -67,14 +67,14 @@
               <hr>
               <div class="form-group form-custom">
                 <!-- <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="false"></div> -->
-                <fb:login-button 
+                <!-- <fb:login-button 
                   scope="public_profile,email"
                   onlogin="checkLoginState();">
                 </fb:login-button>                        
               </div>
               <div class="form-group form-custom">
                 <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-              </div>
+              </div> -->
             </form>
           </div>
         </div>
