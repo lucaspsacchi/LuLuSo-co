@@ -159,3 +159,19 @@ img {
 #player {
     margin-bottom: 30px;;
 }
+
+#alt1, #alt2, #alt3, #alt4, #alt5, .btn-alternativa {
+    width: 100%;
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.alternativa-container {
+    width: 100%;
+}
+.alternativas {
+    width: 100%;
+    margin: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+}

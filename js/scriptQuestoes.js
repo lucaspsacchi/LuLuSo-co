@@ -56,7 +56,7 @@ mountQuiz = () => {
     // Armazena o id no post
     str_aux = 'id'.concat(dados_i)
     dados_flag.push({key: str_aux, value: q.id_pergunta})
-    console.log(dados_flag)
+
     if (q.modelo === 'sequencia') {
       checarRespostaSequencia(q);
     }
@@ -80,7 +80,7 @@ checarRespostaToquePares = ()  => {
     // Adiciona a flag no post
     str_aux = 'flag'.concat(dados_i)
     dados_flag.push({key: str_aux, value: 1})
-    console.log(dados_flag)
+
     dados_i = dados_i + 1
 
     alertResposta(true);
@@ -90,7 +90,7 @@ checarRespostaToquePares = ()  => {
 
     str_aux = 'flag'.concat(dados_i)
     dados_flag.push({key: str_aux, value: 0})
-    console.log(dados_flag)
+
     dados_i = dados_i + 1
 
     alertResposta(false);
@@ -115,7 +115,6 @@ function checarRespostaSequencia(sequencia) {
   // Adiciona a flag no post
   str_aux = 'flag'.concat(dados_i)
   dados_flag.push({key: str_aux, value: (flag ? 1 : 0)})
-  console.log(dados_flag)
   dados_i = dados_i + 1
 
   alertResposta(flag)
@@ -131,7 +130,6 @@ function checarRespostaAlternativa(alt) {
   // Adiciona a flag no post
   str_aux = 'flag'.concat(dados_i)
   dados_flag.push({key: str_aux, value: (flag ? 1 : 0)})
-  console.log(dados_flag)
   dados_i = dados_i + 1
 
   alertResposta(flag)
@@ -141,11 +139,11 @@ function checarRespostaAlternativa(alt) {
 // Alerta de resposta certa
 function alertResposta(flag) {
   if (aux_alert) {
+    url_redirecionamento = url_redirecionamento + '&id_video=' + data['id']
     for (i = 0; i < dados_flag.length; i++) {
-      url_redirecionamento = url_redirecionamento + '&id' + i + '=' + dados_flag[i]['value']
-      url_redirecionamento = url_redirecionamento + '&flag' + i + '=' + dados_flag[++i]['value']
+      url_redirecionamento = url_redirecionamento + '&id' + i + '=' + dados_flag[i]['value'] // Id pergunta
+      url_redirecionamento = url_redirecionamento + '&flag' + i + '=' + dados_flag[++i]['value'] // Valor da flag
     }
-    console.log(url_redirecionamento)
     if (flag) {
       Swal.fire({
         imageUrl: 'img/vovoCorreto.png',

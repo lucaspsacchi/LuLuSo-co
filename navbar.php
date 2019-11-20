@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
-    <a class="navbar-brand" href="home.html">
+    <a class="navbar-brand" href="home.php">
         <div class="logo">
             <img class="img-responsive" src="img/vovoTecLogo.png">
         </div>
@@ -12,7 +12,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link na" href="home.html">INÍCIO<span class="sr-only">(current)</span></a>
+                <a class="nav-link na" href="home.php">INÍCIO<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="#">COMO USAR ESTE APP?<span class="sr-only">(current)</span></a>
@@ -23,11 +23,11 @@
                     APRENDA SOBRE...
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="categoria.html?cat=">Facebook</a>
+                    <a class="dropdown-item" href="categoria.php?cat=">Facebook</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="categoria.html?cat=">WhatsApp</a>
+                    <a class="dropdown-item" href="categoria.php?cat=">WhatsApp</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="categoria.html?cat=">Instagram</a>
+                    <a class="dropdown-item" href="categoria.php?cat=">Instagram</a>
                 </div>
             </li>
         </ul>

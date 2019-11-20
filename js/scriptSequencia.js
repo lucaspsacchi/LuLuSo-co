@@ -21,7 +21,7 @@ function mainSequencia(data, num) {
 		//Altera a cor do último botão para cinza
 		if (alternativas.length != 0) {
 			var div = document.getElementById(str.concat((alternativas.length))) // Seleciona a última posição do vetor
-			secondaryBtn(div)
+			secondaryBtn(div, 0)
 		}
 
 		//Adiciona novo botão
@@ -45,7 +45,7 @@ function remover(div) {
 	str = 'esp'
 	str = str.concat(div)
 	var div = document.getElementById(str)
-	secondaryBtn(div) // Altera o botão dos espaços para secondary
+	secondaryBtn(div, 1) // Altera o botão dos espaços para secondary
 	div.innerHTML = ""
 
 	aux = alternativas[alternativas.length - 1] // Pega o último elemento da array
@@ -73,13 +73,17 @@ function aparecerBotao(div) {
 	div.style.display = ""
 }
 
-function secondaryBtn(div) {
+function secondaryBtn(div, num) {
+	if (num) {
+		div.classList.remove('btn-alternativa')
+	}
 	div.classList.remove('btn-outline-primary');
 	div.classList.add('btn-outline-secondary');
 }
 
 function primaryBtn(div) {
 	div.classList.remove('btn-outline-secondary');
+	div.classList.add('btn-alternativa');
 	div.classList.add('btn-outline-primary');
 }
 
@@ -107,6 +111,7 @@ disableButton = () => {
 
 		button.disabled = true;
 		button.classList.remove('btn-success');
+		button.classList.remove('btn-alternativa');
 		button.classList.add('btn-outline-secondary');
 	}
 }
@@ -171,7 +176,7 @@ function mountSequencia(dados) {
 		button.addEventListener('click', function (){
 			mainSequencia(x.texto, index + 1);
 		})
-		button.className = 'alternativa btn btn-outline-primary btn-custom btn-custom-question';
+		button.className = 'alternativa btn btn-outline-primary btn-custom btn-custom-question btn-alternativa';
 		button.id = `alt${index + 1}`;
 		button.name = 'alt'.concat(index+1)
 

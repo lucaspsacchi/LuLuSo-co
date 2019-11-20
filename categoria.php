@@ -3,9 +3,11 @@
 	$_SESSION['ultima_cat'] = $_GET['cat'];
   include('connection/conn.php');
 	include('model/scriptCategoria.php');
-	if(isset($_POST['id0'])) {
-		echo $_POST['id0']['value'];
-		echo $_POST['flag0']['value'];
+
+	// Cadastrar as respostas
+	if(isset($_GET['id0'])) {
+		
+
 	}
 ?>
 <!DOCTYPE html>
