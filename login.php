@@ -45,7 +45,7 @@
   <script src="js/sdk-face.js"></script>
 
 		<div class="col-12 col-md-12 col-sm-12" style="height: 100%;">
-			<div id="login" class="row row-custom d-flex justify-content-center"style="lign-self: center;">
+			<div id="login" class="row row-custom d-flex justify-content-center">
         <div class="card shadow">
           <div class="card-body">
             <form action="#" method="post">

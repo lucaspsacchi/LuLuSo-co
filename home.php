@@ -2,6 +2,7 @@
   session_start();
   include('connection/conn.php');
   include('model/scriptHome.php');
+  include('niveisConhecimento.php');
   include('model/scriptNiveisConhecimento.php');
 ?>
 <!DOCTYPE html>
@@ -11,7 +12,7 @@
     <title>VovoTec</title>
     <meta name="author" content="">
     <meta name="description" content="">
-    <link rel="shortcut icon" type="image/png" href="./img/vovoTecAba.png">
+		<link rel="shortcut icon" type="image/png" href="img/vovotecAba.png">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -60,11 +61,31 @@
 <script src="jquery-3.4.1.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
+<!-- Sweet Alert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
 <!-- Alerts -->
 <?php
-if (isset($alertDesceuNivel) && $alertDesceuNivel == 1) {
-  swal();
+if (isset($alertDesceuNivel) && $alertDesceuNivel != -1) {
+  // Exibe o alerta
+  ?>
+  <script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      Swal.fire({
+        title: 'Sweet!',
+        text: 'Modal with a custom image.',
+        imageUrl: 'https://unsplash.it/400/200',
+        imageWidth: 400,
+        imageHeight: 200,
+        imageAlt: 'Custom image',
+      })
+     }); 
+  </script>
+	<?php
+	$script = "UPDATE pessoa
+						SET nivel_conhecimento = '".$alertDesceuNivel."'
+						WHERE id =  '".$_SESSION['id_usuario']."';";
+	mysqli_query($conn, $script);
 }
 ?>
 

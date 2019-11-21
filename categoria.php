@@ -2,6 +2,7 @@
 	session_start();
 	$_SESSION['ultima_cat'] = $_GET['cat'];
 	include('connection/conn.php');
+	include('niveisConhecimento.php');
 	include('model/scriptNiveisConhecimento.php');
 
 	// Cadastrar as respostas
@@ -25,7 +26,7 @@
 
 			$i = $i + 1;
 			$str = 'id' . $i;
-			if (isset($_GET[$str])) {
+			if (!isset($_GET[$str])) {
 				$flag = 0;
 			}
 		}
@@ -80,15 +81,37 @@
 
 <script type="text/javascript" src="js/scriptCateg.js"></script>
 
-
-<!-- Alerts -->
-<?php
-if (isset($alertDesceuNivel) && $alertSubiuNivel == 1) {
-  swal();
-}
-?>
+<!-- Sweet Alert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
 <!-- Import das bibliotecas js do Bootstrap -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+
+<!-- Alerts -->
+<?php
+if (isset($alertSubiuNivel) && $alertSubiuNivel != -1) {
+	// Exibe o alerta
+  ?>
+  <script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      Swal.fire({
+        title: 'Sweet!',
+        text: 'Modal with a custom image.',
+        imageUrl: 'https://unsplash.it/400/200',
+        imageWidth: 400,
+        imageHeight: 200,
+        imageAlt: 'Custom image',
+      })
+     }); 
+  </script>
+	<?php
+	$script = "UPDATE pessoa
+						SET nivel_conhecimento = '".$alertSubiuNivel."'
+						WHERE id =  '".$_SESSION['id_usuario']."';";
+	mysqli_query($conn, $script);
+}
+?>

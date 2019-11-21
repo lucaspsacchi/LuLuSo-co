@@ -1,8 +1,8 @@
 <?php 
   // Variáveis
   $novoNivel = 0;
-  $alertSubiuNivel = 0;
-  $alertDesceuNivel = 0;
+  $alertSubiuNivel = -1;
+  $alertDesceuNivel = -1;
 
   // Busca pela porcentagem
   $scriptNivel = "SELECT ((t1.certas / t1.total) * 100) AS porc
@@ -14,10 +14,24 @@
 
   // Atribui a flag o níve atual
   $rowNivel = $resultNivel->fetch_assoc();
-  if ($rowNivel['porc']) { // Pegar os níveis
+  if ($rowNivel['porc'] >= 5 && $rowNivel['porc'] < 25) { // Bulhufas
+    $novoNivel = 1;
+  }
+  else if ($rowNivel['porc'] >= 25 && $rowNivel['porc'] < 50) { // Xexelento
+    $novoNivel = 2;
+  }
+  else if ($rowNivel['porc'] >= 50 && $rowNivel['porc'] < 75) { // Saliente
+    $novoNivel = 3;
+  }
+  else if ($rowNivel['porc'] >= 75 && $rowNivel['porc'] < 100) { // Serelepe
+    $novoNivel = 4;
+  }
+  else if ($rowNivel['porc'] == 100) { // Supimpa
+    $novoNivel = 5;
+  }
+  else { // Sem nível
     $novoNivel = 0;
   }
-  // ...
 
   // Busca pelo nivel de conhecimento da pessoa
   $scriptPessoa = "SELECT nivel_conhecimento AS nivel
@@ -29,10 +43,10 @@
   $rowPessoa = $resultPessoa->fetch_assoc();
   if ($novoNivel > $rowPessoa['nivel']) {
     // Subiu de nível
-    $alertSubiuNivel = 1;
+    $alertSubiuNivel = $novoNivel;
   }
   else if ($novoNivel < $rowPessoa['nivel']) {
     // Caiu o nível
-    $alertDesceuNivel = 1;
+    $alertDesceuNivel = $novoNivel;
   }
 ?>

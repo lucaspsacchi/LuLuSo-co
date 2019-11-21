@@ -141,9 +141,12 @@ function alertResposta(flag) {
   if (aux_alert) {
     console.log(data)
     url_redirecionamento = url_redirecionamento + data.id
-    for (i = 0; i < dados_flag.length; i++) {
-      url_redirecionamento = url_redirecionamento + '&id' + i + '=' + dados_flag[i]['value'] // Id pergunta
-      url_redirecionamento = url_redirecionamento + '&flag' + i + '=' + dados_flag[++i]['value'] // Valor da flag
+    for (i = 0, j = 0; i < dados_flag.length; i++, j++) {
+      console.log(j)
+      id = '&id' + j
+      flag = '&flag' + j
+      url_redirecionamento = url_redirecionamento + id + '=' + dados_flag[i]['value'] // Id pergunta
+      url_redirecionamento = url_redirecionamento + flag + '=' + dados_flag[++i]['value'] // Valor da flag
     }
     if (flag) {
       Swal.fire({
