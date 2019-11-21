@@ -116,14 +116,25 @@ disableButton = () => {
 	}
 }
 
-function mountSequencia(dados) {
+function mountSequencia(dados, pos, total) {
 
 	// Embaralha as alternativas
 	dados.alternativas = shuffle(dados.alternativas)
 
 	var quiz = document.getElementById('quiz');
 	nAlternativas = dados.alternativas.length
-	
+
+	var divNum = document.createElement('div');
+	var h3 = document.createElement('h3');
+	let text = 'Questão ' + (pos + 1) + ' de ' + total
+	var node = document.createTextNode(text);
+	h3.appendChild(node);
+
+	divNum.className = 'questoes';
+	divNum.appendChild(h3);
+
+	quiz.appendChild(divNum);
+
 	var form = document.createElement('form')
 	form.action = '#'
 	form.method = 'POST'

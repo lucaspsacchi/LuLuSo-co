@@ -1,12 +1,21 @@
 var nPares;
-mountToquePares = (dados) => {
+mountToquePares = (dados, pos, total) => {
     var quiz = document.getElementById('quiz');
 
     nPares = dados.alternativas.length;
 
     quiz.classList.add('flex-column');
 
-    //Monta a questão
+    var divNum = document.createElement('div');
+    var h3 = document.createElement('h3');
+    let text = 'Questão ' + (pos + 1) + ' de ' + total
+    var node = document.createTextNode(text);
+	h3.appendChild(node);
+	
+	divNum.className = 'questoes';
+	divNum.appendChild(h3);
+
+    quiz.appendChild(divNum);
 
     //adiciona titulo
     var title = document.createElement('h3');

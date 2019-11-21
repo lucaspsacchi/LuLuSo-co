@@ -37,13 +37,14 @@ mountQuiz = () => {
   const index = dados.map(x => x.id_video).indexOf(data.id);
 
   let q = dados[index].questoes[atual];
+  let total = dados[index].questoes.length;
 
   if (q.modelo === 'sequencia')
-    mountSequencia(q);
+    mountSequencia(q, atual, total);
   else if (q.modelo === 'alternativa')
-    mountAlternativa(q);
+    mountAlternativa(q, atual, total);
   else if (q.modelo === 'pares')
-    mountToquePares(q);
+    mountToquePares(q, atual, total);
 
 
   let confirmar = document.getElementById('confirmar');
@@ -139,15 +140,15 @@ function checarRespostaAlternativa(alt) {
 // Alerta de resposta certa
 function alertResposta(flag) {
   if (aux_alert) {
-    console.log(data)
+    // Monta a url para o retorno
     url_redirecionamento = url_redirecionamento + data.id
     for (i = 0, j = 0; i < dados_flag.length; i++, j++) {
-      console.log(j)
       id = '&id' + j
-      flag = '&flag' + j
+      flagj = '&flag' + j
       url_redirecionamento = url_redirecionamento + id + '=' + dados_flag[i]['value'] // Id pergunta
-      url_redirecionamento = url_redirecionamento + flag + '=' + dados_flag[++i]['value'] // Valor da flag
+      url_redirecionamento = url_redirecionamento + flagj + '=' + dados_flag[++i]['value'] // Valor da flag
     }
+    
     if (flag) {
       Swal.fire({
         imageUrl: 'img/vovoCorreto.png',
@@ -162,7 +163,7 @@ function alertResposta(flag) {
           imageUrl: 'img/vovoConcluido.png',
           imageWidth: 300,
           imageHeight: 300,
-          imageAlt: 'Incorreto',
+          imageAlt: 'Correto',
           animation: false,
           confirmButtonColor: '#3e9b8a',
           confirmButtonText: 'Voltar'
@@ -199,7 +200,7 @@ function alertResposta(flag) {
       })      
     }
   }
-  else if (flag == true) {
+  else if (flag) {
     Swal.fire({
       imageUrl: 'img/vovoCorreto.png',
       imageWidth: 300,

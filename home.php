@@ -66,18 +66,18 @@
 
 <!-- Alerts -->
 <?php
-if (isset($alertDesceuNivel) && $alertDesceuNivel != -1) {
+if (isset($alertDesceuNivel) && $alertDesceuNivel > 0) {
   // Exibe o alerta
   ?>
   <script>
     document.addEventListener("DOMContentLoaded", function(event) {
       Swal.fire({
-        title: 'Sweet!',
-        text: 'Modal with a custom image.',
-        imageUrl: 'https://unsplash.it/400/200',
-        imageWidth: 400,
-        imageHeight: 200,
-        imageAlt: 'Custom image',
+        title: 'Parabéns!',
+        text: 'Você atingiu o Nivel <?=$niveis[$alertDesceuNivel]?>!',
+        imageUrl: 'img/<?=$alertDesceuNivel?>.png',
+        imageWidth: 250,
+        imageHeight: 250,
+        imageAlt: '<?=$niveis[$alertDesceuNivel]?>',
       })
      }); 
   </script>

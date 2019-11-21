@@ -26,7 +26,10 @@
 
 			$i = $i + 1;
 			$str = 'id' . $i;
-			if (!isset($_GET[$str])) {
+			if (isset($_GET[$str])) {
+				$flag = 1;
+			}
+			else {
 				$flag = 0;
 			}
 		}
@@ -93,18 +96,18 @@
 
 <!-- Alerts -->
 <?php
-if (isset($alertSubiuNivel) && $alertSubiuNivel != -1) {
+if (isset($alertSubiuNivel) && $alertSubiuNivel > 0) {
 	// Exibe o alerta
   ?>
   <script>
     document.addEventListener("DOMContentLoaded", function(event) {
       Swal.fire({
-        title: 'Sweet!',
-        text: 'Modal with a custom image.',
-        imageUrl: 'https://unsplash.it/400/200',
-        imageWidth: 400,
-        imageHeight: 200,
-        imageAlt: 'Custom image',
+        title: 'Parabéns!',
+        text: 'Você atingiu o Nivel <?=$niveis[$alertSubiuNivel]?>!',
+        imageUrl: 'img/<?=$alertSubiuNivel?>.png',
+        imageWidth: 250,
+        imageHeight: 250,
+        imageAlt: '<?=$niveis[$alertSubiuNivel]?>',
       })
      }); 
   </script>
