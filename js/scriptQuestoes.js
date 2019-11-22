@@ -157,7 +157,8 @@ function alertResposta(flag) {
         imageAlt: 'Correto',
         animation: false,
         confirmButtonColor: '#3e9b8a',
-        confirmButtonText: 'Continuar'
+        confirmButtonText: 'Continuar',
+        allowOutsideClick: false
       }).then((result) => {
         Swal.fire({
           imageUrl: 'img/vovoConcluido.png',
@@ -166,7 +167,8 @@ function alertResposta(flag) {
           imageAlt: 'Correto',
           animation: false,
           confirmButtonColor: '#3e9b8a',
-          confirmButtonText: 'Voltar'
+          confirmButtonText: 'Voltar',
+          allowOutsideClick: false
         }).then((result) => {
           if (result.value) {
             window.location.href = url_redirecionamento
@@ -182,7 +184,8 @@ function alertResposta(flag) {
         imageAlt: 'Incorreto',
         animation: false,
         confirmButtonColor: '#3e9b8a',
-        confirmButtonText: 'Continuar'
+        confirmButtonText: 'Continuar',
+        allowOutsideClick: false
       }).then((result) => {
         Swal.fire({
           imageUrl: 'img/vovoConcluido.png',
@@ -191,7 +194,8 @@ function alertResposta(flag) {
           imageAlt: 'Incorreto',
           animation: false,
           confirmButtonColor: '#3e9b8a',
-          confirmButtonText: 'Voltar'
+          confirmButtonText: 'Voltar',
+          allowOutsideClick: false
         }).then((result) => {
           if (result.value) {
             window.location.href = url_redirecionamento
@@ -208,7 +212,8 @@ function alertResposta(flag) {
       imageAlt: 'Correto',
       animation: false,
       confirmButtonColor: '#3e9b8a',
-      confirmButtonText: 'Continuar'
+      confirmButtonText: 'Continuar',
+      allowOutsideClick: false
     })
   }
   else {
@@ -219,7 +224,8 @@ function alertResposta(flag) {
       imageAlt: 'Incorreto',
       animation: false,
       confirmButtonColor: '#3e9b8a',
-      confirmButtonText: 'Continuar'
+      confirmButtonText: 'Continuar',
+      allowOutsideClick: false
     })
   }
 }

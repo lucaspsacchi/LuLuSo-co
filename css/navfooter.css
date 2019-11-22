@@ -29,6 +29,7 @@ a.nav-link, a.dropdown-item {
 }
 
 .navbar-custom {
+    width: auto;
     padding-top: 0px;
     padding-bottom: 0px;
     background-color: #3e9b8a;
@@ -46,6 +47,10 @@ a.nav-link, a.dropdown-item {
 @media screen and (max-width: 991px) {
     .hv {
         border-right: 1px hidden white;
+    }
+    .nav-item {
+        margin-top: 0.4rem !important;
+        margin-bottom: 0.4rem !important;
     }
 }
 

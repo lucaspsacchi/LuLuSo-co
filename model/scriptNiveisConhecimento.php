@@ -34,7 +34,7 @@
   }
 
   // Busca pelo nivel de conhecimento da pessoa
-  $scriptPessoa = "SELECT nivel_conhecimento AS nivel
+  $scriptPessoa = "SELECT nivel_conhecimento AS nivel, flag_login
             FROM pessoa
             WHERE id = " . $_SESSION['id_usuario'];
   $resultPessoa = mysqli_query($conn, $scriptPessoa);
@@ -48,5 +48,10 @@
   else if ($novoNivel < $rowPessoa['nivel']) {
     // Caiu o nível
     $alertDesceuNivel = $novoNivel;
+  }
+
+  // Flag para perguntas novas no bd
+  if ($rowPessoa['flag_login']) {
+    $alertNovasPerguntas = 1;
   }
 ?>

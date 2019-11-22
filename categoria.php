@@ -103,11 +103,12 @@ if (isset($alertSubiuNivel) && $alertSubiuNivel > 0) {
     document.addEventListener("DOMContentLoaded", function(event) {
       Swal.fire({
         title: 'Parabéns!',
-        text: 'Você atingiu o Nivel <?=$niveis[$alertSubiuNivel]?>!',
+        text: 'Você atingiu o Nível <?=$niveis[$alertSubiuNivel]?>!',
         imageUrl: 'img/<?=$alertSubiuNivel?>.png',
         imageWidth: 250,
         imageHeight: 250,
         imageAlt: '<?=$niveis[$alertSubiuNivel]?>',
+        allowOutsideClick: false
       })
      }); 
   </script>

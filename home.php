@@ -78,12 +78,33 @@ if (isset($alertDesceuNivel) && $alertDesceuNivel > 0) {
         imageWidth: 250,
         imageHeight: 250,
         imageAlt: '<?=$niveis[$alertDesceuNivel]?>',
+        allowOutsideClick: false
       })
      }); 
   </script>
 	<?php
 	$script = "UPDATE pessoa
 						SET nivel_conhecimento = '".$alertDesceuNivel."'
+						WHERE id =  '".$_SESSION['id_usuario']."';";
+	mysqli_query($conn, $script);
+}
+
+
+if (isset($alertNovasPerguntas) && $alertNovasPerguntas) {
+  // Exibe o alerta
+  ?>
+  <script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      Swal.fire({
+        title: 'Existem novas questões para serem respondidas!',
+        icon: 'info',
+        allowOutsideClick: false
+      })
+     }); 
+  </script>
+	<?php
+	$script = "UPDATE pessoa
+						SET flag_login = 0
 						WHERE id =  '".$_SESSION['id_usuario']."';";
 	mysqli_query($conn, $script);
 }

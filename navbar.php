@@ -1,3 +1,10 @@
+<?php
+    $script = "SELECT id, nome
+                FROM categoria
+                ORDER BY nome ASC";
+    $navbar = mysqli_query($conn, $script);
+?>
+
 <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
     <a class="navbar-brand" href="home.php">
         <div class="logo">
@@ -12,10 +19,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link na" href="home.php">INÍCIO<span class="sr-only">(current)</span></a>
+                <a class="nav-link na hv" href="home.php">INÍCIO<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="#">COMO USAR ESTE APP?<span class="sr-only">(current)</span></a>
+                <a class="nav-link hv" href="#">COMO USAR ESTE APP?<span class="sr-only">(current)</span></a>
             </li>
 
             <li class="nav-item dropdown">
@@ -23,11 +30,17 @@
                     APRENDA SOBRE...
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="categoria.php?cat=">Facebook</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="categoria.php?cat=">WhatsApp</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="categoria.php?cat=">Instagram</a>
+                <?php
+                    $i = 0;
+                    while ($row = $navbar->fetch_assoc()) {
+                        if ($i) {
+                            echo '<div class="dropdown-divider"></div>';
+                        }?>
+                        <a class="dropdown-item" href="categoria.php?cat=<?=$row['id']?>"><?=$row['nome']?></a>
+                        <?php
+                        $i = $i + 1;
+                    }
+                ?>
                 </div>
             </li>
         </ul>
