@@ -2,6 +2,7 @@
 	session_start();
 	$_SESSION['ultima_cat'] = $_GET['cat'];
 	include('connection/conn.php');
+	include('verSession.php');
 	include('niveisConhecimento.php');
 	include('model/scriptNiveisConhecimento.php');
 
@@ -54,30 +55,36 @@
 	<!-- Navbar -->
 	<?php include('navbar.php'); ?>
 
-	<div class="col-12 col-md-12 col-sm-12">
-  	<div id="videos" class="row row-custom">
+	<div class="col-12 col-md-12 col-lg-12">
+		<div class="row row-custom" style="margin-left: 15px;">
+			<h4 style="margin-bottom: 0px;">APRENDA SOBRE: <?php $rowCat = $resultCat->fetch_assoc(); echo $rowCat['nome']; ?></h4>
+		</div>
+		<hr style="margin-bottom: 30px; width: 97%;">
+	</div>
+	<div class="col-12 col-md-12 col-sm-12 row d-flex justify-content-center" style="width: 100%; padding: 0px; margin: 0px;">
 		<?php
       if ($result) {
         while ($video = $result->fetch_assoc()) {
 					// Preparar a imagem
 					$img = 'http://img.youtube.com/vi/' . $video['id_video'] . '/maxresdefault.jpg'
           ?>
-					<div class="col-lg-4 col-md-6 col-sm-12 col-12 d-flex justify-content-center div-cat">
-						<div class="card card-custom card-cat shadow-sm">
-							<a href="modeloPergunta.php?id=<?= $video['id_video'] ?>">
-								<div class="imagem-categoria d-flex align-content-end flex-wrap" style="background-image: linear-gradient(transparent, transparent, rgb(0, 0, 0)), url(<?= $img ?>); background-size: cover;">
-									<div class="titulo">
-										<?= $video['nome'] ?>
+					<div class="col-12 col-md-6 col-lg-4 div-cat">
+						<center>
+							<div id="videos" class="card card-custom card-cat shadow-sm">
+								<a href="modeloPergunta.php?id=<?= $video['id_video'] ?>">
+									<div class="imagem-categoria d-flex align-content-end flex-wrap" style="background-image: linear-gradient(transparent, transparent, rgb(0, 0, 0)), url(<?= $img ?>); background-size: cover;">
+										<div class="titulo">
+											<?= $video['nome'] ?>
+										</div>
 									</div>
-								</div>
-							</a>
-						</div>
+								</a>
+							</div>
+						</center>
 					</div>
 				<?php 
 				}
 			}
 		?>
-		</div>
 	</div>
 	</body>
 </html>

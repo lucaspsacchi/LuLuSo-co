@@ -5,10 +5,12 @@
   $alertDesceuNivel = -1;
 
   // Busca pela porcentagem
-  $scriptNivel = "SELECT ((t1.certas / t1.total) * 100) AS porc
-            FROM 
-              (SELECT COUNT(p.id) AS total, SUM(CASE WHEN pp.flag = 1 AND pp.id_pessoa = '".$_SESSION['id_usuario']."' THEN 1 ELSE 0 END) AS certas
-              FROM `pergunta` AS p LEFT JOIN `pergunta_pessoa` AS pp ON (p.id = pp.id_pergunta)) AS t1;";
+  // $scriptNivel = "SELECT ((t1.certas / t1.total) * 100) AS porc
+  //           FROM 
+  //             (SELECT COUNT(p.id) AS total, SUM(CASE WHEN pp.flag = 1 AND pp.id_pessoa = '".$_SESSION['id_usuario']."' THEN 1 ELSE 0 END) AS certas
+  //             FROM `pergunta` AS p LEFT JOIN `pergunta_pessoa` AS pp ON (p.id = pp.id_pergunta)) AS t1;";
+  $scriptNivel = "SELECT (SUM(CASE WHEN pp.flag = 1 AND pp.id_pessoa = '".$_SESSION['id_usuario']."' THEN 1 ELSE 0 END) / COUNT(p.id)) * 100 AS porc 
+                  FROM `pergunta` AS p LEFT JOIN `pergunta_pessoa` AS pp ON (p.id = pp.id_pergunta)";
 
   $resultNivel = mysqli_query($conn, $scriptNivel);
 

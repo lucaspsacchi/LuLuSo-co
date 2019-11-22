@@ -1,6 +1,7 @@
 <?php
   session_start();
   include('connection/conn.php');
+  include('verSession.php');
   include('model/scriptHome.php');
   include('niveisConhecimento.php');
   include('model/scriptNiveisConhecimento.php');

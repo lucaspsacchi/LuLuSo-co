@@ -1,8 +1,8 @@
 <?php
     session_start();
     include('connection/conn.php');
+    include('verSession.php');
     include('model/scriptQuestoes.php');
-
 ?>
 <!DOCTYPE html>
 <html>

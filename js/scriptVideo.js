@@ -25,10 +25,7 @@ function onPlayerStateChange(event) {
     var player = document.getElementById('player');
 
     console.log(event.data);
-    if (event.data === 0) {
-        showMensagem();
-    }
-    else if(event.data === 2 || event.data === 0){
+    if(event.data === 2 || event.data === 0){
         player.style.height = '200px';
         showMensagem();
     }else if(event.data === 1){

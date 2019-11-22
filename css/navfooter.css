@@ -3,9 +3,10 @@ nav {
     color: white;
 }
 
-a.nav-link, a.dropdown-item {
+a.nav-link, a.dropdown-item, button.nav-link, button.dropdown-item {
     color: white !important;
 }
+
 
 .dropdown-menu {
     background-color: #3e9b8a;
