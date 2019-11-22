@@ -125,13 +125,14 @@ function mountSequencia(dados, pos, total) {
 	nAlternativas = dados.alternativas.length
 
 	var divNum = document.createElement('div');
-	var h3 = document.createElement('h3');
+	var h4 = document.createElement('h4');
 	let text = 'Questão ' + (pos + 1) + ' de ' + total
 	var node = document.createTextNode(text);
-	h3.appendChild(node);
-
+	h4.appendChild(node);
+	h4.className = 'h4Questoes'
+	
 	divNum.className = 'questoes';
-	divNum.appendChild(h3);
+	divNum.appendChild(h4);
 
 	quiz.appendChild(divNum);
 
@@ -144,7 +145,7 @@ function mountSequencia(dados, pos, total) {
 
 	//adiciona titulo
 	var div = document.createElement('div');
-	var title = document.createElement('h3');
+	var title = document.createElement('h4');
 	var node = document.createTextNode(dados.pergunta);
 	title.appendChild(node);
 	

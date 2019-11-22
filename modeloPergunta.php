@@ -25,10 +25,15 @@
           <div id="player" class="video d-flex justify-content-center"></div>
       </div>
       <div class="col-12 col-sm-12">
-          <div id='quiz' class="question shadow h-100 justify-content-center align-items-center p-5 d-none">
+          <div id='quiz' class="question shadow h-100 justify-content-center align-items-center p-4 d-none">
               <div id='conteudo' class="block justify-content-center">
-                  <h2>Vamos praticar o que você aprendeu?</h2>
-                  <button id="botao" class="btn btn-outline-success mt-4 font-weight-bold" onclick="mountQuiz()">Vamos!</button>
+                  <h4>Vamos praticar o que você aprendeu?</h4>
+                  <div class="d-flex justify-content-center">
+                      <img class="vovoQuiz" src="img/vovoConcluido.png" alt="vovó">
+                  </div>
+                  <div class="d-flex justify-content-end">
+                    <button id="botao" class="btn btn-success mt-4 font-weight-bold" onclick="mountQuiz()">Vamos</button>
+                  </div>
               </div>
           </div>
       </div>
