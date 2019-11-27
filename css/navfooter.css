@@ -7,6 +7,11 @@ a.nav-link, a.dropdown-item, button.nav-link, button.dropdown-item {
     color: white !important;
 }
 
+button.nav-link {
+    background-color: #3e9b8a !important;
+    border: none;
+    outline: none;
+}
 
 .dropdown-menu {
     background-color: #3e9b8a;

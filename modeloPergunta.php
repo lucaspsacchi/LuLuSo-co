@@ -27,12 +27,24 @@
       <div class="col-12 col-sm-12">
           <div id='quiz' class="question shadow h-100 justify-content-center align-items-center p-4 d-none">
               <div id='conteudo' class="block justify-content-center">
-                  <h4>Vamos praticar o que você aprendeu?</h4>
-                  <div class="d-flex justify-content-center">
-                      <img class="vovoQuiz" src="img/vovoConcluido.png" alt="vovó">
-                  </div>
-                  <div class="d-flex justify-content-end">
-                    <button id="botao" class="btn btn-success mt-4 font-weight-bold" onclick="mountQuiz()">Vamos</button>
+                  <?php 
+                    if ($dados[0]) {?>
+                        <h4>Vamos praticar o que você aprendeu?</h4>
+                        <div class="d-flex justify-content-center">
+                            <img class="vovoQuiz" src="img/vovoResponda.png" alt="vovoResponda">
+                        </div>
+                        <div class="d-flex justify-content-end">
+                        <button id="botao" class="btn btn-success mt-4 font-weight-bold" onclick="mountQuiz()">Vamos</button>
+                    <?php
+                    }
+                    else { ?>
+                        <h4>Parabéns, você já acertou todas as questões desse vídeo!</h4>
+                        <div class="d-flex justify-content-center">
+                            <img class="vovoQuiz" src="img/vovoRespondida.png" alt="vovoRespondida">
+                        </div>         
+                    <?php
+                    }
+                  ?>
                   </div>
               </div>
           </div>
@@ -42,7 +54,7 @@
 <!-- Converte os dados recebidos do bd para json em js -->
 <script>
     dados = <?= json_encode($dados) ?> 
-    url_redirecionamento = 'categoria?cat=' + <?= $_SESSION['ultima_cat'] ?> + '&id_video='
+    url_redirecionamento = 'categoria.php?cat=' + <?= $_SESSION['ultima_cat'] ?> + '&id_video='
     
     function submitPergunta() {
         return false;
@@ -55,7 +67,13 @@
 <script type="text/javascript" src="js/scriptToquePares.js"></script>
 <script type="text/javascript" src="js/scriptQuestoes.js"></script>
 <script type="text/javascript" src="js/scriptVideo.js"></script>
-<!-- <script type="text/javascript" src="js/dadosQuestoes.js"></script> -->
+
+<!-- Help Animado -->
+<script>
+    function alertVideo() {
+        <?php include('helpAnimado/helpVideo.php'); ?>
+    }
+</script>
 
 <!-- Import do sweet alert -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>

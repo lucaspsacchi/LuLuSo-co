@@ -1,12 +1,8 @@
 <?php
-  // $servername = "localhost";
-  // $username = "vovotec";
-  // $password = "12344321";
-  // $database = "vovotecBD";
   $servername = "localhost";
-  $username = "root";
-  $password = "mysql";
-  $database = "vovotec";
+  $username = "vovotec";
+  $password = "12344321";
+  $database = "vovotecBD";
 
   // Cria a conexão
   $conn = new mysqli($servername, $username, $password, $database);

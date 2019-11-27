@@ -39,6 +39,7 @@ function onPlayerStateChange(event) {
 function showMensagem() {
     var quiz = document.getElementById('quiz');
     quiz.classList.remove('d-none');
+    alertVideo()
 }
 
 
@@ -46,3 +47,4 @@ function hideMensagem() {
     var quiz = document.getElementById('quiz');
     quiz.classList.add('d-none');
 }
+

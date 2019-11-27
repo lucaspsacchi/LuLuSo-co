@@ -1,21 +1,18 @@
 <?php
   $id = $_GET['id'];
 
-
   $sql = "SELECT p.id, p.id_video, p.id_cat, p.modelo, p.pergunta
   FROM pergunta AS p LEFT JOIN pergunta_pessoa AS pp ON (p.id = pp.id_pergunta)
-  WHERE p.id_video = ? AND (pp.flag = 0 OR pp.flag IS NULL)";
+  WHERE p.id_video = '".$id."' AND (pp.flag = 0 OR pp.flag IS NULL)";
 
-  $stmt = $conn->prepare($sql);
-  $stmt->bind_param('s', $id);
-  $stmt->execute();
-  $result = $stmt->get_result();
+  $result = mysqli_query($conn, $sql);
   
   $dados = [];
+  $dado = [];
 
   while ($row = $result->fetch_assoc()) {
     // Cria um novo id_video caso não existir
-    if (!$dado['id_video']) {
+    if (!isset($dado['id_video'])) {
       $dado['id_video'] = $row['id_video'];
       $dado['questoes'] = [];
     }
@@ -29,12 +26,9 @@
       // Procura as alternativas da questão
       $sql = "SELECT texto, posicao
       FROM modelo_sequencia
-      WHERE id_pergunta = ?";
+      WHERE id_pergunta = '".$row['id']."'";
 
-      $stmt_seq = $conn->prepare($sql);
-      $stmt_seq->bind_param('i', $row['id']);
-      $stmt_seq->execute();
-      $result_seq = $stmt_seq->get_result();
+      $result_seq = mysqli_query($conn, $sql);
 
       $aux['alternativas'] = [];
       while ($row_seq = $result_seq->fetch_assoc()) {
@@ -53,12 +47,9 @@
       // Procura as alternativas da questão
       $sql = "SELECT img1, resposta1, img2, resposta2, img3, resposta3, img4, resposta4
       FROM modelo_alternativa
-      WHERE id_pergunta = ?";
+      WHERE id_pergunta = '".$row['id']."'";
 
-      $stmt_alt = $conn->prepare($sql);
-      $stmt_alt->bind_param('i', $row['id']);
-      $stmt_alt->execute();
-      $result_alt = $stmt_alt->get_result();
+      $result_alt = mysqli_query($conn, $sql);
 
       $aux['alternativas'] = [];
       $row_alt = $result_alt->fetch_assoc();
@@ -90,12 +81,9 @@
       // Procura as alternativas da questão
       $sql = "SELECT texto, resposta
       FROM modelo_pares
-      WHERE id_pergunta = ?";
+      WHERE id_pergunta = '".$row['id']."'";
 
-      $stmt_pares = $conn->prepare($sql);
-      $stmt_pares->bind_param('i', $row['id']);
-      $stmt_pares->execute();
-      $result_pares = $stmt_pares->get_result();
+      $result_pares = mysqli_query($conn, $sql);
 
       $aux['alternativas'] = [];
       while ($row_pares = $result_pares->fetch_assoc()) {

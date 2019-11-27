@@ -45,9 +45,18 @@
     </div>
     <div class="col-12 col-md-6 col-lg-4">
       <center>
-        <h4 id="h4Text"><?= $niveis[$rowConta['nc']] ?></h4>
+        <?php
+          if ($rowConta['nc'] == 0) {
+            $texto = 'Arrumar a mensagem';
+          }
+          else {
+            $texto = 'Parabéns, você está no nível ' . $rowConta['nc'] . ' de ' . (count($niveis) - 1) . '!';
+          }
+        ?>
         <img class="imgNivel" src="img/<?= $rowConta['nc'] ?>.png" alt="<?= $niveis[$rowConta['nc']] ?>">
-        <h5 id="h4Text">Parabéns, você está no nível <?= $rowConta['nc'] ?> de <?= (count($niveis) - 1) ?>!</h5>
+        <h4 id="h4Text" style='font-weight:bold;'><?= $niveis[$rowConta['nc']] ?></h4>
+        <!-- <h5 id="h4Text">Parabéns, você está no nível <?= $rowConta['nc'] ?> de <?= (count($niveis) - 1) ?>!</h5> -->
+        <h5 id="h4Text"><?= $texto ?></h5>
       </center>
     </div>
 
@@ -78,7 +87,7 @@
       </center>
     </div>
 
-    <!-- <div class="col-12 col-md-12 col-lg-12 divMargem">
+    <div class="col-12 col-md-12 col-lg-12 divMargem">
       <div class="apagarConta">
         <h4 class="h4Title">Configuração da Conta</h4>
 	  	  <hr class="hrTitle">
@@ -86,13 +95,29 @@
           <button type="button" class="btn btn-danger btn-apagar" onclick="confApagar()">Apagar Conta</button>
         </div>
       </div>
-    </div> -->
+    </div>
   </div>
 <br>
 </body>
 </html>
 
-
+<script>
+function confApagar() {
+  Swal.fire({
+    title: 'Tem certeza que quer apagar?',
+    text: "Deletando sua conta todo o seu progresso será perdido",
+    icon: 'warning',
+    showCancelButton: true,
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Deletar',
+    reverseButtons: true
+  }).then((result) => {
+    if (result.value) {
+      window.location.href = 'apagarConta.php'
+    }
+  })
+}
+</script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 

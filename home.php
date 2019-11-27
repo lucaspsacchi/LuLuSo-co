@@ -5,6 +5,11 @@
   include('model/scriptHome.php');
   include('niveisConhecimento.php');
   include('model/scriptNiveisConhecimento.php');
+  // Flag do help animado
+  if (isset($_GET['help']) && $_GET['help'] == 1) {
+    $_SESSION['alertPrimeiroLogin'] = 1;
+  }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -33,7 +38,7 @@
         while ($categoria = $result->fetch_assoc()) {
           ?>
           <div class="col-lg-4 col-md-6 col-sm-12 col-12" id="0">
-            <a href=<?= 'categoria?cat='.$categoria['id_cat'] ?>>
+            <a href=<?= 'categoria.php?cat='.$categoria['id_cat'] ?>>
               <div class="card card-custom shadow-sm">
                 <div class="card-body card-body-custom">
                   <div class="row row-custom">
@@ -65,9 +70,13 @@
 <!-- Sweet Alert -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
+<!-- Help Animado -->
+<?php include('helpAnimado/helpHome.php'); ?>
+
+
 <!-- Alerts -->
 <?php
-if (isset($alertDesceuNivel) && $alertDesceuNivel > 0) {
+if (isset($alertDesceuNivel) && $alertDesceuNivel > 0 && !isset($_SESSION['alertPrimeiroLogin']) && $_SESSION['alertPrimeiroLogin'] = -1) {
   // Exibe o alerta
   ?>
   <script>
@@ -105,7 +114,7 @@ if (isset($alertNovasPerguntas) && $alertNovasPerguntas) {
   </script>
 	<?php
 	$script = "UPDATE pessoa
-						SET flag_login = 0
+						SET flag_perguntas = 0
 						WHERE id =  '".$_SESSION['id_usuario']."';";
 	mysqli_query($conn, $script);
 }

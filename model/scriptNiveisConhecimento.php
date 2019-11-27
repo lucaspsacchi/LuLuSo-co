@@ -3,6 +3,7 @@
   $novoNivel = 0;
   $alertSubiuNivel = -1;
   $alertDesceuNivel = -1;
+  $alertPrimeiroLogin = -1;
 
   // Busca pela porcentagem
   // $scriptNivel = "SELECT ((t1.certas / t1.total) * 100) AS porc
@@ -36,7 +37,7 @@
   }
 
   // Busca pelo nivel de conhecimento da pessoa
-  $scriptPessoa = "SELECT nivel_conhecimento AS nivel, flag_login
+  $scriptPessoa = "SELECT nivel_conhecimento AS nivel, flag_perguntas, flag_login
             FROM pessoa
             WHERE id = " . $_SESSION['id_usuario'];
   $resultPessoa = mysqli_query($conn, $scriptPessoa);
@@ -53,7 +54,11 @@
   }
 
   // Flag para perguntas novas no bd
-  if ($rowPessoa['flag_login']) {
+  if ($rowPessoa['flag_perguntas']) {
     $alertNovasPerguntas = 1;
+  }
+  // Flag para primeiro login
+  if ($rowPessoa['flag_login']) {
+    $_SESSION['alertPrimeiroLogin'] = 1;
   }
 ?>

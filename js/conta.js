@@ -1,5 +1,11 @@
 valores = []
 
+if (dados['respondidas'] == 0) {
+  valores['correto'] = 0.00;
+  valores['incorreto'] = 0.00;
+  valores['respondidas'] = 0.00;
+}
+else {
 // Correto
 aux  = dados['correto'] / dados['respondidas']
 valores['correto'] = parseFloat(aux.toFixed(2))
@@ -11,6 +17,7 @@ valores['incorreto'] = parseFloat(aux.toFixed(2))
 // Total
 aux  = dados['respondidas'] / dados['total']
 valores['respondidas'] = parseFloat(aux.toFixed(2))
+}
 
 // Níveis escritos
 var msgNiveis
