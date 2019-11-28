@@ -58,6 +58,10 @@ button.nav-link {
         margin-top: 0.4rem !important;
         margin-bottom: 0.4rem !important;
     }
+    .nav-link {
+        padding: 0px;
+        margin-left: 12px;
+    }
 }
 
 li {

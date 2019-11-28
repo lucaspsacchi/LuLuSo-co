@@ -7,11 +7,11 @@ if (dados['respondidas'] == 0) {
 }
 else {
 // Correto
-aux  = dados['correto'] / dados['respondidas']
+aux  = dados['correto'] / dados['total']
 valores['correto'] = parseFloat(aux.toFixed(2))
 
 // Incorreto
-aux  = dados['incorreto'] / dados['respondidas']
+aux  = dados['incorreto'] / dados['total']
 valores['incorreto'] = parseFloat(aux.toFixed(2))
 
 // Total

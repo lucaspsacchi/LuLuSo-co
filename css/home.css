@@ -103,3 +103,8 @@ a {
         height: 140px;
     }
 }
+
+.titulo {
+    position: absolute;
+    bottom: 10px;
+}

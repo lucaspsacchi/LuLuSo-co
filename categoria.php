@@ -66,7 +66,7 @@
       if ($result) {
         while ($video = $result->fetch_assoc()) {
 					// Preparar a imagem
-					$img = 'http://img.youtube.com/vi/' . $video['id_video'] . '/maxresdefault.jpg'
+					$img = 'http://img.youtube.com/vi/' . $video['id_video'] . '/maxresdefault.jpg';
           ?>
 					<div class="col-12 col-md-6 col-lg-4 div-cat">
 						<center>
@@ -113,8 +113,8 @@ if (isset($alertSubiuNivel) && $alertSubiuNivel > 0) {
         title: 'Parabéns!',
         text: 'Você atingiu o Nível <?=$niveis[$alertSubiuNivel]?>!',
         imageUrl: 'img/<?=$alertSubiuNivel?>.png',
-        imageWidth: 250,
-        imageHeight: 250,
+        imageWidth: 175,
+        imageHeight: 175,
         imageAlt: '<?=$niveis[$alertSubiuNivel]?>',
         allowOutsideClick: false
       })

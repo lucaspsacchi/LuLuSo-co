@@ -14,4 +14,5 @@
   mysqli_query($conn, $usu);
 
   header('Location: login.php');
+  
 ?>

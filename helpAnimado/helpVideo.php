@@ -7,6 +7,8 @@
         imageHeight: 150,
         imageAlt: 'Help3',
         confirmButtonText: 'Ok',
+        confirmButtonColor: '#3e9b8a',
+        allowOutsideClick: false,
         text: 'Após ver o vídeo, responda às questões e acumule pontos!'
       })
   <?php

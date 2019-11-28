@@ -9,22 +9,14 @@
   ON (va.id_video = t1.id_video) 
   WHERE va.id_cat = '".$cat."'
   HAVING porc <= 1 
-  ORDER BY porc DESC, va.nome ASC 
+  ORDER BY porc ASC, va.nome ASC 
   ";
 
-  // $stmt = $conn->prepare($sql);
-  // $stmt->bind_param('iii', $_SESSION['id_usuario'], $cat, $cat);
-  // $stmt->execute();
-  // $result = $stmt->get_result();
   $result = mysqli_query($conn, $sql);
 
   $sqlCat = "SELECT nome
   FROM categoria
   WHERE id = '".$cat."'";
 
-  // $stmt = $conn->prepare($sqlCat);
-  // $stmt->bind_param('i', $cat);
-  // $stmt->execute();
-  // $resultCat = $stmt->get_result();
   $resultCat = mysqli_query($conn, $sqlCat);
 ?>

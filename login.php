@@ -1,13 +1,13 @@
 <?php 
   session_start();
   include('connection/conn.php');
-  if(isset($_POST['inputusuario'])) {
+  if(isset($_POST['inputemail'])) {
     // Envia as credenciais para validar
-    $usuario = addslashes($_POST['inputusuario']);
+    $email = addslashes($_POST['inputemail']);
     $senhaMD5 = MD5(addslashes($_POST['inputsenha']));
     $script = "SELECT * 
               FROM pessoa 
-              WHERE usuario = '".$usuario."' AND senha = '".$senhaMD5."';";
+              WHERE email = '".$email."' AND senha = '".$senhaMD5."';";
     $result = $conn->query($script);
     if ($result->num_rows > 0) {
       $row = $result->fetch_object();
@@ -34,7 +34,7 @@
 		<link rel="shortcut icon" type="image/png" href="img/vovotecAba.png">		
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-		<link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/login.css"> 
     <!-- Import pelo Google -->
     <!-- <meta name="google-signin-scope" content="lucaspsacchi12345@gmail.com"> -->
     <meta name="google-signin-client_id" content="486981728748-8rr6973meeigpi0eebphodlg0l5539hf.apps.googleusercontent.com">
@@ -44,38 +44,70 @@
   <!-- SDK do Facebook -->
   <script src="js/sdk-face.js"></script>
 
-		<div class="col-12 col-md-12 col-sm-12" style="height: 100%;">
-    <br><br><br><br><br>
-			<div id="login" class="row row-custom d-flex justify-content-center">
-        <div class="card shadow">
-          <div class="card-body">
+		<div class="col-12 col-md-12 col-sm-12">
+			<div id="login" class="login">
+        <div id="card" class="card shadow row row-custom">
+          <div id="card-body"  class="card-body">
+            <nav class="navbar nav-login" style="width:100%; height: 0px;">
+              <div id="nav-item" class="d-flex justify-content-start nav-dir">
+                <div id="hide" class="">
+                  <h4 class="nav-text">Entrar na Conta</h4>
+                </div>
+              </div>
+
+              <div id="hide" class="d-flex justify-content-end nav-esq">
+                <div class="logo">
+                  <img class="img-responsive" src="img/vovoTecLogo.png">
+                </div>								
+              </div>														
+            </nav>
+                        
             <form action="#" method="post">
+              <!-- Faceboox e Google -->
               <div class="form-group">
-                <span>Usuário <span style="color: red;">*</span></span>
+                <center>
+                  <span>Entre com</span>
+                </center>
+              </div>
+              <div class="form-group form-custom">
+                <center>
+                  <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="false"></div>
+                  <!-- <fb:login-button 
+                    scope="public_profile,email"
+                    onlogin="checkLoginState();">
+                  </fb:login-button>-->
+
+                  <div class="g-signin2 btn-login" data-onsuccess="onSignIn" data-theme="dark"></div>
+                <center>
+              </div>
+
+              <div class="form-group">
+                <center><span>Ou acesse com</span></center>
+              </div>
+
+
+              <div class="form-group">
+                <span>Email</span>
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" name="inputusuario" required>
+                <input type="text" class="form-control" name="inputemail" required>
               </div>
               <div class="form-group">
-                <span>Senha <span style="color: red;">*</span></span>
+                <span>Senha</span>
               </div>
               <div class="form-group">
                 <input type="password" class="form-control" name="inputsenha" required>
               </div>
               <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-login">Entrar</button>
+                <button type="submit" class="btn btn-success btn-login">Entrar</button>
               </div>
-              <hr>
-              <div class="form-group form-custom">
-                <!-- <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="false"></div> -->
-                <!-- <fb:login-button 
-                  scope="public_profile,email"
-                  onlogin="checkLoginState();">
-                </fb:login-button>                        
+              <hr style="margin: 20px 30px;">
+              <div class="form-group">
+                <center>
+                  <span style="">Não possui conta? </span>&nbsp&nbsp
+                  <a class="btn btn-outline-success" href="cadastrar.php">Cadastre-se</a>
+                </center>
               </div>
-              <div class="form-group form-custom">
-                <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-              </div> -->
             </form>
           </div>
         </div>

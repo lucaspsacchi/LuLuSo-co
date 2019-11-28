@@ -140,6 +140,8 @@ function checarRespostaAlternativa(alt) {
 // Alerta de resposta certa
 function alertResposta(flag) {
   if (aux_alert) {
+    // Count
+    let count_flag = 0
     // Monta a url para o retorno
     url_redirecionamento = url_redirecionamento + data.id
     for (i = 0, j = 0; i < dados_flag.length; i++, j++) {
@@ -147,13 +149,20 @@ function alertResposta(flag) {
       flagj = '&flag' + j
       url_redirecionamento = url_redirecionamento + id + '=' + dados_flag[i]['value'] // Id pergunta
       url_redirecionamento = url_redirecionamento + flagj + '=' + dados_flag[++i]['value'] // Valor da flag
+      count_flag = (dados_flag[i]['value'] == 1) ? count_flag + 1 : count_flag
     }
     
+    // Texto do alerta
+    plural = ((dados_flag.length / 2) != 1) ? 'questões' : 'questão'
+    msg_flag = 'Você acertou ' + count_flag + ' de ' + (dados_flag.length / 2) + ' ' + plural +'!'
+    console.log(msg_flag)
+
+
     if (flag) {
       Swal.fire({
         imageUrl: 'img/vovoCorreto.png',
-        imageWidth: 300,
-        imageHeight: 300,
+        imageWidth: 250,
+        imageHeight: 250,
         imageAlt: 'Correto',
         animation: false,
         confirmButtonColor: '#3e9b8a',
@@ -161,13 +170,14 @@ function alertResposta(flag) {
         allowOutsideClick: false
       }).then((result) => {
         Swal.fire({
+          text: msg_flag,
           imageUrl: 'img/vovoConcluido.png',
-          imageWidth: 300,
-          imageHeight: 300,
+          imageWidth: 250,
+          imageHeight: 250,
           imageAlt: 'Correto',
           animation: false,
           confirmButtonColor: '#3e9b8a',
-          confirmButtonText: 'Voltar',
+          confirmButtonText: 'OK',
           allowOutsideClick: false
         }).then((result) => {
           if (result.value) {
@@ -179,8 +189,8 @@ function alertResposta(flag) {
     else {
       Swal.fire({
         imageUrl: 'img/vovoIncorreto.png',
-        imageWidth: 300,
-        imageHeight: 300,
+        imageWidth: 250,
+        imageHeight: 250,
         imageAlt: 'Incorreto',
         animation: false,
         confirmButtonColor: '#3e9b8a',
@@ -188,13 +198,14 @@ function alertResposta(flag) {
         allowOutsideClick: false
       }).then((result) => {
         Swal.fire({
+          text: msg_flag,
           imageUrl: 'img/vovoConcluido.png',
-          imageWidth: 300,
-          imageHeight: 300,
+          imageWidth: 250,
+          imageHeight: 250,
           imageAlt: 'Incorreto',
           animation: false,
           confirmButtonColor: '#3e9b8a',
-          confirmButtonText: 'Voltar',
+          confirmButtonText: 'OK',
           allowOutsideClick: false
         }).then((result) => {
           if (result.value) {
@@ -207,8 +218,8 @@ function alertResposta(flag) {
   else if (flag) {
     Swal.fire({
       imageUrl: 'img/vovoCorreto.png',
-      imageWidth: 300,
-      imageHeight: 300,
+      imageWidth: 250,
+      imageHeight: 250,
       imageAlt: 'Correto',
       animation: false,
       confirmButtonColor: '#3e9b8a',
@@ -219,8 +230,8 @@ function alertResposta(flag) {
   else {
     Swal.fire({
       imageUrl: 'img/vovoIncorreto.png',
-      imageWidth: 300,
-      imageHeight: 300,
+      imageWidth: 250,
+      imageHeight: 250,
       imageAlt: 'Incorreto',
       animation: false,
       confirmButtonColor: '#3e9b8a',

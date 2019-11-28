@@ -1,55 +1,109 @@
 <?php
 include('connection/conn.php');
+
+if (isset($_POST['salvar_dados'])) {
+	$email = $_POST['email'];
+	$senha1 = MD5(addslashes($_POST['senha1']));
+	$senha2 = MD5(addslashes($_POST['senha2']));
+
+	// Verificar se já existe aquele usuário no bd
+	$script = "SELECT * FROM pessoa WHERE usuario = '".$usuario."'";
+	$result = mysqli_query($conn, $script);
+
+	if ($result->num_rows == 0) { // Insere o novo usuário
+		$_SESSION['alert'] = 1;
+		$script = "INSERT INTO pessoa (email, senha, flag, flag_perguntas, flag_login, nivel_conhecimento)
+		VALUES ('".$email."', '".$senha1."', '0', '0', '1', '0')";
+		mysqli_query($conn, $script);
+		header('Location: login.php');
+	}
+	else { // Já existe o usuário
+		$_SESSION['alert'] = 1;
+		header('Location: cadastrar.php');
+	}
+}
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>VovoTec</title>
-    <meta name="author" content="">
-    <meta name="description" content="">
-    <link rel="shortcut icon" type="image/png" href="./img/vovoTecAba.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<meta charset="UTF-8">
+	<title>VovoTec</title>
+	<meta name="author" content="">
+	<meta name="description" content="">
+	<link rel="shortcut icon" type="image/png" href="./img/vovoTecAba.png">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">			
+	<link rel="stylesheet" href="css/login.css">
 </head>
 
 
 <body>
-<form action="<?= $url; ?>/cadastrar" method="POST" style="border:1px solid #ccc">
-    <div>
-        <h1>Cadastrar</h1>
-        <p>Por favor preencha este formulário para criar uma conta.</p>
-        <hr>
+		<div class="col-12 col-md-12 col-sm-12">	
+			<div id="login" class="login">
+        <div id="card" class="card shadow row row-custom">
+          <div id="card-body" class="card-body">
+						<nav class="navbar nav-login" style="width:100%;">
+							<div id="nav-item" class="d-flex justify-content-start nav-dir">
+								<a href="login.php"	style="color: white;">
+									<i class="material-icons">arrow_back</i>
+								</a>
+								<div id="hide" class="">
+									<h4 class="nav-text">Cadastrar</h4>
+								</div>
+							</div>
 
-        <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" name="email" required>
+							<div id="hide" class="d-flex justify-content-end nav-esq">
+								<div class="logo">
+									<img class="img-responsive" src="img/vovoTecLogo.png">
+								</div>								
+							</div>														
+						</nav>
 
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
-
-        <label for="psw-repeat"><b>Repeat Password</b></label>
-        <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
-
-        <div class="clearfix">
-            <button type="button">Cancelar</button>
-            <button type="submit">Cadastrar</button>
-        </div>
-    </div>
-</form>
+						<form action="#" method="POST" enctype="multipart/form-data" oninput='senha2.setCustomValidity(senha2.value != senha1.value ? "Senhas estão diferentes" : "")'>
+							<div class="form-group">
+								<span>Email</span>
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" name="email" id="email" required>
+							</div>		
+							<div class="form-group">
+								<span>Senha</span>
+							</div>
+							<div class="form-group">
+								<input type="password" class="form-control" minlength="5" name="senha1" id="senha1" required>
+							</div>		
+							<div class="form-group">
+								<span>Repita a Senha</span>
+							</div>
+							<div class="form-group">
+								<input type="password" class="form-control" minlength="5" name="senha2" id="senha2" required>
+							</div>			
+							<div class="form-group" style="margin-top: 30px;">
+								<button class="btn btn-success btn-login" name="salvar_dados">Salvar</button>
+							</div>
+							<!-- <hr>
+							<div class="form-group d-flex justify-content-center">
+								<span>Voltar para </span><a href="login.php">Entrar</a>
+							</div> -->
+						</form>               
+				</div> 
+			</div>
+		</div>
+	</div>
 </body>
 </html>
-<script src="jquery-3.4.1.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script type="text/javascript" src="./Views/js/dadosHome.js"></script>
-<script type="text/javascript" src="./Views/js/scriptHome.js"></script>
+
+
 <!-- Import das bibliotecas js do Bootstrap -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous"></script>

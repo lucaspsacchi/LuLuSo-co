@@ -7,7 +7,9 @@
         imageWidth: 150,
         imageHeight: 150,
         imageAlt: 'Help2',
-        confirmButtonText: 'Ok',
+        confirmButtonText: 'OK',
+        confirmButtonColor: '#3e9b8a',
+        allowOutsideClick: false,
         text: 'Depois de escolher o tema, clique no vídeo que deseja assistir!'
       })
     </script>
@@ -27,6 +29,8 @@
         imageHeight: 150,
         imageAlt: 'Help4',
         confirmButtonText: 'Avançar',
+        confirmButtonColor: '#3e9b8a',
+        allowOutsideClick: false,
         text: 'Para ver o seu progresso, clique em "MENU" e depois em "MINHA CONTA"!'
       }).then((result => {
           Swal.fire({
@@ -35,7 +39,9 @@
           imageWidth: 150,
           imageHeight: 150,
           imageAlt: 'Help5',
-          confirmButtonText: 'Ok',
+          confirmButtonText: 'OK',
+          confirmButtonColor: '#3e9b8a',
+          allowOutsideClick: false,
           text: 'Para rever essas mensagens, clique em "MENU" e depois em "COMO USAR ESTE APP"!'
         })
       }))

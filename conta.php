@@ -89,9 +89,10 @@
 
     <div class="col-12 col-md-12 col-lg-12 divMargem">
       <div class="apagarConta">
-        <h4 class="h4Title">Configuração da Conta</h4>
+        <h4 class="h4Title">Apagar Conta</h4>
 	  	  <hr class="hrTitle">
         <div class="divButton">
+          <h5>Deseja apagar a sua conta?</h5>
           <button type="button" class="btn btn-danger btn-apagar" onclick="confApagar()">Apagar Conta</button>
         </div>
       </div>
@@ -104,11 +105,15 @@
 <script>
 function confApagar() {
   Swal.fire({
-    title: 'Tem certeza que quer apagar?',
-    text: "Deletando sua conta todo o seu progresso será perdido",
-    icon: 'warning',
+    title: 'Você realmente deseja apagar a sua conta?',
+    text: "Apagando a sua conta todo o seu progresso será perdido.",
+    imageUrl: 'img/warning.png',
+    imageWidth: 125,
+    imageHeight: 125,
+    imageAlt: 'Perigo',
     showCancelButton: true,
-    cancelButtonColor: '#d33',
+    confirmButtonColor: '#d33',
+    focusConfirm: false,
     confirmButtonText: 'Deletar',
     reverseButtons: true
   }).then((result) => {

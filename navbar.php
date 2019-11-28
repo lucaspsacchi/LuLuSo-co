@@ -6,15 +6,18 @@
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
-    <a class="navbar-brand" href="home.php">
-        <div class="logo">
-            <img class="img-responsive" src="img/vovoTecLogo.png">
-        </div>
-    </a>
+
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="border: none; outline: none;">
         <span style="color: white;">MENU</span>
     </button>
+
+    <a class="navbar-brand" href="home.php" style="margin-right: 0px;">
+        <div class="logo">
+            <img class="img-responsive" src="img/vovoTecLogo.png">
+        </div>
+    </a>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-bottom: 5px;">
         <ul class="navbar-nav mr-auto">
@@ -33,7 +36,7 @@
         </ul>
         <ul class="navbar-nav mr-auto" style="margin-right: 0px !important;">
             <li class="nav-item">
-                <button class="nav-link" onclick="confSair()">SAIR</button>
+                <button class="nav-link d-flex justify-content-start" onclick="confSair()" style="width: 100%;">SAIR</button>
             </li>
         </ul>
     </div>
@@ -43,10 +46,14 @@
 function confSair() {
     Swal.fire({
         title: 'Deseja realmente sair?',
-        icon: 'warning',
+        imageUrl: 'img/warning.png',
+        imageWidth: 125,
+        imageHeight: 125,
+        imageAlt: 'Perigo',
         showCancelButton: true,
         confirmButtonText: 'Sair',
         cancelButtonText: 'Cancelar',
+        confirmButtonColor: '#3e9b8a',
         reverseButtons: true
     }).then((result) => {
         if (result.value) {

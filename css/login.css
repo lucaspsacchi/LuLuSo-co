@@ -1,12 +1,116 @@
 body {
-  height: 100vh;
+  height: 100%;
   width: 100%;
+}
+
+.login {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+#card-body {
+  padding-right: 30px;
+  padding-left: 30px;
+  padding-top: 15px;
+}
+
+@media screen and (max-width: 991px) {
+  #card {
+    box-shadow: none !important;
+    border-style: none;
+  }
+  nav {
+    height: 50px !important;
+  }
+  .form-group {
+    padding-right: 30px;
+    padding-left: 30px;
+    padding-top: 0px;
+  }
+  #card-body {
+    padding: 0px;
+  }
+  .login {
+    display: inline !important;
+  }
+  .nav-login {
+    background-color: #3e9b8a;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    height: 50px;
+  }
+  /* a, a:hover {
+    color: white !important;
+  } */
+  form {
+    margin-top: 15px;
+  }
+  .material-icons {
+    margin-top: 5px;
+    font-size: 36px !important;
+  }
+  #hide {
+    visibility: visible !important;
+  }
+  .nav-text {
+    color: white;
+    margin-left: 15px;
+    margin-top: 7px;
+  }
+  .logo, .img-responsive {
+    width: 40px;
+    height: 40px;
+  }
+  .nav-esq, .nav-dir {
+    position: inherit !important;
+  }
+  .card {
+    margin-top: 0px !important;
+  }
 }
 
 .btn-login {
   width: 100% !important;
+  color: white !important;
 }
 
-.form-group > span {
+span {
   font-size: 18px;
+}
+
+.nav-login {
+  padding: 0px;
+}
+
+a, a:hover {
+  color: black; 
+  margin-left: -5px;
+}
+
+.material-icons {
+  font-size: 30px;
+}
+
+nav {
+  height: 40px;
+}
+
+#nav-item {
+  position: absolute;
+  padding: 0px;
+}
+
+#hide {
+  visibility: hidden;
+}
+
+.card {
+  margin-top: 3rem;
+}
+
+.form-group {
+  margin-bottom: 10px;
 }

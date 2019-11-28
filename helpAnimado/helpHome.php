@@ -8,6 +8,8 @@
         imageHeight: 150,
         imageAlt: 'Help1',
         confirmButtonText: 'Avançar',
+        confirmButtonColor: '#3e9b8a',
+        allowOutsideClick: false,
         text: 'Para ver a lista de vídeos, clique em "MENU" e depois em "INÍCIO"!'
       }).then((result => {
         Swal.fire({
@@ -16,7 +18,9 @@
         imageWidth: 150,
         imageHeight: 150,
         imageAlt: 'Help2',
-        confirmButtonText: 'Ok',
+        confirmButtonText: 'OK',
+        confirmButtonColor: '#3e9b8a',
+        allowOutsideClick: false,
         text: 'Veja a lista de temas e clique no tema desejado!'
       })
       }))
