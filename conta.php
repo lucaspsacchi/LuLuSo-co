@@ -26,8 +26,8 @@
   <?php 
     include('navbar.php'); 
     $row = $result->fetch_assoc();
-    $dados['total'] = $row['total'];
-    $dados['respondidas'] = $row['respondidas'];
+    $dados['total'] = (int) $row['total'];
+    $dados['respondidas'] = (int) $row['respondidas'];
     $dados['correto'] = (int) $row['correto'];
     $dados['incorreto'] = (int) $row['incorreto'];
 

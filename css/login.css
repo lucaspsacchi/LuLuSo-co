@@ -96,6 +96,7 @@ a, a:hover {
 
 nav {
   height: 40px;
+  margin-bottom: 2rem;
 }
 
 #nav-item {

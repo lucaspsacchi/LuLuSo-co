@@ -1,0 +1,25 @@
+.btn-custom {
+  background-color: #3e9b8a;
+  border-color: #3e9b8a;
+  color: white;
+}
+
+.btn-custom:hover {
+  background-color: white;
+  border-color: #3e9b8a;
+  color: #3e9b8a;
+}
+
+.btn-dark-custom:hover {
+  color: #23272b;
+  background-color: white !important;
+}
+
+/* .dropdown-custom:hover {
+  background-color: white !important;
+  color: #3e9b8a !important;
+} */
+
+.dropdown-divider {
+  margin: 0px;
+}

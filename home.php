@@ -9,7 +9,6 @@
   if (isset($_GET['help']) && $_GET['help'] == 1) {
     $_SESSION['alertPrimeiroLogin'] = 1;
   }
-
 ?>
 <!DOCTYPE html>
 <html>

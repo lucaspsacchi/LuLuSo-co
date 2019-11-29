@@ -24,13 +24,15 @@
 			<div class="col-12 col-md-12 col-sm-12">
 				<center>
 					<div class="btn-group dropright">
-						<button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							Cadastrar
 						</button>
 						<div class="dropdown-menu">
-							<a class="dropdown-item" href="cadCategoria.php">Categoria</a>
-							<a class="dropdown-item" href="cadVideoAula.php">Vídeo Aula</a>
-							<a class="dropdown-item" href="cadPergunta.php">Pergunta</a>
+							<a class="dropdown-item dropdown-custom" href="cadCategoria.php">Categoria</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item dropdown-custom" href="cadVideoAula.php">Vídeo Aula</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item dropdown-custom" href="cadPergunta.php">Pergunta</a>
 						</div>
 					</div>
 				</center>
@@ -49,8 +51,8 @@
 
 							</div>
 							<div class="card-footer">
-								<a href="aulas.php?id=<?= $row['id'] ?>&nome=<?= $row['nome'] ?>" class="btn btn-dark" id="card-a-home" style="margin-bottom: 10px;">Ver aulas</a>
-								<a href="#" class="btn btn-dark" id="card-a-home">Editar</a> <!-- Criar tela para editar -->
+								<a href="aulas.php?id=<?= $row['id'] ?>&nome=<?= $row['nome'] ?>" class="btn btn-custom" id="card-a-home" style="margin-bottom: 10px;">Ver aulas</a>
+								<a href="#" class="btn btn-dark btn-dark-custom" id="card-a-home">Editar</a> <!-- Criar tela para editar -->
 							</div>
 						</div>
 					<?php

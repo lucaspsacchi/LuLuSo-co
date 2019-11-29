@@ -98,7 +98,7 @@
               <div class="form-group">
                 <input type="password" class="form-control" name="inputsenha" required>
               </div>
-              <div class="form-group">
+              <div class="form-group" style="margin-top: 30px;">
                 <button type="submit" class="btn btn-success btn-login">Entrar</button>
               </div>
               <hr style="margin: 20px 30px;">

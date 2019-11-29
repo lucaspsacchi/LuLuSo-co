@@ -2,9 +2,6 @@
   $sql = "SELECT *
           FROM video_aula";
 
-  // $stmt = $conn->prepare($sql);
-  // $stmt->execute();
-  // $resultAulas = $stmt->get_result();
   $resultAulas = mysqli_query($conn, $sql);
 
   $dadosAulas = [];

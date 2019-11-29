@@ -2,8 +2,11 @@
   $id = $_GET['id'];
 
   $sql = "SELECT p.id, p.id_video, p.id_cat, p.modelo, p.pergunta
-  FROM pergunta AS p LEFT JOIN pergunta_pessoa AS pp ON (p.id = pp.id_pergunta)
-  WHERE p.id_video = '".$id."' AND (pp.flag = 0 OR pp.flag IS NULL)";
+  FROM pergunta AS p LEFT JOIN (
+  	SELECT * FROM pergunta_pessoa WHERE id_pessoa = '".$_SESSION['id_usuario']."'
+  )
+  AS pp ON (p.id = pp.id_pergunta)
+  WHERE p.id_video = '".$id."' AND (pp.flag = 0 OR pp.flag  IS NULL)";
 
   $result = mysqli_query($conn, $sql);
   
