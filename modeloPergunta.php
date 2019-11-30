@@ -34,7 +34,7 @@
                             <img class="vovoQuiz" src="img/vovoResponda.png" alt="vovoResponda">
                         </div>
                         <div class="d-flex justify-content-end">
-                        <button id="botao" class="btn btn-success mt-4 font-weight-bold" onclick="mountQuiz()">Vamos</button>
+                        <button id="botao" class="btn btn-site mt-4 font-weight-bold" onclick="mountQuiz()">Vamos</button>
                     <?php
                     }
                     else { ?>

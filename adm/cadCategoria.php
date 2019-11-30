@@ -69,22 +69,29 @@
 			<div class="col-12 col-md-12 col-sm-12">
 				<form action="#" method="POST" enctype="multipart/form-data">
 					<div class="form-group">
-						<label for="exampleFormNome">Nome da categoria</label>
+						<center><h3>Cadastrar categoria</h3></center>
+					</div>
+					<div class="form-group" style="margin-top: 20px;	">
+						<labeL style="color:red; font-size: 14px;">* Campos obrigatórios</label>
+						<hr style="margin-top: 5px;">
+					</div>
+					<div class="form-group">
+						<label for="FormNome">Nome da categoria<span style="color:red;">*</span></label>
 						<input type="text" class="form-control" name="nome" id="nome" required>
 					</div>
 					<div class="form-group">
-						<label for="exampleFormAlias">Possíveis alias</label>
-						<input type="text" class="form-control" name="alias" id="alias">
+						<label for="FormAlias">Palavras-chaves</label>
+						<input type="text" class="form-control" name="alias" id="alias" placeholder="Escreva as palavras separadas por vírgulas">
 					</div>
 					<div class="form-group">
 						<img id="photo" src="" class="img-rounded" width="330" height="210">
 						<br>
-						<label for="comment">Imagem da categoria<span class="ast">*</span> </label>
+						<label for="comment">Imagem da categoria<span style="color:red;">*</span> </label>
 						<input type="file" name="file" id="file" required/>					
 					</div>
 					<br>
 					<div class="form-group d-flex justify-content-end">
-						<button class="btn btn-secondary" name="salvar_dados">Salvar</button>
+						<button class="btn btn-success" name="salvar_dados">Salvar</button>
 					</div>
 				</form>
 			</div>

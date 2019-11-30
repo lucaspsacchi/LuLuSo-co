@@ -32,7 +32,7 @@ mountQuiz = () => {
     quiz.removeChild(quiz.firstChild);
   } //remove o conteudo da div
 
-  console.log(dados)
+  // console.log(dados)
 
   const index = dados.map(x => x.id_video).indexOf(data.id);
 
@@ -126,7 +126,7 @@ function checarRespostaAlternativa(alt) {
 
   let num = parseInt(alternativa.substr(3, 1))
 
-  flag = alt.alternativas[num - 1].resposta
+  flag = parseInt(alt.alternativas[num - 1].resposta)
 
   // Adiciona a flag no post
   str_aux = 'flag'.concat(dados_i)

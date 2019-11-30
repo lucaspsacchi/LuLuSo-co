@@ -3,7 +3,7 @@
     <script>
       Swal.fire({
         position: 'middle',
-        imageUrl: 'img/vovoDir.png',
+        imageUrl: 'img/vovoEsq.png',
         imageWidth: 150,
         imageHeight: 150,
         imageAlt: 'Help1',
@@ -13,8 +13,8 @@
         text: 'Para ver a lista de vídeos, clique em "MENU" e depois em "INÍCIO"!'
       }).then((result => {
         Swal.fire({
-        position: 'bottom-end',
-        imageUrl: 'img/vovoEsq.png',
+        position: 'bottom-start',
+        imageUrl: 'img/vovoDir.png',
         imageWidth: 150,
         imageHeight: 150,
         imageAlt: 'Help2',

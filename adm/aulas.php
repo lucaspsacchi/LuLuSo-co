@@ -20,7 +20,7 @@
 	<body>
     <?php include('navbar.php'); ?>
 
-		<div class="container">
+		<div class="container-custom">
 			<div class="col-12 col-md-12 col-sm-12">
 				<center>
 					<div class="btn-group dropright">
@@ -51,8 +51,8 @@
 								<center><h5 class="card-title"><?= $row['nome'] ?></h5></center>
 							</div>
               <div class="card-footer">
-                <a href="perguntas.php?id=<?= $row['id_video'] ?>&nome=<?= $row['nome'] ?>" class="btn btn-dark" id="card-a-home" style="margin-bottom: 10px;">Ver perguntas</a>
-                <a href="#" class="btn btn-dark" id="card-a-home">Editar</a> <!-- Criar tela para editar -->
+                <a href="perguntas.php?id=<?= $row['id_video'] ?>&nome=<?= $row['nome'] ?>" class="btn btn-custom" id="card-a-home" style="margin-bottom: 10px;">Ver perguntas</a>
+                <a href="#" class="btn btn-dark btn-dark-custom" id="card-a-home">Editar</a> <!-- Criar tela para editar -->
               </div>
 						</div>
 					<?php

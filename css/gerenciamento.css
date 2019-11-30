@@ -20,6 +20,10 @@
   color: #3e9b8a !important;
 } */
 
-.dropdown-divider {
+/* .dropdown-divider {
   margin: 0px;
+} */
+
+.container-custom {
+  margin: 0 30px;
 }

@@ -20,7 +20,7 @@
 	<body>
     <?php include('navbar.php'); ?>
 
-		<div class="container">
+		<div class="container-custom">
 			<div class="col-12 col-md-12 col-sm-12">
 				<center>
 					<div class="btn-group dropright">
@@ -44,7 +44,7 @@
 					while ($row = $result->fetch_assoc()) { ?>
             <div class="card" id="card-perguntas">
               <div class="card-header">
-                <h5 class="card-title" id="card-title-perguntas"><?= $row['pergunta'] ?></h5>
+                <h5 class="card-title" id="card-title-perguntas" style="margin-bottom: 0px;"><?= $row['pergunta'] ?></h5>
               </div>
               <div class="card-body d-flex justify-content-between">
                 <h5> 
@@ -52,7 +52,7 @@
                   ($row['modelo'] == 'sequencia' ? 'Sequencia' : ($row['modelo'] == 'alternativa') ? 'Alternativa' : 'Toque nos Pares');
                   ?>
                 </h5>
-                <a href="#" class="btn btn-primary" id="card-a-perguntas">Editar</a>                
+                <a href="#" class="btn btn-custom" id="card-a-perguntas">Editar</a>                
               </div>
             </div>
 					<?php

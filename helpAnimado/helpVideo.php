@@ -1,8 +1,8 @@
 <?php 
   if (isset($_SESSION['alertPrimeiroLogin']) && $_SESSION['alertPrimeiroLogin'] == 3) { ?>
       Swal.fire({
-        position: 'bottom-end',
-        imageUrl: 'img/vovoEsq.png',
+        position: 'bottom-start',
+        imageUrl: 'img/vovoDir.png',
         imageWidth: 150,
         imageHeight: 150,
         imageAlt: 'Help3',

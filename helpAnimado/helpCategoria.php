@@ -2,8 +2,8 @@
   if (isset($_SESSION['alertPrimeiroLogin']) && $_SESSION['alertPrimeiroLogin'] == 2) { ?>
     <script>
       Swal.fire({
-        position: 'bottom-end',
-        imageUrl: 'img/vovoEsq.png',
+        position: 'bottom-start',
+        imageUrl: 'img/vovoDir.png',
         imageWidth: 150,
         imageHeight: 150,
         imageAlt: 'Help2',
@@ -24,7 +24,7 @@
     <script>
       Swal.fire({
         position: 'middle',
-        imageUrl: 'img/vovoDir.png',
+        imageUrl: 'img/vovoEsq.png',
         imageWidth: 150,
         imageHeight: 150,
         imageAlt: 'Help4',
@@ -35,7 +35,7 @@
       }).then((result => {
           Swal.fire({
           position: 'middle',
-          imageUrl: 'img/vovoDir.png',
+          imageUrl: 'img/vovoEsq.png',
           imageWidth: 150,
           imageHeight: 150,
           imageAlt: 'Help5',

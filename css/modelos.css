@@ -203,3 +203,15 @@ img {
 .h4Questoes {
     color: #6c757d;
 }
+
+.btn-site {
+    background-color: #3e9b8a;
+    border-color: #3e9b8a;
+    color: white;
+}
+
+.btn-site:hover {
+    background-color: white;
+    border-color: #3e9b8a;
+    color: #3e9b8a;
+  }
