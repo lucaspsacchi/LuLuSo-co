@@ -47,7 +47,7 @@
       <center>
         <?php
           if ($rowConta['nc'] == 0) {
-            $texto = 'Arrumar a mensagem';
+            $texto = 'Você ainda não atingiu nenhum nível';
           }
           else {
             $texto = 'Parabéns, você está no nível ' . $rowConta['nc'] . ' de ' . (count($niveis) - 1) . '!';
@@ -92,8 +92,8 @@
         <h4 class="h4Title">Apagar Conta</h4>
 	  	  <hr class="hrTitle">
         <div class="divButton">
-          <h5>Deseja apagar a sua conta?</h5>
-          <button type="button" class="btn btn-danger btn-apagar" onclick="confApagar()">Apagar Conta</button>
+          <label style="font-size: 20px; font-weight: 350; margin-bottom: 1.5rem;">Deseja apagar a sua conta?</label>
+          <button type="button" class="btn btn-danger btn-apagar" onclick="confApagar()">Apagar conta</button>
         </div>
       </div>
     </div>

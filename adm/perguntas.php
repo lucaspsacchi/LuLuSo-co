@@ -20,7 +20,7 @@
 	<body>
     <?php include('navbar.php'); ?>
 
-		<div class="container-custom">
+		<div class="container">
 			<div class="col-12 col-md-12 col-sm-12">
 				<center>
 					<div class="btn-group dropright">

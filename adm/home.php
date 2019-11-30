@@ -20,7 +20,7 @@
 	<body>
 		<?php include('navbar.php'); ?>
 
-		<div class="container-custom">
+		<div class="container">
 			<div class="col-12 col-md-12 col-sm-12">
 				<center>
 					<div class="btn-group dropright">
@@ -63,6 +63,27 @@
 		</div>
 	</body>
 </html>
+
+<!-- Sweet Alert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+<?php
+	if (isset($_SESSION['home']) && $_SESSION['home'] == 1) {?>
+		<script>
+				Swal.fire({
+					title: 'Categoria cadastrada com sucesso!',
+					icon: 'success',
+	        confirmButtonColor: '#3e9b8a'
+				}).then((result) => {
+					if (result.value) {
+						window.location = 'home.php'
+					}
+				})
+		</script>
+	<?php
+		unset($_SESSION['home']);
+	}
+?>
 
 <!-- Import das bibliotecas js do Bootstrap -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

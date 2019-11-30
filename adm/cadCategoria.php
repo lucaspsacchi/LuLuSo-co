@@ -1,12 +1,6 @@
 <?php 
+	session_start();
   include('../connection/conn.php');
-
-  // Verificação de login
-  /*
-	if (!isset($_SESSION['logado']))) {
-			header("Location: ../login.php?erro_login=1");
-	}
-  */
 
 	if (isset($_POST['salvar_dados'])) {
 
@@ -47,6 +41,10 @@
 		
 		// Realiza a inserção da nova tupla
 		mysqli_query($conn, $script);
+
+		$_SESSION['home'] = 1;
+
+		header('Location: home.php');
 	}
 ?>
 <!DOCTYPE html>
@@ -71,7 +69,7 @@
 					<div class="form-group">
 						<center><h3>Cadastrar categoria</h3></center>
 					</div>
-					<div class="form-group" style="margin-top: 20px;	">
+					<div class="form-group" style="margin-top: 20px;">
 						<labeL style="color:red; font-size: 14px;">* Campos obrigatórios</label>
 						<hr style="margin-top: 5px;">
 					</div>
@@ -81,13 +79,14 @@
 					</div>
 					<div class="form-group">
 						<label for="FormAlias">Palavras-chaves</label>
-						<input type="text" class="form-control" name="alias" id="alias" placeholder="Escreva as palavras separadas por vírgulas">
+						<textarea class="form-control" name="alias" id="alias" placeholder="Escreva as palavras-chaves separadas por vírgulas" row="4"></textarea >
 					</div>
 					<div class="form-group">
-						<img id="photo" src="" class="img-rounded" width="330" height="210">
+						<label for="comment" style="margin-bottom: 0px;">Imagem da categoria<span style="color:red;">*</span> </label><br>
+						<img id="photo" src="../img/semImg.png" class="img-rounded" width="200" height="200" style="margin: 10px 0px;">
 						<br>
-						<label for="comment">Imagem da categoria<span style="color:red;">*</span> </label>
 						<input type="file" name="file" id="file" required/>					
+					</div>
 					</div>
 					<br>
 					<div class="form-group d-flex justify-content-end">
@@ -106,31 +105,31 @@
 
 <!-- Script da imagem -->
 <script>
-        $(document).ready(function (e) {
-            // Function to preview image after validation
-            $(function () {
-                $("#file").change(function () {
-                    var file = this.files[0];
-                    var imagefile = file.type;
-                    var match = ["image/jpeg", "image/png", "image/jpg"];
-                    if (!((imagefile == match[0]) || (imagefile == match[1]) || (imagefile == match[2])))
-                    {
-                        $('#photo').attr('src', 'noimage.png');
-                        $("#message").html("<p id='error'>Please Select A valid Image File</p>" + "<h4>Note</h4>" + "<span id='error_message'>Only jpeg, jpg and png Images type allowed</span>");
-                        return false;
-                    }
-                    else
-                    {
-                        var reader = new FileReader();
-                        reader.onload = imageIsLoaded;
-                        reader.readAsDataURL(this.files[0]);
-                    }
-                });
-            });
-            function imageIsLoaded(e) {
-                $('#photo').attr('src', e.target.result);
-                $('#photo').attr('width', '330px');
-                $('#photo').attr('height', '210px');
-            }
-        });
+	$(document).ready(function (e) {
+		// Function to preview image after validation
+		$(function () {
+				$("#file").change(function () {
+						var file = this.files[0];
+						var imagefile = file.type;
+						var match = ["image/jpeg", "image/png", "image/jpg"];
+						if (!((imagefile == match[0]) || (imagefile == match[1]) || (imagefile == match[2])))
+						{
+								$('#photo').attr('src', 'noimage.png');
+								$("#message").html("<p id='error'>Please Select A valid Image File</p>" + "<h4>Note</h4>" + "<span id='error_message'>Only jpeg, jpg and png Images type allowed</span>");
+								return false;
+						}
+						else
+						{
+								var reader = new FileReader();
+								reader.onload = imageIsLoaded;
+								reader.readAsDataURL(this.files[0]);
+						}
+				});
+		});
+		function imageIsLoaded(e) {
+				$('#photo').attr('src', e.target.result);
+				$('#photo').attr('width', '200px');
+				$('#photo').attr('height', '200px');
+		}
+	});
     </script>

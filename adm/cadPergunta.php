@@ -3,9 +3,6 @@
   include('../model/scriptAdmHome.php');
   include('../model/scriptAdmVideos.php');
 
-
-	// echo $_POST['selectAulas'];
-
 ?>
 <!DOCTYPE html>
 <html>

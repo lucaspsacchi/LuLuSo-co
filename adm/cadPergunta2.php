@@ -102,8 +102,8 @@ jQuery(document).ready(function (e) {
   });
   function imageIsLoaded(e) {
       $('#photo0').attr('src', e.target.result);
-      $('#photo0').attr('width', '330px');
-      $('#photo0').attr('height', '210px');
+      $('#photo0').attr('width', '320px');
+      $('#photo0').attr('height', '180px');
   }
 });
 
@@ -130,8 +130,8 @@ $(document).ready(function (e) {
   });
   function imageIsLoaded(e) {
       $('#photo1').attr('src', e.target.result);
-      $('#photo1').attr('width', '330px');
-      $('#photo1').attr('height', '210px');
+      $('#photo1').attr('width', '320px');
+      $('#photo1').attr('height', '180px');
   }
 });
 
@@ -158,8 +158,8 @@ $(document).ready(function (e) {
   });
   function imageIsLoaded(e) {
       $('#photo2').attr('src', e.target.result);
-      $('#photo2').attr('width', '330px');
-      $('#photo2').attr('height', '210px');
+      $('#photo2').attr('width', '320px');
+      $('#photo2').attr('height', '180px');
   }
 });
 
@@ -186,8 +186,8 @@ $(document).ready(function (e) {
   });
   function imageIsLoaded(e) {
       $('#photo3').attr('src', e.target.result);
-      $('#photo3').attr('width', '330px');
-      $('#photo3').attr('height', '210px');
+      $('#photo3').attr('width', '320px');
+      $('#photo3').attr('height', '180px');
   }
 });
 </script>

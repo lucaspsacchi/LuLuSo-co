@@ -1,5 +1,5 @@
 function createAlt(e) {
-  if (e == 1) { // Alternativa
+  if (e == 1) { // Sequência
     for (i = 0; i < 5; i++) {
       let divGroup = document.createElement('div')
       divGroup.className = 'form-group col-12 col-md-6 col-lg-6' 
@@ -21,7 +21,7 @@ function createAlt(e) {
       divMae.appendChild(divGroup)
     }
   }
-  else if (e == 0) { // Sequência
+  else if (e == 0) { // Alternativa
     for (i = 0; i < 4; i++) {
       let divGroup = document.createElement('div')
       divGroup.className = 'form-group col-12 col-md-6 col-lg-6' 
@@ -29,8 +29,8 @@ function createAlt(e) {
       let img = document.createElement('img')
       img.id = 'photo'.concat(i)
       img.className = 'img-rounded'
-      img.width = '330'
-      img.height = '210'
+      img.width = '320'
+      img.height = '180'
       divGroup.appendChild(img)
 
       let br1 = document.createElement('br')

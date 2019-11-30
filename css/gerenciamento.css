@@ -25,5 +25,5 @@
 } */
 
 .container-custom {
-  margin: 0 30px;
+  margin: 0 30px !important;
 }
