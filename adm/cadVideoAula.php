@@ -1,4 +1,5 @@
 <?php 
+	session_start();
   include('../connection/conn.php');
 
 	// Busca para listar todas as categorias
@@ -27,7 +28,16 @@
 		$script = "INSERT INTO `video_aula` (`id_video`, `id_cat`, `nome`) VALUES ('".$id_video."', '".$cat."', '".$nome."');";
 
 		// Realiza a inserção da nova tupla
-		mysqli_query($conn, $script);
+		$result = mysqli_query($conn, $script);
+
+		if ($result) {
+			$_SESSION['videoaula'] = 1;
+
+			header('Location: home.php');
+		}
+		else {
+			$_SESSION['erro'] = 1;
+		}
 	}
 
 ?>
@@ -38,7 +48,7 @@
 		<title>VovoTec</title>
 		<meta name="author" content="">
 		<meta name="description" content="">
-		<link rel="shortcut icon" type="image/png" href="img/vovotecAba.png">		
+		<link rel="shortcut icon" type="image/png" href="../img/vovoTecAba.png">		
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<link rel="stylesheet" href="../css/gerenciamento.css">
@@ -51,27 +61,54 @@
 			<div class="col-12 col-md-12 col-sm-12">
 				<form action="#" method="POST" enctype="multipart/form-data">
 					<div class="form-group">
-						<label for="FormNome">Nome do vídeo</label>
+						<center><h3>Cadastrar vídeo-aula</h3></center>
+					</div>
+					<div class="form-group" style="margin-top: 20px;">
+						<labeL style="color:red; font-size: 14px;">* Campos obrigatórios</label>
+						<hr style="margin-top: 5px;">
+					</div>
+					<div class="form-group">
+						<label for="FormNome">Nome do vídeo<span style="color:red;">*</span></label>
 						<input type="text" class="form-control" name="nome" id="nome" required>
 					</div>
 					<div class="form-group">
-						<label for="FormUrl">Url do vídeo</label> <!-- ALGUM TUTORIAL PARA COLOCAR A URL -->
-						<input type="text" class="form-control" name="id_video" id="id_video" required>
+						<label for="FormUrl">Link do vídeo<span style="color:red;">*</span></label>
+						<input type="text" class="form-control" name="id_video" id="id_video" placeholder="Ex: https://youtu.be/0bDIQhCUnYk" required>
 					</div>
 					<div class="form-group">
-						<label for="FormCat">Categoria do vídeo</label>
+						<label for="FormCat">Categoria do vídeo<span style="color:red;">*</span></label>
 						<select class="form-control" id="FormCat" name="cat">
 						</select>
 					</div>
 					<br>
-					<div class="form-group d-flex justify-content-end">
-						<button class="btn btn-secondary" name="salvar_dados">Salvar</button>
+					<div class="form-group d-flex justify-content-between">
+						<a class="btn btn-secondary" href="home.php">Cancelar</a>
+						<button class="btn btn-success" name="salvar_dados">Salvar</button>
 					</div>
 				</form>
 			</div>
 		</div>
 	</body>
 </html>
+
+<!-- Sweet Alert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+<?php
+	if (isset($_SESSION['erro']) && $_SESSION['erro'] == 1) {?>
+		<script>
+				Swal.fire({
+					title: 'Erro!',
+					text: 'Vídeo-aula já cadastrada',
+					icon: 'error',
+	        confirmButtonColor: '#3e9b8a'
+				})
+		</script>
+	<?php
+		unset($_SESSION['erro']);
+	}
+?>
+
 
 <!-- Script para inserir os dados do bd por js -->
 <script>

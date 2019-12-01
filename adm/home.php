@@ -10,7 +10,7 @@
 		<title>VovoTec</title>
 		<meta name="author" content="">
 		<meta name="description" content="">
-		<link rel="shortcut icon" type="image/png" href="img/vovotecAba.png">		
+		<link rel="shortcut icon" type="image/png" href="../img/vovoTecAba.png">		
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<link rel="stylesheet" href="../css/gerenciamento.css">
@@ -68,20 +68,28 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
 <?php
-	if (isset($_SESSION['home']) && $_SESSION['home'] == 1) {?>
+	if (isset($_SESSION['categoria']) && $_SESSION['categoria'] == 1) {?>
 		<script>
 				Swal.fire({
 					title: 'Categoria cadastrada com sucesso!',
 					icon: 'success',
 	        confirmButtonColor: '#3e9b8a'
-				}).then((result) => {
-					if (result.value) {
-						window.location = 'home.php'
-					}
 				})
 		</script>
 	<?php
-		unset($_SESSION['home']);
+		unset($_SESSION['categoria']);
+	}
+	
+	if (isset($_SESSION['videoaula']) && $_SESSION['videoaula'] == 1) {?>
+		<script>
+				Swal.fire({
+					title: 'Vídeo-aula cadastrada com sucesso!',
+					icon: 'success',
+	        confirmButtonColor: '#3e9b8a'
+				})
+		</script>
+	<?php
+		unset($_SESSION['videoaula']);
 	}
 ?>
 

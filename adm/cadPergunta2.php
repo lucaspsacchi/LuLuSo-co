@@ -9,7 +9,7 @@
 		<title>VovoTec</title>
 		<meta name="author" content="">
 		<meta name="description" content="">
-		<link rel="shortcut icon" type="image/png" href="img/vovotecAba.png">		
+		<link rel="shortcut icon" type="image/png" href="../img/vovoTecAba.png">		
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -22,48 +22,53 @@
 		<?php include('navbar.php'); ?>
 
 		<div class="container">
-      <form action="cadPergunta2.php" method="POST" enctype="multipart/form-data">
+      <form action="cadPergunta3.php" method="GET" enctype="multipart/form-data">
         <div class="form-group">
-          <div class="col-12 col-md-12 col-lg-12 row">
-            <div class="col-12 col-md-12 col-lg-6">
-              <label for="FormModelo">Selecione o modelo da pergunta</label>
-              <select class="form-control" id="FormMod" name="mod" required>
-                <option value="0">Alternativa</option>
-                <option value="1">Sequência</option>
-                <option value="2">Toque nos Pares</option>
-              </select>
-            </div>
-            <div class="col-12 col-md-12 col-lg-6">
-              <label for="FormPergunta">Pergunta</label>
-              <input type="text" class="form-control" id="pergunta" name="pergunta">
-            </div>
-          </div>
+          <center><h3>Cadastrar pergunta</h3></center>
         </div>
-        
-        <hr>
+        <div class="form-group" style="margin-top: 20px;">
+          <labeL style="color:red; font-size: 14px;">* Campos obrigatórios</label>
+          <hr style="margin-top: 5px;">
+        </div>	      
+        <div class="form-group">
+          <label for="FormModelo">Modelo da pergunta<span style="color:red;">*</span></label>
+          <select class="form-control" id="FormMod" name="mod" required>
+            <option value="0">Alternativa</option>
+            <option value="1">Sequência</option>
+            <option value="2">Toque nos Pares</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="FormPergunta">Pergunta<span style="color:red;">*</span></label>
+          <input type="text" class="form-control" id="pergunta" name="pergunta" required>
+        </div>
 
         <div class="col-12 col-md-12 col-lg-12">
           <div class="form-group">
-            <label for="FormAlternativas">Preencha as alternativas</label>
+            <label for="FormAlternativas">Alternativas da pergunta<span style="color:red;">*</span></label>
             <div class="d-flex justify-content-start flex-wrap" id="alternativas"></div>
           </div>    
         </div>
 
+        <div id="correta" class="form-group">
+        </div>
+
         <!-- Inputs da tela anterior -->
-        <input type="hidden" id="id_cat" name="id_cat" value="<?= $_POST['cat'] ?>">
-        <input type="hidden" id="id_video" name="id_video" value="<?= $_POST['selectAulas'] ?>">
-
-        <!-- FALTA PREVIEW -->
+        <input type="hidden" id="id_cat" name="cat" value="<?= $_GET['cat'] ?>">
+        <input type="hidden" id="id_video" name="selectAulas" value="<?= $_GET['selectAulas'] ?>">
 
 
-        
-        <div class="d-flex justify-content-end">
-          <button class="btn btn-secondary" name="salvar_dados">Salvar</button>
+
+        <div class="form-group d-flex justify-content-between">
+          <a class="btn btn-secondary" href="<?= 'cadPergunta.php?cat='.$_GET['cat'].'&selectAulas='.$_GET['selectAulas'] ?>">Voltar</a>
+          <!-- <button type="submit" class="btn btn-success" name="salvar_dados">Salvar</button> -->
+          <input class="btn btn-success" type="submit" value="Continuar">
         </div>
       </form>
 		</div>
 	</body>
 </html>
+
 
 <script src="../js/scriptAdmPerguntas2.js"></script>
 

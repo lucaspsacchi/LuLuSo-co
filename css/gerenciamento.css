@@ -27,3 +27,11 @@
 .container-custom {
   margin: 0 30px !important;
 }
+
+.card-body-bottom {
+  padding-bottom: 0px;
+}
+
+.btn-bottom {
+  margin-bottom: 0px;
+}

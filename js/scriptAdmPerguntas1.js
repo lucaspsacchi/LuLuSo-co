@@ -1,5 +1,5 @@
 	// Função para criar as video aulas
-	function createAulas(id) {
+	function createAulas(id, selectAulas) {
 		for (i = 0; i < dadosAulas.length; i++) {
 			if (dadosAulas[i]['id_cat'] == id) {
 				// Div do card
@@ -18,7 +18,7 @@
 
 				// Div card body
 				let divBody = document.createElement('div')
-				divBody.className = 'card-body'
+				divBody.className = 'card-body card-body-bottom'
 				divCard.appendChild(divBody)
 
 				// Center e h5
@@ -39,7 +39,7 @@
 				// Label
 				let label = document.createElement('label')
 				label.id = 'labelText'
-				label.className = 'btn btn-primary'
+				label.className = 'btn btn-bottom'
 				divFooter.appendChild(label)
 
 				// Input
@@ -47,6 +47,10 @@
 				input.type = 'radio'
 				input.className = 'selectAulas'
 				input.name = 'selectAulas'
+				console.log('id '+dadosAulas[i]['id_video'])
+				console.log('id fora '+ selectAulas)
+				input.checked = (!selectAulas || dadosAulas[i]['id_video'] == selectAulas) ? true : false
+				selectAulas = (!selectAulas) ? 1 : selectAulas
 				input.value = dadosAulas[i]['id_video']
 				input.required = true
 				label.appendChild(input)
@@ -56,8 +60,8 @@
 				let divText = document.createElement('div')
 				divText.id = 'divText'
 				label.appendChild(divText)
-				let inputText = document.createTextNode('Selecionar')
-				divText.appendChild(inputText)
+				// let inputText = document.createTextNode('Selecionar')
+				// divText.appendChild(inputText)
 
 				// Div mãe
 				let div = document.getElementById('aulas')
@@ -77,18 +81,18 @@
 	});
 
 
-	var backup = false; // Backup do element que foi alterado
-	$('.selectAulas').on('click', function(element) {
-		let aux = element.target // Pega o input que foi selecionado
-		let auxTexto = element.target.nextSibling // Pega o texto dentro do input que foi selecionado
+	// var backup = false; // Backup do element que foi alterado
+	// $('.selectAulas').click(function(element) {
+	// 	let aux = element.target // Pega o input que foi selecionado
+	// 	let auxTexto = element.target.nextSibling // Pega o texto dentro do input que foi selecionado
 
-		if (backup) { // Caso tiver algum input, volta os valores para o padrão
-			backup.innerHTML = 'Selecionar'
-			backup.parentElement.className = 'btn btn-primary'
-		}
-		backup = aux.nextSibling // Armazena o novo input selecionado
+	// 	if (backup) { // Caso tiver algum input, volta os valores para o padrão
+	// 		backup.innerHTML = 'Selecionar'
+	// 		backup.parentElement.className = 'btn btn-success'
+	// 	}
+	// 	backup = aux.nextSibling // Armazena o novo input selecionado
 
-		// Altera os valores do inputs selecionado
-		aux.nextSibling.innerHTML =  'Selecionado'
-		aux.parentElement.className =  'btn btn-dark'
-	})
+	// 	// Altera os valores do inputs selecionado
+	// 	aux.nextSibling.innerHTML =  'Selecionado'
+	// 	aux.parentElement.className =  'btn btn-dark'
+	// })

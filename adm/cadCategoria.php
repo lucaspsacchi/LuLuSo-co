@@ -42,7 +42,7 @@
 		// Realiza a inserção da nova tupla
 		mysqli_query($conn, $script);
 
-		$_SESSION['home'] = 1;
+		$_SESSION['categoria'] = 1;
 
 		header('Location: home.php');
 	}
@@ -54,7 +54,7 @@
 		<title>VovoTec</title>
 		<meta name="author" content="">
 		<meta name="description" content="">
-		<link rel="shortcut icon" type="image/png" href="img/vovotecAba.png">		
+		<link rel="shortcut icon" type="image/png" href="../img/vovoTecAba.png">		
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<link rel="stylesheet" href="../css/gerenciamento.css">
@@ -78,7 +78,7 @@
 						<input type="text" class="form-control" name="nome" id="nome" required>
 					</div>
 					<div class="form-group">
-						<label for="FormAlias">Palavras-chaves</label>
+						<label for="FormAlias">Palavras-chaves da categoria</label>
 						<textarea class="form-control" name="alias" id="alias" placeholder="Escreva as palavras-chaves separadas por vírgulas" row="4"></textarea >
 					</div>
 					<div class="form-group">
@@ -87,9 +87,9 @@
 						<br>
 						<input type="file" name="file" id="file" required/>					
 					</div>
-					</div>
 					<br>
-					<div class="form-group d-flex justify-content-end">
+					<div class="form-group d-flex justify-content-between">
+						<a class="btn btn-secondary" href="home.php">Cancelar</a>
 						<button class="btn btn-success" name="salvar_dados">Salvar</button>
 					</div>
 				</form>
