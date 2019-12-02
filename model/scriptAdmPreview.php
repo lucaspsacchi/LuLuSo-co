@@ -6,7 +6,10 @@
   $selectAulas = (isset($_GET['selectAulas'])) ? $_GET['selectAulas'] : NULL;
   
   if ($mod == 0) { // Alternativa
-
+    $file0 = $_GET['file0'];
+    $file1 = $_GET['file1'];
+    $file2 = $_GET['file2'];
+    $file3 = $_GET['file3'];
     $cor = $_GET['cor'];
   }
   else if ($mod == 1) { // Sequência

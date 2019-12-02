@@ -1,6 +1,7 @@
 <?php 
   include('../connection/conn.php');
   include('../model/scriptAdmCadPerguntas.php');
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,7 +23,7 @@
 		<?php include('navbar.php'); ?>
 
 		<div class="container">
-      <form action="cadPergunta3.php" method="GET" enctype="multipart/form-data">
+      <form method="POST" enctype="multipart/form-data">
         <div class="form-group">
           <center><h3>Cadastrar pergunta</h3></center>
         </div>
@@ -61,8 +62,7 @@
 
         <div class="form-group d-flex justify-content-between">
           <a class="btn btn-secondary" href="<?= 'cadPergunta.php?cat='.$_GET['cat'].'&selectAulas='.$_GET['selectAulas'] ?>">Voltar</a>
-          <!-- <button type="submit" class="btn btn-success" name="salvar_dados">Salvar</button> -->
-          <input class="btn btn-success" type="submit" value="Continuar">
+          <input class="btn btn-success" type="submit" name="salvar_dados" value="Continuar">
         </div>
       </form>
 		</div>
@@ -82,8 +82,9 @@
   createAlt(0)
   
   // Tratamento das imagens
-jQuery.noConflict();
-jQuery(document).ready(function (e) {
+// jQuery.noConflict();
+// jQuery(document).ready(function (e) {
+$(document).ready(function (e) {
   // Function to preview image after validation
   $(function () {
       $("#file0").change(function () {

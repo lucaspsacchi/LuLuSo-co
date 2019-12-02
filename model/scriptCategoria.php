@@ -9,8 +9,7 @@
   ON (va.id_video = t1.id_video) 
   WHERE va.id_cat = '".$cat."'
   HAVING porc <= 1 
-  ORDER BY porc ASC, va.nome ASC 
-  ";
+  ORDER BY porc ASC, va.nome ASC";
 
   $result = mysqli_query($conn, $sql);
 

@@ -27,14 +27,51 @@
 					<div class="form-group">
 						<center><h3>Cadastro de Pergunta: Preview</h3></center>
 					</div>	
+          <div class="form-group" style="margin-top: 20px;">
+            <hr style="margin-top: 5px; margin-bottom: 30px;">
+          </div>	          
           <div class="form-group">
             <div class="d-flex justify-content-center">
               <div id="quiz" class="card shadow">
                 <?php
                 if ($mod == 0) { // Alternativa ?>
-
-
-              <?php }
+                <div class="col-12 col-md-12 col-lg-12">
+                  <div class="enum">
+                    <h4><?= $pergunta ?></h4>
+                  </div>
+                    <div class="row">
+                      <div class="col-6 col-md-6 col-lg-6 d-flex justify-content-center col-img">
+                        <button type="button" class="button btn btn-outline-secondary btn-img">
+                          <div id="div-img" class="d-flex justify-content-center">
+                            <img id="img-item" src="<?= $file0 ?>">
+                          </div>
+                        </button>
+                      </div>
+                      <div class="col-6 col-md-6 col-lg-6 d-flex justify-content-center col-img">
+                        <button type="button" class="button btn btn-outline-secondary btn-img">
+                          <div id="div-img" class="d-flex justify-content-center">
+                            <img id="img-item" src="<?= $file1 ?>">
+                          </div>
+                        </button>
+                      </div>
+                      <div class="col-6 col-md-6 col-lg-6 d-flex justify-content-center col-img">
+                        <button type="button" class="button btn btn-outline-secondary btn-img">
+                          <div id="div-img" class="d-flex justify-content-center">
+                            <img id="img-item" src="<?= $file2 ?>">
+                          </div>
+                        </button>
+                      </div>
+                      <div class="col-6 col-md-6 col-lg-6 d-flex justify-content-center col-img">
+                        <button type="button" class="button btn btn-outline-secondary btn-img">
+                          <div id="div-img" class="d-flex justify-content-center">
+                            <img id="img-item" src="<?= $file3 ?>">
+                          </div>
+                        </button>
+                      </div>
+                    </div>
+                  <button class="confirma btn btn-custom btn-outline-secondary" disabled>Confirmar</button>
+                </div>
+                <?php }
                 else if ($mod == 1) { // Sequência ?>
                   <div class="enum">
                     <h4><?= $pergunta ?></h4>
@@ -64,13 +101,33 @@
                   <button class="confirma btn btn-custom btn-outline-secondary" disabled>Confirmar</button>
                 <?php }
                 else { // Toque nos pares ?>
-
-
+                  <div class="enum">
+                    <h4><?= $pergunta ?></h4>
+                  </div>
+                  <div class="alternativa-container">
+                  <?php
+                    $arr = [$alternativa0, $alternativa1, $alternativa2, $alternativa3, $alternativa4, $alternativa5];
+                    for ($i = 0; $i < $count; $i++) {
+                      ?>
+                      <div class="row row-alternativas">
+                        <div class="btn btn-pares">
+                          <span><?= $arr[$i] ?></span>
+                        </div>
+                      </div>
+                      <?php
+                    }
+                    ?>
+                  </div>
+                  <button class="confirma btn btn-custom btn-outline-secondary" disabled>Confirmar</button>
                 <?php }
                 ?>
               </div>
             </div>
           </div>
+
+          <!-- Inputs da tela anterior -->
+          <input type="hidden" id="id_cat" name="cat" value="<?= $_GET['cat'] ?>">
+          <input type="hidden" id="id_video" name="selectAulas" value="<?= $_GET['selectAulas'] ?>">
 					
 					<div class="form-group d-flex justify-content-between">
             <a class="btn btn-secondary" href="cadPergunta2.php">Voltar</a>
