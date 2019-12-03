@@ -1,44 +1,11 @@
 <?php 
 	session_start();
   include('../connection/conn.php');
+  include('../model/scriptAdmCadVideo.php');
 
 	// Busca para listar todas as categorias
 	$script = "SELECT id, nome FROM categoria ORDER BY nome ASC;";
 	$result = mysqli_query($conn, $script);
-
-	$array = [];
-
-	while($obj = $result->fetch_object()){ 
-		$arrayaux['id'] = $obj->id;
-		$arrayaux['nome'] = $obj->nome;
-		array_push($array, $arrayaux); // Convertido todos os valores de php para uma array
-	}
-
-	// Inserção dos dados
-	if (isset($_POST['salvar_dados'])) {
-
-		$nome = $_POST['nome']; // Pega o nome da video aula
-		$url = $_POST['id_video']; // Pega a url
-		$cat = $_POST['cat']; // Pega o value do campo selecionado
-
-		// Formatando a url para pegar o id
-		$id_video = (strlen($url) == 11) ? $url : substr($url, -11);
-
-		// Insere os valores na inserção
-		$script = "INSERT INTO `video_aula` (`id_video`, `id_cat`, `nome`) VALUES ('".$id_video."', '".$cat."', '".$nome."');";
-
-		// Realiza a inserção da nova tupla
-		$result = mysqli_query($conn, $script);
-
-		if ($result) {
-			$_SESSION['videoaula'] = 1;
-
-			header('Location: home.php');
-		}
-		else {
-			$_SESSION['erro'] = 1;
-		}
-	}
 
 ?>
 <!DOCTYPE html>
@@ -61,7 +28,7 @@
 			<div class="col-12 col-md-12 col-sm-12">
 				<form action="#" method="POST" enctype="multipart/form-data">
 					<div class="form-group">
-						<center><h3>Cadastrar vídeo-aula</h3></center>
+						<center><h3><?= isset($_GET['id']) ? 'Editar vídeo-aula' : 'Cadastrar vídeo-aula' ?></h3></center>
 					</div>
 					<div class="form-group" style="margin-top: 20px;">
 						<labeL style="color:red; font-size: 14px;">* Campos obrigatórios</label>
@@ -69,21 +36,27 @@
 					</div>
 					<div class="form-group">
 						<label for="FormNome">Nome do vídeo<span style="color:red;">*</span></label>
-						<input type="text" class="form-control" name="nome" id="nome" required>
+						<input type="text" class="form-control" value="<?= isset($_GET['id']) ? $row['nome'] : '' ?>" name="nome" id="nome" required>
 					</div>
 					<div class="form-group">
 						<label for="FormUrl">Link do vídeo<span style="color:red;">*</span></label>
-						<input type="text" class="form-control" name="id_video" id="id_video" placeholder="Ex: https://youtu.be/0bDIQhCUnYk" required>
+						<input type="text" class="form-control" value="https://www.youtube.com/watch?v=<?= isset($_GET['id']) ? $row['id_video'] : '' ?>" name="id_video" id="id_video" placeholder="Ex: https://youtu.be/0bDIQhCUnYk" <?= isset($_GET['id']) ? 'disabled' : 'required'?>>
 					</div>
 					<div class="form-group">
 						<label for="FormCat">Categoria do vídeo<span style="color:red;">*</span></label>
 						<select class="form-control" id="FormCat" name="cat">
+							<?php
+							while($obj = $result->fetch_assoc()){ ?>
+								<option value="<?= $obj['id'] ?>" <?=($obj['id'] == $row['id_cat']) ? 'selected="selected"' : '' ?>><?= $obj['nome'] ?></option>
+							<?php
+							}
+							?>
 						</select>
 					</div>
 					<br>
 					<div class="form-group d-flex justify-content-between">
 						<a class="btn btn-secondary" href="home.php">Cancelar</a>
-						<button class="btn btn-success" name="salvar_dados">Salvar</button>
+						<button class="btn btn-success" name="<?= isset($_GET['id']) ? 'editar_dados' : 'salvar_dados' ?>">Salvar</button>
 					</div>
 				</form>
 			</div>
@@ -108,23 +81,6 @@
 		unset($_SESSION['erro']);
 	}
 ?>
-
-
-<!-- Script para inserir os dados do bd por js -->
-<script>
-	var obj = JSON.parse('<?php echo json_encode($array) ?>') // Converte a array de php para json
-	console.log(obj)
-
-	var cat = document.getElementById('FormCat') // Pega o select
-
-	for (i = 0; i < obj.length; i++) {
-		let option = document.createElement('option') // Cria a nova opção
-		let text = document.createTextNode(obj[i].nome) // Cria o novo texto que é o nome da categoria
-		option.appendChild(text) // Insere na opção
-		option.value = obj[i].id // Adiciona o id como valor da opção
-		cat.appendChild(option) // Adiciona ele ao select
-	}
-</script>
 
 <!-- Import das bibliotecas js do Bootstrap -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

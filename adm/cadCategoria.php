@@ -1,51 +1,9 @@
 <?php 
 	session_start();
   include('../connection/conn.php');
+  include('../model/scriptAdmCadCategoria.php');
 
-	if (isset($_POST['salvar_dados'])) {
 
-		// Pega o nome
-		$nome = $_POST['nome'];
-
-		// Pega o alias
-		$alias = isset($_POST['alias']) ? $_POST['alias'] : '';
-
-		// Pega a imagem, formata para um novo nome único e move para a pasta img
-		if (isset($_FILES["file"]["type"])) {
-			$validextensions = array("jpeg", "jpg", "png");
-			$temporary = explode(".", $_FILES["file"]["name"]);
-			$file_extension = end($temporary);
-
-			if (in_array($file_extension, $validextensions)) {//Verifica se está de acordo com a extensão
-				if ($_FILES["file"]["error"] > 0) {
-
-				} else {
-						$novoNome = uniqid(time()) . '.' . $file_extension;
-						$destino = '../img/' . $novoNome;
-						$sourcePath = $_FILES['file']['tmp_name']; // Storing source path of the file in a variable
-
-						$flag_img = move_uploaded_file($sourcePath, $destino); // Moving Uploaded file
-						if ($flag_img != TRUE) {
-							?>
-							<script>
-								alert("Ocorreu um erro inesperado com a imagem");
-							</script>
-							<?php
-						}
-				}
-			}
-		}
-
-		// Insere os valores na inserção
-		$script = "INSERT INTO `categoria` (`nome`, `alias`, `img`) VALUES ('".$nome."', '".$alias."', '".$novoNome."');";
-		
-		// Realiza a inserção da nova tupla
-		mysqli_query($conn, $script);
-
-		$_SESSION['categoria'] = 1;
-
-		header('Location: home.php');
-	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -67,7 +25,7 @@
 			<div class="col-12 col-md-12 col-sm-12">
 				<form action="#" method="POST" enctype="multipart/form-data">
 					<div class="form-group">
-						<center><h3>Cadastrar categoria</h3></center>
+						<center><h3><?= (isset($_GET['id']) ? 'Editar categoria' : 'Cadastrar categoria') ?></h3></center>
 					</div>
 					<div class="form-group" style="margin-top: 20px;">
 						<labeL style="color:red; font-size: 14px;">* Campos obrigatórios</label>
@@ -75,22 +33,22 @@
 					</div>
 					<div class="form-group">
 						<label for="FormNome">Nome da categoria<span style="color:red;">*</span></label>
-						<input type="text" class="form-control" name="nome" id="nome" required>
+						<input type="text" class="form-control" name="nome" id="nome" value="<?= (isset($_GET['id']) ? $row['nome'] : '') ?>" required>
 					</div>
 					<div class="form-group">
 						<label for="FormAlias">Palavras-chaves da categoria</label>
-						<textarea class="form-control" name="alias" id="alias" placeholder="Escreva as palavras-chaves separadas por vírgulas" row="4"></textarea >
+						<textarea class="form-control" name="alias" id="alias" placeholder="Escreva as palavras-chaves separadas por vírgulas" row="2"><?= (isset($_GET['id']) ? $row['alias'] : '') ?></textarea >
 					</div>
 					<div class="form-group">
 						<label for="comment" style="margin-bottom: 0px;">Imagem da categoria<span style="color:red;">*</span> </label><br>
-						<img id="photo" src="../img/semImg.png" class="img-rounded" width="200" height="200" style="margin: 10px 0px;">
+						<img id="photo" src="../img/<?= (isset($_GET['id']) ? $row['img'] : 'semImg.png') ?>" class="img-rounded" width="200" height="200" style="margin: 10px 0px;">
 						<br>
-						<input type="file" name="file" id="file" required/>					
+						<input type="file" name="file" id="file" <?= isset($_GET['id']) ? '' : 'required' ?>/>					
 					</div>
 					<br>
 					<div class="form-group d-flex justify-content-between">
 						<a class="btn btn-secondary" href="home.php">Cancelar</a>
-						<button class="btn btn-success" name="salvar_dados">Salvar</button>
+						<button class="btn btn-success" name="<?= isset($_GET['id'])  ? 'editar_dados' : 'salvar_dados' ?>">Salvar</button>
 					</div>
 				</form>
 			</div>

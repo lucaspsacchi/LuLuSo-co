@@ -14,7 +14,7 @@
   padding: 5px;
 }
 
-.btn-esp:hover, .btn-alternativa:hover {
+.btn-esp:hover, .btn-alternativa:hover, .btn-img:hover {
   pointer-events:none;
 }
 

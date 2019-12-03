@@ -1,37 +1,64 @@
 <?php
-// Pega os valores passados por url
-  $mod = (isset($_GET['mod'])) ? $_GET['mod'] : NULL;
-  $pergunta = (isset($_GET['pergunta'])) ? $_GET['pergunta'] : NULL;
-  $cat = (isset($_GET['cat'])) ? $_GET['cat'] : NULL;
-  $selectAulas = (isset($_GET['selectAulas'])) ? $_GET['selectAulas'] : NULL;
+  $script = "SELECT id_cat, id_video, modelo, pergunta FROM pergunta WHERE id = ".$_GET['id'];
+  $resultPergunta = mysqli_query($conn, $script);
+  $rowP = $resultPergunta->fetch_assoc();
+
+  // Pega os valores passados por url
+  $pergunta = $rowP['pergunta'];
   
-  if ($mod == 0) { // Alternativa
-    $file0 = $_GET['file0'];
-    $file1 = $_GET['file1'];
-    $file2 = $_GET['file2'];
-    $file3 = $_GET['file3'];
-    $cor = $_GET['cor'];
+  if ($rowP['modelo'] == 'alternativa') { // Alternativa
+    // Busca pelos dados do modelo
+    $script = "SELECT img1, img2, img3, img4 FROM modelo_alternativa WHERE id_pergunta = ".$_GET['id'];
+    $resultModelo = mysqli_query($conn, $script);
+    $rowM = $resultModelo->fetch_assoc();
+
+    $file0 = $rowM['img1'];
+    $file1 = $rowM['img2'];
+    $file2 = $rowM['img3'];
+    $file3 = $rowM['img4'];
+    $mod = 0;
   }
-  else if ($mod == 1) { // Sequência
-    $count = 2;
-    $alternativa0 = $_GET['alternativa0'];
-    $alternativa1 = $_GET['alternativa1'];
-    $alternativa2 = ($_GET['alternativa2'] != '') ? $_GET['alternativa2'] : NULL;
-    $alternativa3 = ($_GET['alternativa3'] != '') ? $_GET['alternativa3'] : NULL;
-    $alternativa4 = ($_GET['alternativa4'] != '') ? $_GET['alternativa4'] : NULL;
-    $count = ($alternativa2 != NULL) ? $count + 1 : $count;
-    $count = ($alternativa3 != NULL) ? $count + 1 : $count;
-    $count = ($alternativa4 != NULL) ? $count + 1 : $count;
+  else if ($rowP['modelo'] == 'sequencia') { // Sequência
+    // Busca pelos dados do modelo
+    $script = "SELECT texto FROM modelo_sequencia WHERE id_pergunta = ".$_GET['id'];
+    $resultModelo = mysqli_query($conn, $script);
+
+    $count = 0;
+    $alternativa0 = '';
+    $alternativa1 = '';
+    $alternativa2 = '';
+    $alternativa3 = '';
+    $alternativa4 = '';
+
+    while ($rowM = $resultModelo->fetch_assoc()) {
+      if ($count == 0) {$alternativa0 = $rowM['texto'];}
+      if ($count == 1) {$alternativa1 = $rowM['texto'];}
+      if ($count == 2) {$alternativa2 = $rowM['texto'];}
+      if ($count == 3) {$alternativa3 = $rowM['texto'];}
+      if ($count == 4) {$alternativa4 = $rowM['texto'];}
+      $count = $count + 1;
+    }
+    $mod = 1;
   }
-  else { // Toque nos Pares
-    $count = 3;
-    $alternativa0 = $_GET['alternativa0'];
-    $alternativa1 = $_GET['alternativa1'];
-    $alternativa2 = $_GET['alternativa2'];
-    $alternativa3 = $_GET['alternativa3'];
-    $alternativa4 = ($_GET['alternativa4'] != '') ? $_GET['alternativa4'] : NULL;
-    $alternativa5 = ($_GET['alternativa5'] != '') ? $_GET['alternativa5'] : NULL;
-    $count = ($alternativa3 != NULL) ? $count + 1 : $count;
-    $count = ($alternativa4 != NULL) ? $count + 1 : $count;
+  else if ($rowP['modelo'] == 'pares') { // Toque nos Pares
+    // Busca pelos dados do modelo
+    $script = "SELECT texto, resposta FROM modelo_pares WHERE id_pergunta = ".$_GET['id'];
+    $resultModelo = mysqli_query($conn, $script);
+
+    $count = 0;
+    $alternativa0 = '';
+    $alternativa1 = '';
+    $alternativa2 = '';
+    $alternativa3 = '';
+    $alternativa4 = '';
+    $alternativa5 = '';
+
+    while ($rowM = $resultModelo->fetch_assoc()) {
+      if ($count == 0) {$alternativa0 = $rowM['texto'];$alternativa1 = $rowM['resposta'];}
+      if ($count == 1) {$alternativa2 = $rowM['texto'];$alternativa3 = $rowM['resposta'];}
+      if ($count == 2) {$alternativa4 = $rowM['texto'];$alternativa5 = $rowM['resposta'];}
+      $count = $count + 1;
+    }
+    $mod = 2;
   }
 ?>

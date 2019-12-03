@@ -1,6 +1,7 @@
 <?php
   $sql = "SELECT *
-          FROM video_aula";
+          FROM video_aula
+          ORDER BY nome ASC";
 
   $resultAulas = mysqli_query($conn, $sql);
 

@@ -1,4 +1,4 @@
-function createAlt(e) {
+function createAlt(e, dados) {
   if (e == 1) { // Sequência
     for (i = 0; i < 5; i++) {
       let divGroup = document.createElement('div')
@@ -15,6 +15,7 @@ function createAlt(e) {
       input.className = 'form-control'
       input.id = 'alternativa'.concat(i)
       input.name = 'alternativa'.concat(i)
+      input.value = (dados['seq'.concat(i)] === undefined) ? '' : dados['seq'.concat(i)]
       input.placeholder = (i < 2) ? 'Obrigatória' : 'Opcional'
       if (i < 2) {
         input.required = 'true'
@@ -67,7 +68,7 @@ function createAlt(e) {
       let img = document.createElement('img')
       img.id = 'photo'.concat(i)
       img.className = 'img-rounded'
-      img.src = '../img/semImg2p1.png'
+      img.src = '../img/' + dados['img'.concat(i+1)]
       img.width = '180'
       img.height = '180'
       divGroup.appendChild(img)
@@ -79,7 +80,6 @@ function createAlt(e) {
       input.type = 'file'
       input.id = 'file'.concat(i)
       input.name = 'file'.concat(i)
-      input.required = 'true'
       divGroup.appendChild(input)
 
       let divMae = document.getElementById('alternativas')
@@ -88,6 +88,9 @@ function createAlt(e) {
       // Options da alternativa correta
       let option = document.createElement('option')
       option.value = i
+      if (dados['res'.concat(i+1)] == 1) {
+        option.selected = 'selected'
+      }
       let textOption = document.createTextNode('Alternativa '.concat(i+1))
       option.appendChild(textOption)
       select.appendChild(option)
@@ -114,6 +117,7 @@ function createAlt(e) {
       input.className = 'form-control'
       input.id = 'alternativa'.concat(i)
       input.name = 'alternativa'.concat(i)
+      input.value = (dados['seq'.concat(i)] === undefined) ? '' : dados['seq'.concat(i)]
       input.placeholder = (aux < 2) ? 'Obrigatória' : 'Opcional'
       if (aux < 2) {
         input.required = 'true'
@@ -137,6 +141,6 @@ $('#FormMod').on('change', function() {
     options.removeChild(options.firstChild);
   }
   // Cria novas alternativas de acordo com o escolhido no select
-  createAlt(this.value)
+  createAlt(this.value, dados)
 });
 

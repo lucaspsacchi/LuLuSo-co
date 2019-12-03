@@ -5,7 +5,9 @@ if (isset($_POST['salvar_dados'])) {
   $id_video = $_POST['selectAulas'];
 
   $modeloAux = $_POST['mod'];
-  $modelo = ($_POST['mod'] == 0) ? 'alternativa' : ($_POST['mod'] == 1) ? 'sequencia' : 'pares';
+  if ($modeloAux == 0) {$modelo = 'alternativa';}
+  else if ($modeloAux == 1) {$modelo = 'sequencia';}
+  else {$modelo = 'pares';}
   $pergunta = $_POST['pergunta'];
 
   // Insere os valores na inserção
@@ -194,6 +196,37 @@ if (isset($_POST['salvar_dados'])) {
   header('Location: cadPergunta3.php?id='.$id_pergunta);
 }
 
+// Remove do bd o retorno com o id
+if (isset($_GET['id'])) {
+  // Remove alternativas
+  if ($_GET['mod'] == 'alternativa') {
+    // Remove do servidor as imagens
+    $script = "SELECT img1, img2, img3, img4 FROM modelo_alternativa WHERE id_pergunta =".$_GET['id'];
+    $res = mysqli_query($conn, $script);
+    $row = $res->fetch_assoc();
 
+    // Apaga as imagens do servidor
+    unlink(realpath($row['img1']));
+    unlink(realpath($row['img2']));
+    unlink(realpath($row['img3']));
+    unlink(realpath($row['img4']));
+
+    // Remove do bd
+    $script = "DELETE FROM modelo_alternativa WHERE id_pergunta =".$_GET['id'];
+    mysqli_query($conn, $script);
+  }
+  else if ($_GET['mod'] == 'sequencia') {
+    $script = "DELETE FROM modelo_sequencia WHERE id_pergunta =".$_GET['id'];
+    mysqli_query($conn, $script);
+  }
+  else {
+    $script = "DELETE FROM modelo_pares WHERE id_pergunta =".$_GET['id'];
+    mysqli_query($conn, $script);
+  }
+
+  // Remove questão
+  $script = "DELETE FROM pergunta WHERE id =".$_GET['id'];
+  mysqli_query($conn, $script);
+}
 
 ?>

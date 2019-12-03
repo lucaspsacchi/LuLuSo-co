@@ -48,11 +48,19 @@
               </div>
               <div class="card-body d-flex justify-content-between">
                 <h5> 
-                  Modelo: <?= 
-                  ($row['modelo'] == 'sequencia' ? 'Sequencia' : ($row['modelo'] == 'alternativa') ? 'Alternativa' : 'Toque nos Pares');
+									Modelo: <?php 
+									if ($row['modelo'] == 'sequencia') {
+										echo 'Sequência';
+									}
+									else if ($row['modelo'] == 'alternativa') {
+										echo 'Alternativa';
+									}
+									else {
+										echo 'Toque nos Pares';
+									}
                   ?>
                 </h5>
-                <a href="#" class="btn btn-custom" id="card-a-perguntas">Editar</a>                
+                <a href="editPergunta.php?id=<?=$row['id']?>" class="btn btn-custom" id="card-a-perguntas">Editar</a>                
               </div>
             </div>
 					<?php

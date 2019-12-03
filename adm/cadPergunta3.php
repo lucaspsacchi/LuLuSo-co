@@ -43,28 +43,28 @@
                       <div class="col-6 col-md-6 col-lg-6 d-flex justify-content-center col-img">
                         <button type="button" class="button btn btn-outline-secondary btn-img">
                           <div id="div-img" class="d-flex justify-content-center">
-                            <img id="img-item" src="<?= $file0 ?>">
+                            <img id="img-item" src="../img/<?= $file0 ?>">
                           </div>
                         </button>
                       </div>
                       <div class="col-6 col-md-6 col-lg-6 d-flex justify-content-center col-img">
                         <button type="button" class="button btn btn-outline-secondary btn-img">
                           <div id="div-img" class="d-flex justify-content-center">
-                            <img id="img-item" src="<?= $file1 ?>">
+                            <img id="img-item" src="../img/<?= $file1 ?>">
                           </div>
                         </button>
                       </div>
                       <div class="col-6 col-md-6 col-lg-6 d-flex justify-content-center col-img">
                         <button type="button" class="button btn btn-outline-secondary btn-img">
                           <div id="div-img" class="d-flex justify-content-center">
-                            <img id="img-item" src="<?= $file2 ?>">
+                            <img id="img-item" src="../img/<?= $file2 ?>">
                           </div>
                         </button>
                       </div>
                       <div class="col-6 col-md-6 col-lg-6 d-flex justify-content-center col-img">
                         <button type="button" class="button btn btn-outline-secondary btn-img">
                           <div id="div-img" class="d-flex justify-content-center">
-                            <img id="img-item" src="<?= $file3 ?>">
+                            <img id="img-item" src="../img/<?= $file3 ?>">
                           </div>
                         </button>
                       </div>
@@ -125,13 +125,9 @@
             </div>
           </div>
 
-          <!-- Inputs da tela anterior -->
-          <input type="hidden" id="id_cat" name="cat" value="<?= $_GET['cat'] ?>">
-          <input type="hidden" id="id_video" name="selectAulas" value="<?= $_GET['selectAulas'] ?>">
-					
 					<div class="form-group d-flex justify-content-between">
-            <a class="btn btn-secondary" href="cadPergunta2.php">Voltar</a>
-            <button type="submit" class="btn btn-success" name="salvar_dados">Continuar</buttonn>
+            <a class="btn btn-secondary" href="cadPergunta2.php?cat=<?=$rowP['id_cat']?>&selectAulas=<?=$rowP['id_video']?>&id=<?=$_GET['id']?>&mod=<?=$rowP['modelo']?>">Voltar</a>
+            <a class="btn btn-success" href="home.php">Salvar</a>
 					</div>
 				</form>
 			</div>

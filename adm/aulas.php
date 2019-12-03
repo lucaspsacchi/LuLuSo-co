@@ -52,7 +52,7 @@
 							</div>
               <div class="card-footer">
                 <a href="perguntas.php?id=<?= $row['id_video'] ?>&nome=<?= $row['nome'] ?>" class="btn btn-custom" id="card-a-home" style="margin-bottom: 10px;">Ver perguntas</a>
-                <a href="#" class="btn btn-dark btn-dark-custom" id="card-a-home">Editar</a> <!-- Criar tela para editar -->
+                <a href="cadVideoAula.php?id=<?=$row['id_video']?>" class="btn btn-dark btn-dark-custom" id="card-a-home">Editar</a> <!-- Criar tela para editar -->
               </div>
 						</div>
 					<?php
