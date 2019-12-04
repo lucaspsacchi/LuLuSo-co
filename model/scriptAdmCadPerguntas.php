@@ -206,10 +206,10 @@ if (isset($_GET['id'])) {
     $row = $res->fetch_assoc();
 
     // Apaga as imagens do servidor
-    unlink(realpath($row['img1']));
-    unlink(realpath($row['img2']));
-    unlink(realpath($row['img3']));
-    unlink(realpath($row['img4']));
+    unlink('../img/' + $row['img1']);
+    unlink('../img/' + $row['img2']);
+    unlink('../img/' + $row['img3']);
+    unlink('../img/' + $row['img4']);
 
     // Remove do bd
     $script = "DELETE FROM modelo_alternativa WHERE id_pergunta =".$_GET['id'];
@@ -223,6 +223,12 @@ if (isset($_GET['id'])) {
     $script = "DELETE FROM modelo_pares WHERE id_pergunta =".$_GET['id'];
     mysqli_query($conn, $script);
   }
+  // Busca pela questão para salvar a pergunta
+  $script = "SELECT pergunta, modelo FROM pergunta WHERE id = ".$_GET['id'];
+  $res = mysqli_query($conn, $script);
+  $rowP = $res->fetch_assoc();
+  $pergunta = $rowP['pergunta'];
+  $modelo = $rowP['modelo'];
 
   // Remove questão
   $script = "DELETE FROM pergunta WHERE id =".$_GET['id'];

@@ -1,7 +1,7 @@
 <?php 
   session_start();
   include('../connection/conn.php');
-  include('../model/scriptAdmPerguntas.php');
+	include('../model/scriptAdmPerguntas.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -16,24 +16,13 @@
 		<link rel="stylesheet" href="../css/gerenciamento.css">
 		<link rel="stylesheet" href="../css/navfooter.css">
 		<link rel="stylesheet" href="../css/adm.css">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	</head>
 	<body>
     <?php include('navbar.php'); ?>
 
 		<div class="container">
 			<div class="col-12 col-md-12 col-sm-12">
-				<center>
-					<div class="btn-group dropright">
-						<button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Cadastrar
-						</button>
-						<div class="dropdown-menu">
-							<a class="dropdown-item" href="cadCategoria.php">Categoria</a>
-							<a class="dropdown-item" href="cadVideoAula.php">Vídeo Aula</a>
-							<a class="dropdown-item" href="cadPergunta.php">Pergunta</a>
-						</div>
-					</div>
-				</center>
 
 				<h3>Pergunta: <?= $_GET['nome'] ?></h3>
 				<hr>
@@ -60,7 +49,10 @@
 									}
                   ?>
                 </h5>
-                <a href="editPergunta.php?id=<?=$row['id']?>" class="btn btn-custom" id="card-a-perguntas">Editar</a>                
+								<div class="row row-home d-flex justify-content-around">
+									<a href="editPergunta.php?id=<?=$row['id']?>" class="btn btn-dark" id="card-row-perg"><i class="material-icons icon">edit</i></a>
+									<button onclick="alertar('<?= $row['id'] ?>')" class="btn btn-danger btn-danger-custom" id="card-row-perg"><i class="material-icons icon">delete</i></button>		
+								</div>             
               </div>
             </div>
 					<?php
@@ -71,6 +63,32 @@
 		</div>
 	</body>
 </html>
+
+<!-- Sweet Alert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+<script>
+function alertar(del) {
+	url = '../model/scriptAdmDeletar.php?del=1&id=' + del
+	Swal.fire({
+		title: 'Deseja excluir essa pergunta?',
+		imageUrl: '../img/warning.png',
+		imageWidth: 125,
+		imageHeight: 125,
+		imageAlt: 'Perigo',
+		showCancelButton: true,
+		confirmButtonColor: '#d33',
+		focusConfirm: false,
+		confirmButtonText: 'Deletar',
+		reverseButtons: true
+	}).then((result) => {
+		if (result.value) {
+			window.location = url
+		}
+	})
+}
+</script>
+
 
 <!-- Import das bibliotecas js do Bootstrap -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

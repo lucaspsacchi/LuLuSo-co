@@ -1,6 +1,12 @@
 <?php 
+  session_start();
   include('../connection/conn.php');
   include('../model/scriptAdmPreview.php');
+
+  if (isset($_POST['alerta'])) {
+    $_SESSION['pergunta'] = 1;
+    header('Location: home.php');
+  }
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,7 +29,7 @@
 
 		<div class="container">
 			<div class="col-12 col-md-12 col-sm-12">
-				<form action="#" method="GET" enctype="multipart/form-data">
+				<form action="#" method="POST" enctype="multipart/form-data">
 					<div class="form-group">
 						<center><h3>Cadastro de Pergunta: Preview</h3></center>
 					</div>	
@@ -107,7 +113,7 @@
                   <div class="alternativa-container">
                   <?php
                     $arr = [$alternativa0, $alternativa1, $alternativa2, $alternativa3, $alternativa4, $alternativa5];
-                    for ($i = 0; $i < $count; $i++) {
+                    for ($i = 0; $i < ($count * 2); $i++) {
                       ?>
                       <div class="row row-alternativas">
                         <div class="btn btn-pares">
@@ -127,7 +133,8 @@
 
 					<div class="form-group d-flex justify-content-between">
             <a class="btn btn-secondary" href="cadPergunta2.php?cat=<?=$rowP['id_cat']?>&selectAulas=<?=$rowP['id_video']?>&id=<?=$_GET['id']?>&mod=<?=$rowP['modelo']?>">Voltar</a>
-            <a class="btn btn-success" href="home.php">Salvar</a>
+            <!-- <a class="btn btn-success" href="home.php">Salvar</a> -->
+            <button class="btn btn-success" name="alerta">Salvar</button>
 					</div>
 				</form>
 			</div>
@@ -136,9 +143,6 @@
 	</body>
 </html>
 
-<script>
-
-</script>
 
 <!-- Import das bibliotecas js do Bootstrap -->
 <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->

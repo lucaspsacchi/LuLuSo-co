@@ -1,7 +1,7 @@
 <?php 
   session_start();
   include('../connection/conn.php');
-  include('../model/scriptAdmHome.php');
+	include('../model/scriptAdmHome.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -16,6 +16,7 @@
 		<link rel="stylesheet" href="../css/gerenciamento.css">
 		<link rel="stylesheet" href="../css/navfooter.css">
 		<link rel="stylesheet" href="../css/adm.css">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	</head>
 	<body>
 		<?php include('navbar.php'); ?>
@@ -51,8 +52,11 @@
 
 							</div>
 							<div class="card-footer">
+								<div class="row row-home d-flex justify-content-around">
+									<a href="cadCategoria.php?id=<?= $row['id'] ?>" class="btn btn-dark btn-dark-custom" id="card-row-home"><i class="material-icons icon">edit</i></a>
+									<button onclick="alertar(<?= $row['id'] ?>, <?= $row['soma'] ?>)" class="btn btn-danger btn-danger-custom" id="card-row-home"><i class="material-icons icon">delete</i></button>		
+								</div>							
 								<a href="aulas.php?id=<?= $row['id'] ?>&nome=<?= $row['nome'] ?>" class="btn btn-custom" id="card-a-home" style="margin-bottom: 10px;">Ver aulas</a>
-								<a href="cadCategoria.php?id=<?= $row['id'] ?>" class="btn btn-dark btn-dark-custom" id="card-a-home">Editar</a>
 							</div>
 						</div>
 					<?php
@@ -67,30 +71,159 @@
 <!-- Sweet Alert -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
+<script>
+function alertar(del, soma) {
+	url = '../model/scriptAdmDeletar.php?del=1&cat=' + del
+	if (soma == 0) {
+		Swal.fire({
+			title: 'Deseja excluir essa categoria?',
+			imageUrl: '../img/warning.png',
+			imageWidth: 125,
+			imageHeight: 125,
+			imageAlt: 'Perigo',
+			showCancelButton: true,
+			confirmButtonColor: '#d33',
+			focusConfirm: false,
+			confirmButtonText: 'Deletar',
+			reverseButtons: true
+		}).then((result) => {
+			if (result.value) {
+				window.location = url
+			}
+		})
+	}
+	else {
+		Swal.fire({
+		title: 'Deseja excluir essa categoria?',
+		text: "Ao deletar essa categoria, as vídeo-aulas dela serão apagadas!",
+    imageUrl: '../img/warning.png',
+    imageWidth: 125,
+    imageHeight: 125,
+    imageAlt: 'Perigo',
+    showCancelButton: true,
+    confirmButtonColor: '#d33',
+    focusConfirm: false,
+    confirmButtonText: 'Deletar',
+    reverseButtons: true
+	}).then((result) => {
+		if (result.value) {
+			window.location = url
+		}
+	})
+	}
+}
+</script>
+
 <?php
 	if (isset($_SESSION['categoria']) && $_SESSION['categoria'] == 1) {?>
 		<script>
-				Swal.fire({
-					title: 'Categoria cadastrada com sucesso!',
-					icon: 'success',
-	        confirmButtonColor: '#3e9b8a'
-				})
+			Swal.fire({
+				title: 'Categoria cadastrada com sucesso!',
+				icon: 'success',
+				confirmButtonColor: '#3e9b8a'
+			})
 		</script>
 	<?php
 		unset($_SESSION['categoria']);
 	}
+
+	if (isset($_SESSION['categoria_editado']) && $_SESSION['categoria_editado'] == 1) {?>
+		<script>
+			Swal.fire({
+				title: 'Categoria alterada com sucesso!',
+				icon: 'success',
+				confirmButtonColor: '#3e9b8a'
+			})
+		</script>
+	<?php
+		unset($_SESSION['categoria_editado']);
+	}
 	
+
 	if (isset($_SESSION['videoaula']) && $_SESSION['videoaula'] == 1) {?>
 		<script>
-				Swal.fire({
-					title: 'Vídeo-aula cadastrada com sucesso!',
-					icon: 'success',
-	        confirmButtonColor: '#3e9b8a'
-				})
+			Swal.fire({
+				title: 'Vídeo-aula cadastrada com sucesso!',
+				icon: 'success',
+				confirmButtonColor: '#3e9b8a'
+			})
 		</script>
 	<?php
 		unset($_SESSION['videoaula']);
 	}
+
+	if (isset($_SESSION['videoaula_editado']) && $_SESSION['videoaula_editado'] == 1) {?>
+		<script>
+			Swal.fire({
+				title: 'Vídeo-aula alterada com sucesso!',
+				icon: 'success',
+				confirmButtonColor: '#3e9b8a'
+			})
+		</script>
+	<?php
+		unset($_SESSION['videoaula_editado']);
+	}
+	
+	if (isset($_SESSION['pergunta']) && $_SESSION['pergunta'] == 1) {?>
+		<script>
+			Swal.fire({
+				title: 'Pergunta cadastrada com sucesso!',
+				icon: 'success',
+				confirmButtonColor: '#3e9b8a'
+			})
+		</script>
+	<?php
+		unset($_SESSION['pergunta']);
+	}	
+
+	if (isset($_SESSION['pergunta_editado']) && $_SESSION['pergunta_editado'] == 1) {?>
+		<script>
+			Swal.fire({
+				title: 'Pergunta alterada com sucesso!',
+				icon: 'success',
+				confirmButtonColor: '#3e9b8a'
+			})
+		</script>
+	<?php
+		unset($_SESSION['pergunta_editado']);
+	}	
+
+	if (isset($_SESSION['pergunta_removida']) && $_SESSION['pergunta_removida'] == 1) {?>
+		<script>
+			Swal.fire({
+				title: 'Pergunta removida com sucesso!',
+				icon: 'success',
+				confirmButtonColor: '#3e9b8a'
+			})
+		</script>
+	<?php
+		unset($_SESSION['pergunta_removida']);
+	}		
+
+	if (isset($_SESSION['video_removida']) && $_SESSION['video_removida'] == 1) {?>
+		<script>
+			Swal.fire({
+				title: 'Vídeo-aula removida com sucesso!',
+				icon: 'success',
+				confirmButtonColor: '#3e9b8a'
+			})
+		</script>
+	<?php
+		unset($_SESSION['video_removida']);
+	}	
+
+	if (isset($_SESSION['categoria_removida']) && $_SESSION['categoria_removida'] == 1) {?>
+		<script>
+			Swal.fire({
+				title: 'Categoria removida com sucesso!',
+				icon: 'success',
+				confirmButtonColor: '#3e9b8a'
+			})
+		</script>
+	<?php
+		unset($_SESSION['categoria_removida']);
+	}	
+
 ?>
 
 <!-- Import das bibliotecas js do Bootstrap -->

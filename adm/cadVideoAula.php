@@ -40,14 +40,14 @@
 					</div>
 					<div class="form-group">
 						<label for="FormUrl">Link do vídeo<span style="color:red;">*</span></label>
-						<input type="text" class="form-control" value="https://www.youtube.com/watch?v=<?= isset($_GET['id']) ? $row['id_video'] : '' ?>" name="id_video" id="id_video" placeholder="Ex: https://youtu.be/0bDIQhCUnYk" <?= isset($_GET['id']) ? 'disabled' : 'required'?>>
+						<input type="text" class="form-control" value="<?= isset($_GET['id']) ? ('https://www.youtube.com/watch?v=' . $row['id_video']) : '' ?>" name="id_video" id="id_video" placeholder="Ex: https://youtu.be/0bDIQhCUnYk" <?= isset($_GET['id']) ? 'disabled' : 'required'?>>
 					</div>
 					<div class="form-group">
 						<label for="FormCat">Categoria do vídeo<span style="color:red;">*</span></label>
 						<select class="form-control" id="FormCat" name="cat">
 							<?php
 							while($obj = $result->fetch_assoc()){ ?>
-								<option value="<?= $obj['id'] ?>" <?=($obj['id'] == $row['id_cat']) ? 'selected="selected"' : '' ?>><?= $obj['nome'] ?></option>
+								<option value="<?= $obj['id'] ?>" <?=(isset($row) && $obj['id'] == $row['id_cat']) ? 'selected="selected"' : '' ?>><?= $obj['nome'] ?></option>
 							<?php
 							}
 							?>

@@ -1,4 +1,5 @@
 <?php 
+  session_start();
   include('../connection/conn.php');
   include('../model/scriptEditPergunta.php');
 ?>

@@ -94,7 +94,7 @@ if (isset($_POST['editar_dados'])) {
 
     if (isset($_FILES['file1']["type"])) {
       // Remove do bd
-      $file = realpath($img2);
+      $file = '../img/' . $img2;
       if (file_exists($file)) {
         // unlink($file);
       }
@@ -107,7 +107,7 @@ if (isset($_POST['editar_dados'])) {
   
         if (in_array($file_extension1, $validextensions1)) {//Verifica se está de acordo com a extensão
           $img2 = uniqid(time()) . '.' . $file_extension1;
-          $destino1 = realpath($img2);
+          $destino1 = '../img/' . $img2;
           $sourcePath1 = $_FILES['file1']['tmp_name']; // Storing source path of the file in a variable
           $flag_img1 = move_uploaded_file($sourcePath1, $destino1); // Moving Uploaded file
         }
@@ -128,8 +128,8 @@ if (isset($_POST['editar_dados'])) {
         $file_extension2 = end($temporary2);
   
         if (in_array($file_extension2, $validextensions2)) {//Verifica se está de acordo com a extensão
-          $novoNome3 = uniqid(time()) . '.' . $file_extension2;
-          $destino2 = '../img/' . $novoNome3;
+          $img3 = uniqid(time()) . '.' . $file_extension2;
+          $destino2 = '../img/' . $img3;
           $sourcePath2 = $_FILES['file2']['tmp_name']; // Storing source path of the file in a variable
           $flag_img2 = move_uploaded_file($sourcePath2, $destino2); // Moving Uploaded file
         }
@@ -241,5 +241,7 @@ if (isset($_POST['editar_dados'])) {
       mysqli_query($conn, $script);
     }
   }
+  $_SESSION['pergunta_editado'] = 1;
+  header('Location: home.php');
 }
 ?>

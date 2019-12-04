@@ -34,14 +34,14 @@
         <div class="form-group">
           <label for="FormModelo">Modelo da pergunta<span style="color:red;">*</span></label>
           <select class="form-control" id="FormMod" name="mod" required>
-            <option value="0">Alternativa</option>
-            <option value="1">Sequência</option>
-            <option value="2">Toque nos Pares</option>
+            <option value="0" <?=(isset($modelo) && $modelo == 'alternativa') ? 'selected="selected"' : ''?>>Alternativa</option>
+            <option value="1" <?=(isset($modelo) && $modelo == 'sequencia') ? 'selected="selected"' : ''?>>Sequência</option>
+            <option value="2" <?=(isset($modelo) && $modelo == 'pares') ? 'selected="selected"' : ''?>>Toque nos Pares</option>
           </select>
         </div>
         <div class="form-group">
           <label for="FormPergunta">Pergunta<span style="color:red;">*</span></label>
-          <input type="text" class="form-control" id="pergunta" name="pergunta" required>
+          <input type="text" class="form-control" id="pergunta" value="<?= (isset($pergunta)) ? $pergunta : '' ?>" name="pergunta" required>
         </div>
 
         <div class="col-12 col-md-12 col-lg-12">
@@ -88,7 +88,6 @@ $(document).ready(function (e) {
   // Function to preview image after validation
   $(function () {
       $("#file0").change(function () {
-        console.log('um')
           var file = this.files[0];
           var imagefile = file.type;
           var match = ["image/jpeg", "image/png", "image/jpg"];

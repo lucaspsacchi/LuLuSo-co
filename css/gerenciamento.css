@@ -35,3 +35,32 @@
 .btn-bottom {
   margin-bottom: 0px;
 }
+
+#card-row-home {
+  margin-bottom: 20px;
+  padding: 6px 12px;
+}
+
+.card-body {
+  padding-top: 20px;
+  padding-bottom: 0px;
+}
+
+.row-home {
+  margin: 0px;
+}
+
+.icon {
+  font-size: 18px !important;
+  vertical-align:middle;
+}
+
+.btn-danger-custom:hover {
+  background-color: white;
+  color: #c82333;
+}
+
+#card-row-perg {
+  margin-bottom: 20px;
+  margin-left: 10px;
+}

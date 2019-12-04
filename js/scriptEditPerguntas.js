@@ -68,7 +68,7 @@ function createAlt(e, dados) {
       let img = document.createElement('img')
       img.id = 'photo'.concat(i)
       img.className = 'img-rounded'
-      img.src = '../img/' + dados['img'.concat(i+1)]
+      img.src = (dados['img'.concat(i+1)] === undefined) ? '../img/semImg.png' : ('../img/' + dados['img'.concat(i+1)])
       img.width = '180'
       img.height = '180'
       divGroup.appendChild(img)

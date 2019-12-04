@@ -45,7 +45,9 @@ if (isset($_POST['editar_dados'])) {
 
 
 // Procura pelo id do vídeo
-$script = "SELECT * FROM video_aula WHERE id_video ='".$_GET['id']."'";
-$result = mysqli_query($conn, $script);
-$row = $result->fetch_assoc();
+if (isset($_GET['id'])) {
+  $script = "SELECT * FROM video_aula WHERE id_video ='".$_GET['id']."'";
+  $result = mysqli_query($conn, $script);
+  $row = $result->fetch_assoc();
+}
 ?>
