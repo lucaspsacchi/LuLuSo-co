@@ -56,6 +56,41 @@ if (isset($_POST['editar_dados'])) {
   $script = "UPDATE categoria SET nome ='".$nome."', alias ='".$alias."' WHERE id =".$_GET['id'];
   mysqli_query($conn, $script);
 
+  // Busca a imagem antiga para remover do servidor
+  $script = "SELECT img FROM categoria WHERE id =".$_GET['id'];
+  $res = mysqli_query($conn, $script);
+  $rowImg = $res->fetch_assoc();
+  unlink('../img/'.$rowImg['img']);
+
+  // Insere a nova imagem
+  if (isset($_FILES["file"]["type"])) {
+    $validextensions = array("jpeg", "jpg", "png");
+    $temporary = explode(".", $_FILES["file"]["name"]);
+    $file_extension = end($temporary);
+
+    if (in_array($file_extension, $validextensions)) {//Verifica se está de acordo com a extensão
+      if ($_FILES["file"]["error"] > 0) {
+
+      } else {
+          $novoNome = uniqid(time()) . '.' . $file_extension;
+          $destino = '../img/' . $novoNome;
+          $sourcePath = $_FILES['file']['tmp_name']; // Storing source path of the file in a variable
+
+          $flag_img = move_uploaded_file($sourcePath, $destino); // Moving Uploaded file
+          if ($flag_img != TRUE) {
+            ?>
+            <script>
+              alert("Ocorreu um erro inesperado com a imagem");
+            </script>
+            <?php
+          }
+      }
+    }
+  }
+
+  $script = "UPDATE categoria SET img ='".$novoNome."' WHERE id =".$_GET['id'];
+  mysqli_query($conn, $script);
+
   $_SESSION['categoria_editado'] = 1;
 
   header('Location: home.php');

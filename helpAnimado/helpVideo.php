@@ -9,7 +9,7 @@
         confirmButtonText: 'Ok',
         confirmButtonColor: '#3e9b8a',
         allowOutsideClick: false,
-        text: 'Após ver o vídeo, responda às questões e acumule pontos!'
+        text: 'Após ver o vídeo, responda às questões e suba de nível!'
       })
   <?php
     //Ativa a segunda flag

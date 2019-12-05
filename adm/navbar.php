@@ -1,10 +1,12 @@
-<nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+<nav class="navbar navbar-expand-lg navbar-light navbar-custom justify-content-between">
   <a class="navbar-brand" href="home.php">
     <div class="logo">
       <img class="img-responsive" src="../img/vovoTecLogo.png">
     </div>
   </a>
-  <button class="nav-link d-flex justify-content-start" onclick="confSair()" style="width: 100%;">SAIR</button>
+  <div class="">
+    <button class="nav-link d-flex justify-content-start" onclick="confSair()">SAIR</button>
+  </div>
 </nav>
 
 <!-- Sweet Alert -->

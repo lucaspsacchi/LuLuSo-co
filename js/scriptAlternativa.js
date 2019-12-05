@@ -75,7 +75,7 @@ function mountAlternativa(dados, pos, total) {
         imagemDiv.className = 'd-flex justify-content-center';
 
         var imagem = document.createElement('img');
-        imagem.src = x.imagem;
+        imagem.src = './img/' + x.imagem;
         imagem.alt = `Alternativa ${index + 1}`;
 
         imagemDiv.appendChild(imagem);

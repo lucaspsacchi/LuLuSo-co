@@ -56,7 +56,7 @@
 
         <div class="form-group d-flex justify-content-between">
           <a class="btn btn-secondary" href="perguntas.php?id=<?=$row['id_video']?>&nome=<?=$row['pergunta']?>">Voltar</a>
-          <input class="btn btn-success" type="submit" name="editar_dados" value="Continuar">
+          <input class="btn btn-success" type="submit" name="editar_dados" value="Salvar">
         </div>
       </form>
 		</div>

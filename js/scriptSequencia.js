@@ -1,7 +1,8 @@
 var alternativas = []
-var nAlternativas
+var nAlternativas = 0
 
 function mainSequencia(data, num) {
+	console.log(num)
 	if (data == 'remove') { // Já está na array
 		if (num < alternativas.length) { // Nao permite remover elementos anterior do último
 			console.log('Não pode!')
@@ -122,7 +123,8 @@ function mountSequencia(dados, pos, total) {
 	dados.alternativas = shuffle(dados.alternativas)
 
 	var quiz = document.getElementById('quiz');
-	nAlternativas = dados.alternativas.length
+	alternativas = [];
+	nAlternativas = dados.alternativas.length;
 
 	var divNum = document.createElement('div');
 	var h4 = document.createElement('h4');
@@ -156,9 +158,7 @@ function mountSequencia(dados, pos, total) {
 
 	div = document.createElement('div');
 	div.className = 'espaco';
-
-	
-
+	console.log(dados.alternativas)
 	dados.alternativas.map((x, index) => {
 		var button = document.createElement('button');
 

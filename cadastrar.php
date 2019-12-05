@@ -6,8 +6,12 @@ if (isset($_POST['salvar_dados'])) {
 	$senha1 = MD5(addslashes($_POST['senha1']));
 	$senha2 = MD5(addslashes($_POST['senha2']));
 
+	if ($senha1 != $senha2) {
+		header('Location: cadastrar.php?senha=1');
+	}
+
 	// Verificar se já existe aquele usuário no bd
-	$script = "SELECT * FROM pessoa WHERE usuario = '".$usuario."'";
+	$script = "SELECT * FROM pessoa WHERE email = '".$email."'";
 	$result = mysqli_query($conn, $script);
 
 	if ($result->num_rows == 0) { // Insere o novo usuário
@@ -15,11 +19,10 @@ if (isset($_POST['salvar_dados'])) {
 		$script = "INSERT INTO pessoa (email, senha, flag, flag_perguntas, flag_login, nivel_conhecimento)
 		VALUES ('".$email."', '".$senha1."', '0', '0', '1', '0')";
 		mysqli_query($conn, $script);
-		header('Location: login.php');
+		header('Location: login.php?cadastro=1');
 	}
 	else { // Já existe o usuário
-		$_SESSION['alert'] = 1;
-		header('Location: cadastrar.php');
+		header('Location: cadastrar.php?usuario=1');
 	}
 }
 ?>
@@ -64,19 +67,19 @@ if (isset($_POST['salvar_dados'])) {
 
 						<form action="#" method="POST" enctype="multipart/form-data" oninput='senha2.setCustomValidity(senha2.value != senha1.value ? "Senhas estão diferentes" : "")'>
 							<div class="form-group">
-								<span>Email</span>
+								<span class="span-login">Email</span>
 							</div>
 							<div class="form-group">
 								<input type="text" class="form-control" name="email" id="email" required>
 							</div>		
 							<div class="form-group">
-								<span>Senha</span>
+								<span class="span-login">Senha</span>
 							</div>
 							<div class="form-group">
 								<input type="password" class="form-control" minlength="5" name="senha1" id="senha1" required>
 							</div>		
 							<div class="form-group">
-								<span>Repita a Senha</span>
+								<span class="span-login">Repita a Senha</span>
 							</div>
 							<div class="form-group">
 								<input type="password" class="form-control" minlength="5" name="senha2" id="senha2" required>
@@ -95,6 +98,36 @@ if (isset($_POST['salvar_dados'])) {
 	</div>
 </body>
 </html>
+
+<!-- Sweet Alert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+
+<?php
+if (isset($_GET['usuario']) && $_GET['usuario'] == 1) {?>
+	<script>
+		document.addEventListener("DOMContentLoaded", function(event) {
+			Swal.fire({
+				title: 'Email já cadastrado!',
+				icon: 'error',
+				confirmButtonColor: '#3e9b8a'
+			})
+		});
+	</script>
+<?php
+} 
+if (isset($_GET['senha']) && $_GET['senha'] == 1) {?>
+	<script>
+		Swal.fire({
+			title: 'Senhas diferentes!',
+			text: 'Insira novamente os dados',
+			icon: 'error',
+			confirmButtonColor: '#3e9b8a'
+		})
+	</script>
+<?php
+} 	
+?>
 
 
 <!-- Import das bibliotecas js do Bootstrap -->

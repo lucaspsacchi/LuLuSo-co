@@ -64,6 +64,12 @@ if (isset($_POST['editar_dados'])) {
 
   // Remove o antigo modelo
   if ($row['modelo'] == 'alternativa') {
+    
+    // Busca pelos dados da pergunta
+    $script = "SELECT img1, resposta1, img2, resposta2, img3, resposta3, img4, resposta4 FROM modelo_alternativa WHERE id_pergunta =".$_GET['id'];
+    $res = mysqli_query($conn, $script);
+    $rowM = $res->fetch_assoc();
+
     // Pega as novas imagens
     $img1 = $rowM['img1'];
     $img2 = $rowM['img2'];
@@ -73,10 +79,7 @@ if (isset($_POST['editar_dados'])) {
 
     if (isset($_FILES['file0']["type"])) {
       // Remove do bd
-      $file = '../img/' . $img1;
-      if (file_exists($file)) {
-        // unlink($file);
-      }
+      // unlink('../img/'.$rowM['img1']);
 
       if (isset($_FILES["file0"]["type"])) {
         $validextensions0 = array("jpeg", "jpg", "png");
@@ -94,10 +97,7 @@ if (isset($_POST['editar_dados'])) {
 
     if (isset($_FILES['file1']["type"])) {
       // Remove do bd
-      $file = '../img/' . $img2;
-      if (file_exists($file)) {
-        // unlink($file);
-      }
+      // unlink('../img/'.$rowM['img2']);
 
       // Insere o novo
       if (isset($_FILES["file1"]["type"])) {
@@ -116,10 +116,7 @@ if (isset($_POST['editar_dados'])) {
 
     if (isset($_FILES['file2']["type"])) {
       // Remove do bd
-      $file = '../img/' . $img3;
-      if (file_exists($file)) {
-        // unlink($file);
-      }    
+      // unlink('../img/'.$rowM['img3']);
     
       // Insere o novo
       if (isset($_FILES["file2"]["type"])) {
@@ -136,12 +133,10 @@ if (isset($_POST['editar_dados'])) {
       }
     }
 
+
     if (isset($_FILES['file3']["type"])) {
       // Remove do bd
-      $file = '../img/' . $img4;
-      if (file_exists($file)) {
-        // unlink($file);
-      }      
+      // unlink('../img/'.$rowM['img4']);     
 
       // Insere o novo
       if (isset($_FILES["file3"]["type"])) {
@@ -156,6 +151,19 @@ if (isset($_POST['editar_dados'])) {
           $flag_img3 = move_uploaded_file($sourcePath3, $destino3); // Moving Uploaded file
         }
       }
+    }
+
+    if ($img1 != $rowM['img1']) {
+      unlink('../img/'.$rowM['img1']);
+    }
+    if ($img2 != $rowM['img2']) {
+      unlink('../img/'.$rowM['img2']);
+    }
+    if ($img3 != $rowM['img3']) {
+      unlink('../img/'.$rowM['img3']);
+    }
+    if ($img4 != $rowM['img4']) {
+      unlink('../img/'.$rowM['img4']);
     }
 
     // Remove modelo antigo

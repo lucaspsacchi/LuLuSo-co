@@ -206,10 +206,10 @@ if (isset($_GET['id'])) {
     $row = $res->fetch_assoc();
 
     // Apaga as imagens do servidor
-    unlink('../img/' + $row['img1']);
-    unlink('../img/' + $row['img2']);
-    unlink('../img/' + $row['img3']);
-    unlink('../img/' + $row['img4']);
+    unlink('../img/'.$row['img1']);
+    unlink('../img/'.$row['img2']);
+    unlink('../img/'.$row['img3']);
+    unlink('../img/'.$row['img4']);
 
     // Remove do bd
     $script = "DELETE FROM modelo_alternativa WHERE id_pergunta =".$_GET['id'];
