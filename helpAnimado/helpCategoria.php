@@ -51,3 +51,25 @@
     unset($_SESSION['alertPrimeiroLogin']);
   }
 ?>
+
+<!-- Alerts -->
+<?php
+if (isset($alertSubiuNivel) && $alertSubiuNivel != 0 && $alertSubiuNivel != -1) { ?>
+  <script>
+    Swal.fire({
+      title: 'Parabéns!',
+      text: 'Você atingiu o Nível <?=$niveis[$alertSubiuNivel]?>!',
+      imageUrl: 'img/<?=$alertSubiuNivel?>.png',
+      imageWidth: 175,
+      imageHeight: 175,
+      imageAlt: '<?=$niveis[$alertSubiuNivel]?>',
+      allowOutsideClick: false
+    })
+  </script>
+	<?php
+	$script = "UPDATE pessoa
+						SET nivel_conhecimento = '".$alertSubiuNivel."'
+						WHERE id =  '".$_SESSION['id_usuario']."';";
+	mysqli_query($conn, $script);
+}
+?>
